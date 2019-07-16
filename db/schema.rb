@@ -38,6 +38,14 @@ ActiveRecord::Schema.define(version: 2019_07_16_042020) do
     t.index ["user_id", "test_id"], name: "index_results_on_user_id_and_test_id"
   end
 
+  create_table "tests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "type"
+    t.string "name"
+    t.integer "time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "email"
