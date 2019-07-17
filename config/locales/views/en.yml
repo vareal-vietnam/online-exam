@@ -7,6 +7,7 @@ en:
     header:
       logo: "OnlineExam"
       log_in: "LOG IN"
+      log_out: "Log out"
       home: "HOME"
   static_pages:
     home:

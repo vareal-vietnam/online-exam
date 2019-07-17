@@ -3,8 +3,12 @@
     <%= link_to t(".logo"), root_path, id: "logo" %>
     <nav>
       <ul>
-        <li><%= link_to t(".log_in"), "#" %></li>
-        <li><%= link_to t(".home"), "#" %></li>
+        <% if logged_in? %>
+         <li><%= link_to t(".log_out"), "#" %></li>
+        <% else %>
+         <li><%= link_to t(".log_in"), login_path %></li>
+        <% end %>
+        <li><%= link_to t(".home"), root_path %></li>
       </ul>
     </nav>
   </div>

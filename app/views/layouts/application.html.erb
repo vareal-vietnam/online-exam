@@ -10,9 +10,10 @@
   </head>
   <body>
     <%= render "layouts/header" %>
-    <div class= "text-center">
+    <div class="container">
+      <%= render "layouts/flash" %>
       <%= yield %>
-      <%= render "layouts/footer" %>
     </div>
+    <%= render "layouts/footer" %>
   </body>
 </html>
