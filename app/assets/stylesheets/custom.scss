@@ -1,0 +1,56 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/* universal */
+body {
+  padding-top: 50px;
+}
+
+section {
+  overflow: auto;
+}
+
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: white;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+  &:hover {
+  color: black;
+  text-decoration: none;
+ }
+}
+
+
+/* footer */
+
+footer {
+  background: #13547a;
+  margin-top: 55px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: white;
+}
+
+/* header  */
+
+header.navbar.navbar-fixed-top.navbar-inverse {
+  background: #13547a;
+}
+
+header ul li {
+  float: right;
+  color: white;
+  display: inline-block;
+}
+
+header ul a {
+  color: white;
+  padding-top: 30px;
+  font-weight: bold;
+  padding :10px;
+}
+
