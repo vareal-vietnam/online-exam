@@ -1,9 +1,7 @@
 en:
   layouts:
     footer:
-      address1: "Room No. 22, 8th Floor, DETECH TOWER II Building, 107 Nguyen Phong Sac"
-      address2: "Dich Vong Hau Ward, Cau Giay District, Hanoi 123114 "
-      address3: "VIET NAM"
+      coppyright: "© 2019 VAREAL VIETNAM CO., LTD. All rights reserved."
     header:
       logo: "OnlineExam"
       log_in: "LOG IN"
