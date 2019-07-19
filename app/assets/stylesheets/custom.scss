@@ -19,7 +19,6 @@ section {
   padding-top: 9px;
   font-weight: bold;
   &:hover {
-  color: black;
   text-decoration: none;
  }
 }
@@ -43,7 +42,7 @@ header.navbar.navbar-fixed-top.navbar-inverse {
   background: #13547a;
 }
 
-header ul li {
+header>ul li {
   float: right;
   display: inline-block;
 }

@@ -4,9 +4,9 @@ User.create! name: "admin",
   password_confirmation: "123456",
   is_admin: true
 
-10.times do |n|
+100.times do |n|
   User.create! name: Faker::Name.name,
-    email: "user-#{n + 1}@vareal.vn",
+    email: "user#{n + 1}@vareal.vn",
     password: "123456",
     password_confirmation: "123456"
 end

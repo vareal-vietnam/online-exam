@@ -3,8 +3,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "2.4.6"
 
-gem "bootstrap-sass", "3.4.1"
-gem "faker"
 gem "rails", "~> 5.2.3"
 gem "mysql2", ">= 0.4.4", "< 0.6.0"
 gem "puma", "~> 3.11"
@@ -17,6 +15,10 @@ gem "bootsnap", ">= 1.1.0", require: false
 gem "figaro", "~> 1.1", ">= 1.1.1"
 gem "bcrypt"
 gem "jquery-rails"
+gem "will_paginate"
+gem "bootstrap-will_paginate"
+gem "bootstrap-sass", "3.4.1"
+gem "faker"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

@@ -4,12 +4,18 @@ en:
       coppyright: "© 2019 VAREAL VIETNAM CO., LTD. All rights reserved."
     header:
       logo: "OnlineExam"
-      log_in: "LOG IN"
+      log_in: "Log in"
       log_out: "Log out"
-      home: "HOME"
+      home: "Home"
+      users: "Users"
+      profile: "Profile"
+      edit: "Edit"
+      admin: "Admin"
+      exam: "Exam"
+      users: "Users"
   static_pages:
     home:
-      title: "HOME"
+      title: "Home"
       greeting: "Hello %{name}"
   sessions:
     create:
@@ -50,3 +56,9 @@ en:
     error_messages:
       error-exaplanation: "Have %{number_errors}"
       error: "error"
+    index:
+      all_users: "All Users"
+      id: "ID"
+      user_name: "User Name"
+      user_email: "User Email"
+      action_delete: "Action Delete"

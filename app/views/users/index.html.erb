@@ -1,0 +1,28 @@
+<% provide :title, t(".all_users") %>
+<h1 class="text-center"><%= t ".all_users" %></h1>
+
+<%= will_paginate %>
+
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th><%= t ".id" %></th>
+      <th><%= t ".user_name" %></th>
+      <th><%= t ".user_email" %></th>
+      <th><%= t ".action_delete" %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate %>
