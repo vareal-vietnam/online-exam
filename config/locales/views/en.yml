@@ -10,3 +10,33 @@ en:
   static_pages:
     home:
       title: "HOME"
+      greeting: "Hello %{name}"
+  sessions:
+    create:
+      success_login: "Logged in successfully"
+      error_login: "Wrong email or password"
+    new:
+      hello: "Hello world"
+      title: "Log in"
+      email: "Email"
+      password: "Password"
+      forget_password: "Forget password?"
+  password_resets:
+    new:
+      title: "Password reset"
+      submit: "Sumit email"
+    create:
+      error: "Email is not exist"
+      success: "Please checkout your email for password reset instructions"
+    edit:
+      title: "Reset password"
+      out_of_date: "Your action is out of date. Let try it!"
+      error_confirm: "Password confirm is not match"
+      error_expiration: "Password reset has expired."
+    update:
+      success: "Reset password successfully, please login again"
+  user_mailer:
+    password_reset:
+      title: "Password reset"
+      content_email: "Let click on link for reset your password"
+      reset_password: "Reset password"

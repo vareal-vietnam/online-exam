@@ -1,3 +1,6 @@
 en:
   common:
     page_title: "Vareal VietNam"
+  user_mailer:
+    password_reset:
+      subject: "Password reset"

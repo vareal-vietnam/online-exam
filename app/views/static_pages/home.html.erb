@@ -1,5 +1,5 @@
 <% provide :title, t(".title") %>
 <h1 class="text-center"><%= t ".title" %></h1>
 <% if logged_in? %>
-  <h2 class="text-center"> <%= t ".greeting", name: current_user.name %></h2>
+  <h2 class="text-center"><%= t ".greeting", name: current_user.name %></h2>
 <% end %>
