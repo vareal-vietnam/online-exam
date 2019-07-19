@@ -40,3 +40,13 @@ en:
       title: "Password reset"
       content_email: "Let click on link for reset your password"
       reset_password: "Reset password"
+  users:
+    new:
+      title: "Create a user"
+      submit: "Create"
+    create:
+      success_create: "Create a user successfully"
+  shared:
+    error_messages:
+      error-exaplanation: "Have %{number_errors}"
+      error: "error"

@@ -39,21 +39,21 @@ class PasswordResetsController < ApplicationController
   end
 
   private
-    def get_user
-      @user = User.find_by email: params[:email]
-    end
+  def get_user
+    @user = User.find_by email: params[:email]
+  end
 
-    def check_expiration
-      return unless @user.password_reset_expired?
-      flash[:danger] = t ".error_expiration"
-      redirect_to new_password_reset_path
-    end
+  def check_expiration
+    return unless @user.password_reset_expired?
+    flash[:danger] = t ".error_expiration"
+    redirect_to new_password_reset_path
+  end
 
-    def send_password_reset_email
-      UserMailer.password_reset(@user).deliver_now
-    end
+  def send_password_reset_email
+    UserMailer.password_reset(@user).deliver_now
+  end
 
-    def reset_password_params
-      params.require(:password_reset).permit :password, :password_confirmation
-    end
+  def reset_password_params
+    params.require(:password_reset).permit :password, :password_confirmation
+  end
 end

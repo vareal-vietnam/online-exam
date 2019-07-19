@@ -4,3 +4,4 @@ en:
   user_mailer:
     password_reset:
       subject: "Password reset"
+  not_permission: "This action is not forbidden"
