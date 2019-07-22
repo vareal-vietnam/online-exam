@@ -60,10 +60,12 @@ en:
       success_update: "Update a user successfully"
     index:
       all_users: "All Users"
+      create: "Create user"
       view: "View"
       update: "Update"
       delete: "Delete"
       action: "Action"
+      confirm_delete: "Are you sure delete?"
     destroy:
       user_deleted: "User Deleted"
     show:
@@ -71,11 +73,14 @@ en:
       name: "Name"
       email: "Email"
       score: "Score"
-      user_not_be_found: "User not be found"
+      error_404: "Request cannot be found"
       result: "Result"
       test_name: "Test Name"
       test_date_time: "Test date time"
       score: "Score"
+    destroy:
+      success_delete: "Delete a user successfully"
+      error_404: "Request cannot be found"
   shared:
     error_messages:
       error-exaplanation: "Have %{number_errors}"
