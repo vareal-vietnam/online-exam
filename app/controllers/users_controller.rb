@@ -19,6 +19,24 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find_by id: params[:id]
+    unless @user
+      flash[:error] = t ".error_404"
+      redirect_to root_path
+    end
+  end
+
+  def update
+    @user = User.find_by id: params[:id]
+    if @user.update_attributes user_params
+      flash[:success] = t ".success_update"
+      redirect_to root_path
+    else
+      render "edit"
+    end
+  end
+
   private
   def user_params
     params.require(:user).permit :name, :email, :password, :password_confirmation

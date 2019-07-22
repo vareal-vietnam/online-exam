@@ -49,9 +49,15 @@ en:
   users:
     new:
       title: "Create a user"
-      submit: "Create"
     create:
       success_create: "Create a user successfully"
+    edit:
+      title: "Update a user"
+      error_404: "Request cannot be found"
+    form:
+      submit: "Save"
+    update:
+      success_update: "Update a user successfully"
   shared:
     error_messages:
       error-exaplanation: "Have %{number_errors}"
