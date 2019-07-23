@@ -57,6 +57,15 @@ en:
           edit: "Edit"
           delete: "Delete"
           total_questions: "Total Questions"
+          create: "Create exam"
+    new:
+      title: "Create an exam"
+    create:
+      success_create: "Create exam successfully"
+    form:
+      name: "Name"
+      kind: "Kind"
+      time: "Time"
   user_mailer:
     password_reset:
       title: "Password reset"
@@ -96,16 +105,3 @@ en:
       email: "Email"
       password: "Password"
       password_confirmation: "Password condfirmation"
-  shared:
-    error_messages:
-      error-exaplanation: "Have %{number_errors}"
-      error: "error"
-  tests:
-    new:
-      title: "Create an exam"
-    create:
-      success_create: "Create exam successfully"
-    form:
-      name: "Name"
-      kind: "Kind"
-      time: "Time"

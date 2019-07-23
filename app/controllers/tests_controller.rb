@@ -1,5 +1,6 @@
 class TestsController < ApplicationController
-  before_action :check_is_admin_permission
+  before_action :check_is_admin_permission, only: [:new, :create]
+  before_action :check_is_logged_in, only: [:index]
 
   def new
     @test = Test.new
