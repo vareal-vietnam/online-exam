@@ -37,10 +37,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    if @user.destroy
-      flash[:success] = t ".success_delete"
-      redirect_to users_path
-    end
+    @user.destroy
+    flash[:success] = t ".success_delete"
+    redirect_to users_path
   end
 
   private
