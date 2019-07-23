@@ -1,0 +1,49 @@
+<% provide :title, t(".view_list_exam") %>
+<h1 class="text-center"><%= "View List Exam" %></h1>
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th><%= t ".test_id" %></th>
+      <th><%= t ".test_name" %></th>
+      <th><%= t ".time_(s)" %></th>
+      <th><%= t ".total_questions"%></th>
+      <th class="text-center"><%= t ".view" %></th>
+      <th class="text-center"><%= t ".add" %></th>
+      <th class="text-center"><%= t ".edit" %></th>
+      <th class="text-center"><%= t ".delete" %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tests.each do |test| %>
+      <tr>
+        <td><%= test.id %></td>
+        <td><%= test.name %></td>
+        <td><%= test.time %></td>
+        <td><%= test.questions.count %></td>
+        <td class="text-center">
+          <%= link_to "#", class: "button" do %>
+            <i class="fa fa-eye"></i>
+          <% end %>
+        </td>
+
+        <td class="text-center">
+          <%= link_to "#", class: "button" do %>
+            <i class="fa fa-th-list"></i></i>
+          <% end %>
+        </td>
+
+        <td class="text-center">
+          <%= link_to "#", class: "button" do %>
+            <i class="fa fa-address-card"></i>
+          <% end %>
+        </td>
+
+        <td class="text-center">
+          <%= link_to "#", class: "button" do %>
+            <i class="fa fa-user-times"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

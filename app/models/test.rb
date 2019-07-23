@@ -3,7 +3,8 @@ class Test < ApplicationRecord
 
   enum kind: CATEGORY_TYPE
 
-  has_many :result
+  has_many :results
+  has_many :questions
 
   validates :time, :name, :kind, presence: true
 end

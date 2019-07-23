@@ -13,20 +13,6 @@ en:
       admin: "Admin"
       exam: "Exam"
       users: "Users"
-  static_pages:
-    home:
-      title: "Home"
-      greeting: "Hello %{name}"
-  sessions:
-    create:
-      success_login: "Logged in successfully"
-      error_login: "Wrong email or password"
-    new:
-      hello: "Hello world"
-      title: "Log in"
-      email: "Email"
-      password: "Password"
-      forget_password: "Forget password?"
   password_resets:
     new:
       title: "Password reset"
@@ -41,6 +27,36 @@ en:
       error_expiration: "Password reset has expired."
     update:
       success: "Reset password successfully, please login again"
+  sessions:
+    create:
+      success_login: "Logged in successfully"
+      error_login: "Wrong email or password"
+    new:
+      hello: "Hello world"
+      title: "Log in"
+      email: "Email"
+      password: "Password"
+      forget_password: "Forget password?"
+  shared:
+    error_messages:
+      error-exaplanation: "Have %{number_errors}"
+      error: "error"
+  static_pages:
+    home:
+      title: "Home"
+      greeting: "Hello %{name}"
+  tests:
+    admin:
+      index:
+          view_list_exam: "View List Exam"
+          test_id: "Test ID"
+          test_name: "Test Name"
+          time_(s): "Time (s)"
+          view: "View"
+          add: "Add"
+          edit: "Edit"
+          delete: "Delete"
+          total_questions: "Total Questions"
   user_mailer:
     password_reset:
       title: "Password reset"
@@ -67,6 +83,7 @@ en:
       confirm_delete: "Are you sure delete?"
     destroy:
       user_deleted: "User Deleted"
+      success_delete: "Delete a user successfully"
     show:
       id: "ID"
       name: "Name"
@@ -76,9 +93,4 @@ en:
       test_name: "Test Name"
       test_date_time: "Test date time"
       score: "Score"
-    destroy:
-      success_delete: "Delete a user successfully"
-  shared:
-    error_messages:
-      error-exaplanation: "Have %{number_errors}"
-      error: "error"
+
