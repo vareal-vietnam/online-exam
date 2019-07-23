@@ -15,6 +15,13 @@ class TestsController < ApplicationController
     end
   end
 
+  def index
+    @tests = Test.all
+    if current_user.is_admin?
+      render "tests/admin/index"
+    end
+  end
+
   private
   def test_params
     params.require(:test).permit :name, :kind, :time
