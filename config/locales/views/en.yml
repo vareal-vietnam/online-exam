@@ -53,8 +53,6 @@ en:
       success_create: "Create a user successfully"
     edit:
       title: "Update a user"
-    form:
-      submit: "Save"
     update:
       success_update: "Update a user successfully"
     index:
@@ -78,7 +76,21 @@ en:
       score: "Score"
     destroy:
       success_delete: "Delete a user successfully"
+    form:
+      name: "Name"
+      email: "Email"
+      password: "Password"
+      password_confirmation: "Password condfirmation"
   shared:
     error_messages:
       error-exaplanation: "Have %{number_errors}"
       error: "error"
+  tests:
+    new:
+      title: "Create an exam"
+    create:
+      success_create: "Create exam successfully"
+    form:
+      name: "Name"
+      kind: "Kind"
+      time: "Time"

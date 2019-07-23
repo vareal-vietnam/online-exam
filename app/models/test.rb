@@ -5,5 +5,6 @@ class Test < ApplicationRecord
 
   has_many :result
 
-  validates :time, :name, :kind, presence: true
+  validates :name, :kind, presence: true
+  validates :time, presence: true, numericality: { only_integer: true }
 end
