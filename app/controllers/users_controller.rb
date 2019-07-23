@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   before_action :check_is_admin_permission
   before_action :get_user, only: [:edit, :update, :destroy, :show]
-  before_action :check_is_user_self, only: [:destroy]
 
   def index
     @users = User.paginate page: params[:page]
@@ -53,13 +52,6 @@ class UsersController < ApplicationController
     @user = User.find_by id: params[:id]
     unless @user
       flash[:danger] = t "error_404"
-      redirect_to root_path
-    end
-  end
-
-  def check_is_user_self
-    if current_user == @user
-      flash[:danger] = t "error_403"
       redirect_to root_path
     end
   end
