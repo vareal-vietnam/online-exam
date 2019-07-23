@@ -1,7 +1,9 @@
 class Test < ApplicationRecord
   CATEGORY_TYPE = [:git, :rails]
 
-  enum type: CATEGORY_TYPE
+  enum kind: CATEGORY_TYPE
 
-  validates :time, :name, :type, presence: true
+  has_many :result
+
+  validates :time, :name, :kind, presence: true
 end

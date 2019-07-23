@@ -58,13 +58,25 @@ en:
       submit: "Save"
     update:
       success_update: "Update a user successfully"
+    index:
+      all_users: "All Users"
+      view: "View"
+      update: "Update"
+      delete: "Delete"
+      action: "Action"
+    destroy:
+      user_deleted: "User Deleted"
+    show:
+      id: "ID"
+      name: "Name"
+      email: "Email"
+      score: "Score"
+      user_not_be_found: "User not be found"
+      result: "Result"
+      test_name: "Test Name"
+      test_date_time: "Test date time"
+      score: "Score"
   shared:
     error_messages:
       error-exaplanation: "Have %{number_errors}"
       error: "error"
-    index:
-      all_users: "All Users"
-      id: "ID"
-      user_name: "User Name"
-      user_email: "User Email"
-      action_delete: "Action Delete"

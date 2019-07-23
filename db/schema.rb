@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2019_07_18_014254) do
   end
 
   create_table "results", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "result"
+    t.integer "score"
     t.integer "user_id"
     t.integer "test_id"
     t.datetime "created_at", null: false
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2019_07_18_014254) do
   end
 
   create_table "tests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "type"
+    t.integer "kind"
     t.string "name"
     t.integer "time"
     t.datetime "created_at", null: false

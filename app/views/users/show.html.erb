@@ -1,0 +1,37 @@
+<h1 class="text-center"><%= @user.name %></h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <table class="table table-striped">
+      <tr>
+        <th><%= t".id" %></th>
+        <th><%= t".name" %></th>
+        <th><%= t".email" %></th>
+      </tr>
+      <tr>
+        <td><%= @user.id %></td>
+        <td><%= @user.name %></td>
+        <td><%= @user.email %></td>
+      </tr>
+    </table>
+  </div>
+</div>
+<h2 class="text-center"><%= t".result" %></h2>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <table class="table table-striped">
+      <tr>
+        <th><%= t".test_name" %></th>
+        <th><%= t".test_date_time" %></th>
+        <th><%= t".score" %></th>
+      </tr>
+      <% @results.each do |result| %>
+      <tr>
+        <td><%= result.test.name %></td>
+        <td><%= result.created_at %></td>
+        <td><%= result.score %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+<%= link_to t(".back"), users_path %>
