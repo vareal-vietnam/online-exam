@@ -5,5 +5,6 @@ class Test < ApplicationRecord
 
   has_many :results
   has_many :questions
+
   validates :time, :name, :kind, presence: true
 end

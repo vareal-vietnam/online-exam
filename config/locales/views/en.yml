@@ -46,16 +46,17 @@ en:
       title: "Home"
       greeting: "Hello %{name}"
   tests:
-    index:
-      view_list_exam: "View List Exam"
-      test_id: "Test ID"
-      test_name: "Test Name"
-      time_(s): "Time (s)"
-      view: "View"
-      add: "Add"
-      edit: "Edit"
-      delete: "Delete"
-      total_questions: "Total Questions"
+    admin:
+      index:
+          view_list_exam: "View List Exam"
+          test_id: "Test ID"
+          test_name: "Test Name"
+          time_(s): "Time (s)"
+          view: "View"
+          add: "Add"
+          edit: "Edit"
+          delete: "Delete"
+          total_questions: "Total Questions"
   user_mailer:
     password_reset:
       title: "Password reset"
@@ -68,26 +69,28 @@ en:
       success_create: "Create a user successfully"
     edit:
       title: "Update a user"
-      error_404: "Request cannot be found"
     form:
       submit: "Save"
     update:
       success_update: "Update a user successfully"
     index:
       all_users: "All Users"
+      create: "Create user"
       view: "View"
       update: "Update"
       delete: "Delete"
       action: "Action"
+      confirm_delete: "Are you sure delete?"
     destroy:
       user_deleted: "User Deleted"
+      success_delete: "Delete a user successfully"
     show:
       id: "ID"
       name: "Name"
       email: "Email"
       score: "Score"
-      user_not_be_found: "User not be found"
       result: "Result"
       test_name: "Test Name"
       test_date_time: "Test date time"
       score: "Score"
+

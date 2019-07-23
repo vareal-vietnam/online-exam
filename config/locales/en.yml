@@ -6,3 +6,5 @@ en:
       subject: "Password reset"
   not_permission: "This action is forbidden"
   not_loggin: "You are not logged in"
+  error_404: "Request cannot be found"
+  error_403: "This action is forbidden"
