@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :check_is_logged_in
   before_action :check_is_admin_permission
   before_action :get_user, only: [:edit, :update, :destroy, :show]
 

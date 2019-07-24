@@ -66,6 +66,7 @@ en:
       name: "Name"
       kind: "Kind"
       time: "Time"
+      choise: "--Select something--"
   user_mailer:
     password_reset:
       title: "Password reset"

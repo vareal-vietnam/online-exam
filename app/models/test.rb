@@ -7,5 +7,5 @@ class Test < ApplicationRecord
   has_many :questions
 
   validates :name, :kind, presence: true
-  validates :time, presence: true, numericality: { only_integer: true }
+  validates :time, presence: true, numericality: {only_integer: true}
 end
