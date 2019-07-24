@@ -20,6 +20,7 @@ gem "bootstrap-will_paginate"
 gem "bootstrap-sass", "3.4.1"
 gem "faker"
 gem "font-awesome-rails"
+gem "config"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
