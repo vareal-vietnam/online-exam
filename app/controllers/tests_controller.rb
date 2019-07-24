@@ -2,6 +2,13 @@ class TestsController < ApplicationController
   before_action :check_is_logged_in, only: [:index, :new, :create]
   before_action :check_is_admin_permission, only: [:new, :create]
 
+  def index
+    @tests = Test.all
+    if current_user.is_admin?
+      render "tests/admin/index"
+    end
+  end
+
   def new
     @test = Test.new
   end
@@ -13,13 +20,6 @@ class TestsController < ApplicationController
       redirect_to root_path
     else
       render "new"
-    end
-  end
-
-  def index
-    @tests = Test.all
-    if current_user.is_admin?
-      render "tests/admin/index"
     end
   end
 
