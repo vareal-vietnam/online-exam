@@ -1,5 +1,12 @@
 <% provide :title, t(".view_list_exam") %>
-<h1 class="text-center"><%= "View List Exam" %></h1>
+<h1 class="text-center"><%= t ".view_list_exam" %></h1>
+
+<div class="header text-right">
+  <%= link_to new_test_path, class: "btn btn-primary" do %>
+    <i class="fa fa-plus"></i> <%= t ".create" %>
+  <% end %>
+</div>
+
 <table class="table table-striped">
   <thead class="thead-dark">
     <tr>
@@ -28,7 +35,7 @@
 
         <td class="text-center">
           <%= link_to "#", class: "button" do %>
-            <i class="fa fa-th-list"></i></i>
+            <i class="fa fa-th-list"></i>
           <% end %>
         </td>
 

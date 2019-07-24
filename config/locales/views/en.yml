@@ -57,6 +57,18 @@ en:
           edit: "Edit"
           delete: "Delete"
           total_questions: "Total Questions"
+          create: "Create exam"
+    new:
+      title: "Create an exam"
+    create:
+      success_create: "Create exam successfully"
+    form:
+      name: "Name"
+      kind: "Kind"
+      time: "Time"
+      choise: "--Select something--"
+      git: "Git"
+      rails: "Rails"
   user_mailer:
     password_reset:
       title: "Password reset"
@@ -69,8 +81,6 @@ en:
       success_create: "Create a user successfully"
     edit:
       title: "Update a user"
-    form:
-      submit: "Save"
     update:
       success_update: "Update a user successfully"
     index:
@@ -93,4 +103,8 @@ en:
       test_name: "Test Name"
       test_date_time: "Test date time"
       score: "Score"
-
+    form:
+      name: "Name"
+      email: "Email"
+      password: "Password"
+      password_confirmation: "Password condfirmation"

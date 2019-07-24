@@ -8,3 +8,4 @@ en:
   not_loggin: "You are not logged in"
   error_404: "Request cannot be found"
   error_403: "This action is forbidden"
+  submit: "Save"
