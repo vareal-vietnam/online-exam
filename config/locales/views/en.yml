@@ -67,6 +67,8 @@ en:
       kind: "Kind"
       time: "Time"
       choise: "--Select something--"
+      git: "Git"
+      rails: "Rails"
   user_mailer:
     password_reset:
       title: "Password reset"

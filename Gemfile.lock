@@ -181,8 +181,6 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.4)
       loofah (~> 2.2, >= 2.2.2)
-    rails_config (0.99.0)
-      config (>= 1.0.0.beta1)
     railties (5.2.3)
       actionpack (= 5.2.3)
       activesupport (= 5.2.3)
@@ -268,7 +266,6 @@ DEPENDENCIES
   mysql2 (>= 0.4.4, < 0.6.0)
   puma (~> 3.11)
   rails (~> 5.2.3)
-  rails_config
   sass-rails (~> 5.0)
   selenium-webdriver
   spring

@@ -14,7 +14,7 @@
 
     <div class="form-group col-md-6">
       <%= f.label :time, t(".time") %>
-      <%= f.number_field :time, min: Settings[:time_min_test], class: "form-control" %>
+      <%= f.number_field :time, min: Settings.time_min_test, class: "form-control" %>
     </div>
   </div>
 

@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
   def check_is_admin_permission
-    return current_user.is_admin?
+    return if current_user.is_admin?
     flash[:danger] = t "error_403"
     redirect_to root_path
   end
