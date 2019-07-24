@@ -16,7 +16,7 @@ section {
   font-weight: bold;
   &:hover {
     text-decoration: none;
- }
+  }
 }
 
 /* footer */
@@ -53,14 +53,14 @@ nav ul a {
     color: #000;
     text-decoration: none;
     background-color: unset;
- }
+  }
 }
 
 ul.nav.navbar-right li a:hover, ul.nav.navbar-right li.open a:hover,
   ul.nav.navbar-right li a:focus, a.navbar-brand:hover {
-    background-color: unset;
-    color: #000;
-  }
+  background-color: unset;
+  color: #000;
+}
 
 .header.text-right {
   margin: 10px auto;
