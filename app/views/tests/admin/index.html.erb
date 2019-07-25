@@ -41,13 +41,14 @@
 
         <td class="text-center">
           <%= link_to "#", class: "button" do %>
-            <i class="fa fa-address-card"></i>
+            <i class="fa fa-edit"></i>
           <% end %>
         </td>
 
         <td class="text-center">
-          <%= link_to "#", class: "button" do %>
-            <i class="fa fa-user-times"></i>
+          <%= link_to test, method: "delete", data: {confirm: t("confirm_delete")},
+          class: "button text-danger" do %>
+            <i class="fa fa-trash"></i>
           <% end %>
         </td>
       </tr>

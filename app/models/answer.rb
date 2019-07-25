@@ -1,7 +1,8 @@
 class Answer < ApplicationRecord
+  acts_as_paranoid
+
   belongs_to :question
 
-  validates :content, presence: true
-  validates :is_correct, presence: true
-  validates :question, presence: true
+  validates :content
+  validates :question
 end
