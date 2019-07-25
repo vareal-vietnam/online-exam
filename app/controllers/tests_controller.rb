@@ -1,6 +1,7 @@
 class TestsController < ApplicationController
   before_action :check_is_logged_in
-  before_action :set_test
+  before_action :get_test, only: [:show]
+
   def index
     @tests = Test.all
     if current_user.is_admin?
@@ -14,12 +15,14 @@ class TestsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_test
+    def get_test
       @test = Test.find_by id: params[:id]
+      unless @user
+        flash[:danger] = t "error_404"
+        redirect_to root_path
+      end
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def test_params
       params.require(:test).permit(:name)
     end
