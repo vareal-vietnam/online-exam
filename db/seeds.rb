@@ -1,3 +1,9 @@
+User.create! name: "Admin",
+  email: "admin@vareal.vn",
+  is_admin: "true",
+  password: "123456",
+  password_confirmation: "123456"
+
 10.times do |n|
   User.create! name: Faker::Name.name,
     email: "user#{n+1}@vareal.vn",
@@ -16,11 +22,11 @@ Test.create! kind: :rails, time: 700, name: "Rails advance"
     test: Test.all.sample
 end
 
-60.times do
-  question = Question.create! content: Faker::Lorem.question, test: Test.all.sample
+10.times do |n|
+  question = Question.create! content: Faker::Lorem.question, test: Test.first
+  Answer.create! content: Faker::Lorem.sentence, question: question, is_correct: true
 
-  Answer.create! content: Faker::Lorem.sentence, is_correct: true, question: question
-  3.times do
-    Answer.create! content: Faker::Lorem.sentence, question: question
+  3.times do |m|
+    Answer.create! content: Faker::Lorem.sentence, question: question, is_correct: false
   end
 end

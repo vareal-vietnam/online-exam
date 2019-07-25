@@ -58,6 +58,8 @@ en:
           delete: "Delete"
           total_questions: "Total Questions"
           create: "Create exam"
+    show:
+      times: "Times[second] "
     new:
       title: "Create an exam"
     create:

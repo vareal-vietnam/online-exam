@@ -1,0 +1,19 @@
+<h2 class="text-left"><%= @test.name %></h2>
+<h4><%= t ".times" %><%= @test.time %></h4>
+<h4><%= link_to t(".back"), root_path %></h4>
+<ol>
+  <% @questions.each do |question| %>
+  <li class="question", type="1">
+    <span><%= question.content %></span>
+    <ol type="A">
+      <% question.answers.each do |answer| %>
+        <% if answer.is_correct? %>
+          <li class="text-primary"><%= answer.content %></li>
+        <% else %>
+          <li><%= answer.content %></li>
+        <% end %>
+      <% end %>
+    </ol>
+  </li>
+  <% end %>
+</ol>

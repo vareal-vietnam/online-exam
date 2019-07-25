@@ -3,6 +3,6 @@ class Answer < ApplicationRecord
 
   belongs_to :question
 
-  validates :content
-  validates :question
+  validates :content, presence: true
+  validates :question, presence: true
 end
