@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_18_014254) do
+ActiveRecord::Schema.define(version: 2019_07_25_032607) do
 
   create_table "answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(version: 2019_07_18_014254) do
     t.integer "question_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_answers_on_deleted_at"
     t.index ["question_id"], name: "index_answers_on_question_id"
   end
 
@@ -26,7 +28,9 @@ ActiveRecord::Schema.define(version: 2019_07_18_014254) do
     t.integer "test_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["test_id", "created_at"], name: "index_questions_on_test_id_and_created_at"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_questions_on_deleted_at"
+    t.index ["test_id"], name: "index_questions_on_test_id"
   end
 
   create_table "results", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -35,6 +39,8 @@ ActiveRecord::Schema.define(version: 2019_07_18_014254) do
     t.integer "test_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_results_on_deleted_at"
     t.index ["user_id", "test_id"], name: "index_results_on_user_id_and_test_id"
   end
 
@@ -44,6 +50,8 @@ ActiveRecord::Schema.define(version: 2019_07_18_014254) do
     t.integer "time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_tests_on_deleted_at"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -55,6 +63,8 @@ ActiveRecord::Schema.define(version: 2019_07_18_014254) do
     t.datetime "updated_at", null: false
     t.string "reset_digest"
     t.datetime "reset_send_at"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_users_on_deleted_at"
   end
 
 end
