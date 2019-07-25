@@ -14,6 +14,7 @@ class TestsController < ApplicationController
   end
 
   def edit
+    @test = Test.find_by id: params[:id]
   end
 
   def create
