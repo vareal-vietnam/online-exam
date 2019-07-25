@@ -11,7 +11,7 @@ class PasswordResetsController < ApplicationController
       @user.create_reset_digest
       send_password_reset_email
       flash[:success] = t ".success"
-      redirect_to root_url
+      redirect_to login_path
     else
       flash.now[:danger] = t ".error"
       render "new"

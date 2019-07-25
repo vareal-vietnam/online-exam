@@ -1,23 +1,20 @@
-User.create! name: "admin",
-  email: "admin@vareal.vn",
-  password: "123456",
-  password_confirmation: "123456",
-  is_admin: true
-
 10.times do |n|
-  User.create! name:  Faker::Name.name,
-               email: "example#{n+1}@vareal.vn",
-               password: "123456",
-               password_confirmation: "123456"
+  User.create! name: Faker::Name.name, email: "user#{n+1}@vareal.vn", password: "123456", password_confirmation: "123456"
 end
 
-Test.create! kind: :git, time: 600, name: "Git Test Basic"
-Test.create! kind: :rails, time: 600, name: "Ruby Test"
-Test.create! kind: :git, time: 600, name: "Rails Test"
-Test.create! kind: :rails, time: 600, name: "Git Test Advance"
+10.times do
+  Test.create! kind: [:git, :rails].sample, time: [500, 600, 400].sample, name: ["Git advance", "Git basic", "Rails basic", "Rails advance"].sample
+end
 
-20.times do |n|
-  Result.create! score: rand(1..10),
-    user: User.all.sample,
-    test: Test.all.sample
+30.times do
+  Result.create! score: rand(1..10), user: User.all.sample, test: Test.all.sample
+end
+
+60.times do
+  question = Question.create! content: Faker::Lorem.question, test: Test.all.sample
+
+  Answer.create! content: Faker::Lorem.sentence, is_correct: true, question: question
+  3.times do
+    Answer.create! content: Faker::Lorem.sentence, question: question
+  end
 end
