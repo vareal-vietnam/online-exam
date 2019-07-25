@@ -26,8 +26,6 @@ class TestsController < ApplicationController
 
   def show
     @questions = @test.questions.includes :answers
-    @name = @test.name
-    @time = @test.time
   end
 
   private

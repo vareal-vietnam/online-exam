@@ -1,5 +1,5 @@
-<h2 class="text-left"><%= @name %></h2>
-<h4><%= t ".times" %><%= @time %>s</h4>
+<h2 class="text-left"><%= @test.name %></h2>
+<h4><%= t ".times" %><%= @test.time %></h4>
 <h4><%= link_to "Back", root_path %></h4>
 <ol>
   <% @questions.each do |question| %>
