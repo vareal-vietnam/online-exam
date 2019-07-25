@@ -58,6 +58,8 @@ en:
           delete: "Delete"
           total_questions: "Total Questions"
           create: "Create exam"
+    edit:
+      update_exam: "Update Exam"
     new:
       title: "Create an exam"
     create:
