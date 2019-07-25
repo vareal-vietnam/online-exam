@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2019_07_18_014254) do
     t.integer "test_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["test_id"], name: "index_questions_on_test_id"
+    t.index ["test_id", "created_at"], name: "index_questions_on_test_id_and_created_at"
   end
 
   create_table "results", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

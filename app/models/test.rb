@@ -4,7 +4,7 @@ class Test < ApplicationRecord
   enum kind: CATEGORY_TYPE
 
   has_many :results
-  has_many :questions
+  has_many :questions, dependent: :destroy
 
   validates :time, :name, :kind, presence: true
 end

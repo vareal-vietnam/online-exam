@@ -22,18 +22,11 @@ Test.create! kind: :rails, time: 600, name: "Git Test Advance"
     test: Test.all.sample
 end
 
-Question.create! content: "Question A", test_id: 1
-Question.create! content: "Question B", test_id: 2
-Question.create! content: "Question C", test_id: 3
-Question.create! content: "Question D", test_id: 4
-Question.create! content: "Question E", test_id: 1
-Question.create! content: "Question F", test_id: 2
-Question.create! content: "Question G", test_id: 1
+10.times do |n|
+  question = Question.create! content: Faker::Lorem.question, test: Test.first
+  Answer.create! content: Faker::Lorem.sentence, question: question, is_correct: true
 
-create_table "questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-  t.string "content"
-  t.integer "test_id"
-  t.datetime "created_at", null: false
-  t.datetime "updated_at", null: false
-  t.index ["test_id"], name: "index_questions_on_test_id"
+  3.times do |m|
+    Answer.create! content: Faker::Lorem.sentence, question: question, is_correct: false
+  end
 end

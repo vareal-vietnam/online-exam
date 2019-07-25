@@ -1,0 +1,19 @@
+<h2 class="text-left"><%= @name %></h2>
+<h4>Times: <%= @time %>s</h4>
+<h4><%= link_to "Back", root_path %></h4>
+<ul>
+  <% @questions.each do |question| %>
+  <li class="question", type="1">
+    <span><%= question.content %></span>
+    <ol type="A">
+      <% question.answers.each do |answer| %>
+        <% if answer.is_correct? %>
+          <li><font color = "#337ab7"><%= answer.content %></font></li>
+        <% else %>
+          <li><%= answer.content %></li>
+        <% end %>
+      <% end %>
+    </ol>
+  </li>
+  <% end %>
+</ul>
