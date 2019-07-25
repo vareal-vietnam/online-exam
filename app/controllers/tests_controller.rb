@@ -25,7 +25,7 @@ class TestsController < ApplicationController
   end
 
   def show
-    @questions = @test.questions
+    @questions = @test.questions.includes :answers
     @name = @test.name
     @time = @test.time
   end
