@@ -13,6 +13,9 @@ class TestsController < ApplicationController
     @test = Test.new
   end
 
+  def edit
+  end
+
   def create
     @test = Test.new test_params
     if @test.save
