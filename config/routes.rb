@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   get "/show", to: "tests#show"
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :users
-  resources :tests
+  resources :tests, only: [:new, :create, :index, :show]
 end
