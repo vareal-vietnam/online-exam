@@ -1,7 +1,7 @@
 <h2 class="text-left"><%= @name %></h2>
 <h4>Times: <%= @time %>s</h4>
 <h4><%= link_to "Back", root_path %></h4>
-<ul>
+<ol>
   <% @questions.each do |question| %>
   <li class="question", type="1">
     <span><%= question.content %></span>
@@ -16,4 +16,4 @@
     </ol>
   </li>
   <% end %>
-</ul>
+</ol>
