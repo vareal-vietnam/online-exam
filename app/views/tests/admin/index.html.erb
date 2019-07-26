@@ -27,7 +27,7 @@
         <td><%= test.time %></td>
         <td><%= test.questions.count %></td>
         <td class="text-center">
-          <%= link_to "#", class: "button" do %>
+          <%= link_to test, class: "button" do %>
             <i class="fa fa-eye"></i>
           <% end %>
         </td>
@@ -45,8 +45,9 @@
         </td>
 
         <td class="text-center">
-          <%= link_to "#", class: "button" do %>
-            <i class="fa fa-user-times"></i>
+          <%= link_to test, method: "delete", data: {confirm: t("confirm_delete")},
+          class: "button text-danger" do %>
+            <i class="fa fa-trash"></i>
           <% end %>
         </td>
       </tr>

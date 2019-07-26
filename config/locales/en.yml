@@ -9,3 +9,4 @@ en:
   error_404: "Request cannot be found"
   error_403: "This action is forbidden"
   submit: "Save"
+  confirm_delete: "Are you sure delete?"

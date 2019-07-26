@@ -60,6 +60,8 @@ en:
           create: "Create exam"
     edit:
       update_exam: "Update Exam"
+    show:
+      times: "Times[second] "
     new:
       title: "Create an exam"
     create:
@@ -71,6 +73,8 @@ en:
       choise: "--Select something--"
       git: "Git"
       rails: "Rails"
+    destroy:
+      success_delete: "Delete a exam successfully"
   user_mailer:
     password_reset:
       title: "Password reset"
@@ -92,7 +96,6 @@ en:
       update: "Update"
       delete: "Delete"
       action: "Action"
-      confirm_delete: "Are you sure delete?"
     destroy:
       user_deleted: "User Deleted"
       success_delete: "Delete a user successfully"

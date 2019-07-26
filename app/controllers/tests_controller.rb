@@ -1,7 +1,7 @@
 class TestsController < ApplicationController
   before_action :check_is_logged_in, only: [:index, :new, :create]
-  before_action :check_is_admin_permission, only: [:new, :create]
-  before_action :get_test, only: [:update, :edit]
+  before_action :check_is_admin_permission, only: [:new, :create, :destroy]
+  before_action :get_test, only: [:show, :destroy, :update, :edit]
 
   def index
     @tests = Test.all
@@ -35,16 +35,26 @@ class TestsController < ApplicationController
     end
   end
 
-  private
-  def test_params
-    params.require(:test).permit :name, :kind, :time
+  def show
+    @questions = @test.questions.includes :answers
   end
 
+  def destroy
+    @test.destroy
+    flash[:success] = t ".success_delete"
+    redirect_to root_path
+  end
+
+  private
   def get_test
     @test = Test.find_by id: params[:id]
     unless @test
       flash[:danger] = t "error_404"
       redirect_to root_path
     end
+  end
+
+  def test_params
+    params.require(:test).permit :name, :kind, :time
   end
 end
