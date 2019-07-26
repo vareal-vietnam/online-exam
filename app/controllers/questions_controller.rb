@@ -40,9 +40,6 @@ class QuestionsController < ApplicationController
   end
 
   private
-  def question_params
-    params.require(:qs).permit :test_id, :content
-  end
 
   def get_test
     @test = Test.find_by id: params[:id_question]
