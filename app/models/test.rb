@@ -1,6 +1,8 @@
 class Test < ApplicationRecord
   CATEGORY_TYPE = [:git, :rails]
 
+  acts_as_paranoid
+
   enum kind: CATEGORY_TYPE
 
   has_many :results

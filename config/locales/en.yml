@@ -12,3 +12,4 @@ en:
   success_create: "Create a %{for_object} successfully"
   success_update: "Update a %{for_object} successfully"
   success_delete: "Delete a %{for_object} successfully"
+  confirm_delete: "Are you sure delete?"
