@@ -1,5 +1,18 @@
-<%= form_for question do |f| %>
-  <div class="form-group">
-    <%= %>
-  </div>
+<div class="form-question">
+  <%= form_for(:qs, url: questions_create_path, method: "post") do |f| %>
+    <%= hidden_field_tag "id_question", @question.test_id %>
+
+    <div class="answers">
+      <%= render "question" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.submit t("submit"), class: "btn btn-primary" %>
+      <%= link_to t(".add_answer"), "#", class: "btn btn-success add-question" %>
+    </div>
+  <% end %>
+</div>
+
+<% content_for :javascript_includes do %>
+  <%= javascript_include_tag "add_answer.js" %>
 <% end %>

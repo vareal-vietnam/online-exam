@@ -60,8 +60,6 @@ en:
           create: "Create exam"
     new:
       title: "Create an exam"
-    create:
-      success_create: "Create exam successfully"
     form:
       name: "Name"
       kind: "Kind"
@@ -77,12 +75,8 @@ en:
   users:
     new:
       title: "Create a user"
-    create:
-      success_create: "Create a user successfully"
     edit:
       title: "Update a user"
-    update:
-      success_update: "Update a user successfully"
     index:
       all_users: "All Users"
       create: "Create user"
@@ -93,7 +87,6 @@ en:
       confirm_delete: "Are you sure delete?"
     destroy:
       user_deleted: "User Deleted"
-      success_delete: "Delete a user successfully"
     show:
       id: "ID"
       name: "Name"
@@ -108,3 +101,13 @@ en:
       email: "Email"
       password: "Password"
       password_confirmation: "Password condfirmation"
+  questions:
+    new:
+      title: "Create questions for %{test_name}"
+    form:
+      content: "Question"
+      add_answer: "Add answer"
+      answer: "Answer %{time}"
+      question: "Question"
+    create:
+      error_create: "Have error, let try late"
