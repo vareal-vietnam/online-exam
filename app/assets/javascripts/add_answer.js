@@ -1,8 +1,9 @@
 $(document).ready(function() {
   $(".add-question").click(function() {
     var obj = $(this);
+    var id = obj.data("id");
     $.ajax ({
-      url: "/questions/add/2",
+      url: "/questions/add/" + id,
       type: "get",
       success: function(data) {
         obj.closest(".form-question").find(".answers").append(data.html);

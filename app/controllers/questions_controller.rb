@@ -18,13 +18,13 @@ class QuestionsController < ApplicationController
           @answer.question = @question
           @answer.content = value
           @answer.is_correct =true if params[:correct][n] == key
-          @answer.save
+          error = true unless @answer.save
         end
       else
         error = true
       end
     end
-    if error.nil?
+    if error
       flash[:danger] = t ".error_create"
     else
       flash[:success] = t "success_create", for_object: "Question"
