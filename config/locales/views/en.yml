@@ -27,6 +27,8 @@ en:
       error_expiration: "Password reset has expired."
     update:
       success: "Reset password successfully, please login again"
+  questions:
+    question_deleted: "Question Deleted"
   sessions:
     create:
       success_login: "Logged in successfully"
