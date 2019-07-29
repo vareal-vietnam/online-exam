@@ -66,6 +66,10 @@ en:
         question: "Question"
         edit: "Edit"
         delete: "Delete"
+    edit:
+      update_exam: "Update Exam"
+    show:
+      times: "Times[second] "
     new:
       title: "Create an exam"
     create:
