@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :correct_question, only: :destroy
+  before_action :get_question
 
   def destroy
     @question.destroy
@@ -8,7 +8,7 @@ class QuestionsController < ApplicationController
   end
 
   private
-  def correct_question
+  def get_question
     @question = Question.find_by id: params[:id]
   end
 end
