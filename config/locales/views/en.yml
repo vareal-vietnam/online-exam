@@ -60,16 +60,14 @@ en:
         delete: "Delete"
         total_questions: "Total Questions"
         create: "Create exam"
-      show:
-        times: "Times: "
-        question_id: "Question ID"
-        question: "Question"
-        edit: "Edit"
-        delete: "Delete"
     edit:
       update_exam: "Update Exam"
     show:
-      times: "Times[second] "
+      times: "Times "
+      question_id: "Question ID"
+      question: "Question"
+      edit: "Edit"
+      delete: "Delete"
     new:
       title: "Create an exam"
     create:

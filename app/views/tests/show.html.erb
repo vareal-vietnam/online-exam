@@ -5,15 +5,15 @@
   <thead>
     <tr>
       <th><%= t ".question_id" %></th>
-      <th class="text_center"><%= t" .question" %></th>
+      <th class="text_center"><%= t ".question" %></th>
       <th class="text-center"><%= t ".edit" %></th>
       <th class="text-center"><%= t ".delete" %></th>
     </tr>
   </thead>
   <tbody>
-    <% @questions.each do |question| %>
+    <% @questions.each.with_index do |question, index| %>
     <tr>
-      <td><%= question.id %></td>
+      <td><%= index + 1 %></td>
       <td><%= question.content %>
         <ol type="A">
         <% question.answers.each do |answer| %>
