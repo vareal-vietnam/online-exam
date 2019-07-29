@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   get "/logout", to: "sessions#destroy"
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :users
-  resources :tests, only: [:new, :create, :index, :show, :edit, :update]
+  resources :tests
 end
