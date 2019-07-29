@@ -60,6 +60,10 @@ en:
           create: "Create exam"
     show:
       times: "Times: "
+      question_id: "Question ID"
+      question: "Question"
+      edit: "Edit"
+      delete: "Delete"
     new:
       title: "Create an exam"
     create:

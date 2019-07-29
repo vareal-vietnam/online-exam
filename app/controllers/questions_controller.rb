@@ -3,7 +3,7 @@ class QuestionsController < ApplicationController
   def destroy
     @question.destroy
     flash[:success] = "Question deleted"
-    redirect_to test_path(@question.test)
+    redirect_to test_path @question.test
   end
   private
   def correct_question
