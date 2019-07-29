@@ -59,7 +59,7 @@ en:
           total_questions: "Total Questions"
           create: "Create exam"
     show:
-      times: "Times[second] "
+      times: "Times: "
     new:
       title: "Create an exam"
     create:
