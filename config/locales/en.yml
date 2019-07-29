@@ -10,3 +10,4 @@ en:
   error_403: "This action is forbidden"
   submit: "Save"
   confirm_delete: "Are you sure delete?"
+  success_update: "Success Update"

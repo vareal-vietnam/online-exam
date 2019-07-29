@@ -29,6 +29,7 @@ class TestsController < ApplicationController
 
   def update
     if @test.update_attributes(test_params)
+       flash[:success] = t "success_update"
        redirect_to root_path
     else
       render "edit"
