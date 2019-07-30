@@ -5,3 +5,7 @@
     <%= render "form", test: @test %>
   </div>
 </div>
+
+<% content_for :javascript_includes do %>
+  <%= javascript_include_tag "add_answer.js" %>
+<% end %>

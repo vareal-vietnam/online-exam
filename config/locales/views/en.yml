@@ -46,6 +46,8 @@ en:
       title: "Home"
       greeting: "Hello %{name}"
   tests:
+    answer_fields:
+      answer_content: "Answer content"
     admin:
       index:
           view_list_exam: "View List Exam"
@@ -69,6 +71,7 @@ en:
       choise: "--Select something--"
       git: "Git"
       rails: "Rails"
+      add_question: "Add question"
     destroy:
       success_delete: "Delete a exam successfully"
   user_mailer:
@@ -114,3 +117,4 @@ en:
       question: "Question"
     create:
       error_create: "Have error, let try late"
+  question_content: "Question content"

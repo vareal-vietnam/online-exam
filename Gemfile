@@ -22,6 +22,7 @@ gem "faker"
 gem "font-awesome-rails"
 gem "config"
 gem "paranoia"
+gem "cocoon"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

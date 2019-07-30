@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   get "/questions/add/:id_question", to: "questions#add"
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :users
-  resources :tests, only: [:new, :create, :index, :show, :destroy]
+  resources :tests, only: [:new, :create, :index, :show, :destroy, :edit, :update]
 end

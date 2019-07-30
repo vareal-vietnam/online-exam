@@ -1,7 +1,7 @@
 class TestsController < ApplicationController
-  before_action :check_is_logged_in, only: [:index, :new, :create]
-  before_action :check_is_admin_permission, only: [:new, :create, :destroy]
-  before_action :get_test, only: [:show, :destroy]
+  before_action :check_is_logged_in, only: [:index, :new, :create, :edit]
+  before_action :check_is_admin_permission, only: [:new, :create, :destroy, :edit]
+  before_action :get_test, only: [:show, :destroy, :edit, :update]
 
   def index
     @tests = Test.all
@@ -21,6 +21,18 @@ class TestsController < ApplicationController
       redirect_to root_path
     else
       render "new"
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @test.update test_params
+      flash[:success] = t "success_update", for_object: "Test"
+      redirect_to root_path
+    else
+      render "edit"
     end
   end
 
@@ -44,6 +56,7 @@ class TestsController < ApplicationController
   end
 
   def test_params
-    params.require(:test).permit :name, :kind, :time
+    params.require(:test).permit :name, :kind, :time,
+      questions_attributes: [:id, :content, answers_attributes: [:id, :is_correct, :content]]
   end
 end
