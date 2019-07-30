@@ -27,6 +27,8 @@ en:
       error_expiration: "Password reset has expired."
     update:
       success: "Reset password successfully, please login again"
+  questions:
+    question_deleted: "Question Deleted"
   sessions:
     create:
       success_login: "Logged in successfully"
@@ -50,18 +52,24 @@ en:
       answer_content: "Answer content"
     admin:
       index:
-          view_list_exam: "View List Exam"
-          test_id: "Test ID"
-          test_name: "Test Name"
-          time_(s): "Time (s)"
-          view: "View"
-          add: "Add"
-          edit: "Edit"
-          delete: "Delete"
-          total_questions: "Total Questions"
-          create: "Create exam"
+        view_list_exam: "View List Exam"
+        test_id: "Test ID"
+        test_name: "Test Name"
+        time_(s): "Time (s)"
+        view: "View"
+        add: "Add"
+        edit: "Edit"
+        delete: "Delete"
+        total_questions: "Total Questions"
+        create: "Create exam"
+    edit:
+      update_exam: "Update Exam"
     show:
-      times: "Times[second] "
+      times: "Times "
+      question_id: "Question ID"
+      question: "Question"
+      edit: "Edit"
+      delete: "Delete"
     new:
       title: "Create an exam"
     form:

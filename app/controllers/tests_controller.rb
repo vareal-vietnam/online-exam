@@ -10,6 +10,10 @@ class TestsController < ApplicationController
     end
   end
 
+  def show
+    @questions = @test.questions.includes :answers
+  end
+
   def new
     @test = Test.new
   end
@@ -34,10 +38,6 @@ class TestsController < ApplicationController
     else
       render "edit"
     end
-  end
-
-  def show
-    @questions = @test.questions.includes :answers
   end
 
   def destroy
