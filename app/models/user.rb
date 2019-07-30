@@ -27,16 +27,11 @@ class User < ApplicationRecord
     digest = send("#{attribute}_digest")
     return false if digest.nil?
     BCrypt::Password.new(digest).is_password?(token)
-    BCrypt::Password.new(reset_digest).is_password?(token)
   end
   # Remembers a user in the database for use in persistent sessions.
   def remember
     self.remember_token = User.new_token
     update_attribute(:remember_digest, User.digest(remember_token))
-  end
-
-  def authenticated1? token
-  BCrypt::Password.new(reset_digest).is_password?(token)
   end
 
   def password_reset_expired?

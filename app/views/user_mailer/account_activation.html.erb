@@ -3,5 +3,6 @@
 <p>
 Welcome to the Online Exam! Click on the link below to activate your account:
 </p>
+byebug
 <%= link_to "Activate", edit_account_activation_url(@user.activation_token,
                                                     email: @user.email) %>
