@@ -18,6 +18,7 @@
     </div>
   </div>
 
+  <label>Question</label>
   <div class="questions">
     <%= f.fields_for :questions do |question| %>
       <%= render "question_fields", f: question %>

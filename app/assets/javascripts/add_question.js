@@ -6,6 +6,7 @@ $(document).ready(function() {
       box.prop("checked", true);
     } else {
       box.prop("checked", false);
+      box.closest(".answers").find("input:checkbox").first().prop("checked",true);
     }
   });
 

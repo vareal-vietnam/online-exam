@@ -79,8 +79,9 @@ span {
   padding-bottom: 10px
 }
 
-.col-md-1.text-left {
+.col-xs-1.col-md-1.text-left {
   padding-left: 0;
+  margin-left: -3px
 }
 
 .a-question.nested-fields {
