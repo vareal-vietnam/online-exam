@@ -13,6 +13,10 @@ en:
       admin: "Admin"
       exam: "Exam"
       users: "Users"
+  account_activations:
+    edit:
+      account_activated: "Account activated!"
+      invalid_activation_link: "Invalid activation link"
   password_resets:
     new:
       title: "Password reset"
@@ -22,6 +26,8 @@ en:
       success: "Please checkout your email for password reset instructions"
     edit:
       title: "Reset password"
+      password: "Password"
+      password_confirm: "Password confirm"
       out_of_date: "Your action is out of date. Let try it!"
       error_confirm: "Password confirm is not match"
       error_expiration: "Password reset has expired."
@@ -33,12 +39,16 @@ en:
     create:
       success_login: "Logged in successfully"
       error_login: "Wrong email or password"
+      account_not_activated: "Account not activated"
+      check_your_email: "Check your email for the activation link"
+      invalid: "Invalid email/password combination"
     new:
       hello: "Hello world"
       title: "Log in"
       email: "Email"
       password: "Password"
       forget_password: "Forget password?"
+      sign_up_now: "Sign up now!"
   shared:
     error_messages:
       error-exaplanation: "Have %{number_errors}"
@@ -68,6 +78,7 @@ en:
       question: "Question"
       edit: "Edit"
       delete: "Delete"
+      back: "Back"
     new:
       title: "Create an exam"
     create:
@@ -89,15 +100,19 @@ en:
   users:
     new:
       title: "Create a user"
-    create:
       success_create: "Create a user successfully"
     edit:
       title: "Update a user"
+    create:
+      check_email: "Please check your email to activate your account."
     update:
       success_update: "Update a user successfully"
     index:
       all_users: "All Users"
       create: "Create user"
+      id: "ID"
+      user_name: "User name"
+      user_email: "User email"
       view: "View"
       update: "Update"
       delete: "Delete"
@@ -114,6 +129,7 @@ en:
       test_name: "Test Name"
       test_date_time: "Test date time"
       score: "Score"
+      back: "Back"
     form:
       name: "Name"
       email: "Email"

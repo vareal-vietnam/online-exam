@@ -9,14 +9,14 @@ class SessionsController < ApplicationController
         log_in user
         redirect_to root_path
       else
-        message  = "Account not activated. "
-        message += "Check your email for the activation link."
+        message  = t ".account_not_activated"
+        message += t ".check_your_email"
         flash[:warning] = message
         redirect_to root_url
       end
     else
-      flash.now[:danger] = 'Invalid email/password combination'
-      render 'new'
+      flash.now[:danger] = t ".invalid"
+      render "new"
     end
   end
 
