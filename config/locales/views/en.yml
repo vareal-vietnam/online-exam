@@ -48,6 +48,8 @@ en:
       title: "Home"
       greeting: "Hello %{name}"
   tests:
+    question_fields:
+      add_answer: "Answer"
     answer_fields:
       answer_content: "Answer content"
     admin:
@@ -57,7 +59,6 @@ en:
         test_name: "Test Name"
         time_(s): "Time (s)"
         view: "View"
-        add: "Add"
         edit: "Edit"
         delete: "Delete"
         total_questions: "Total Questions"
@@ -79,7 +80,7 @@ en:
       choise: "--Select something--"
       git: "Git"
       rails: "Rails"
-      add_question: "Add question"
+      add_question: "Question"
     destroy:
       success_delete: "Delete a exam successfully"
   user_mailer:

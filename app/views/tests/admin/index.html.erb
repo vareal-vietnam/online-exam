@@ -14,7 +14,6 @@
       <th><%= t ".time_(s)" %></th>
       <th><%= t ".total_questions"%></th>
       <th class="text-center"><%= t ".view" %></th>
-      <th class="text-center"><%= t ".add" %></th>
       <th class="text-center"><%= t ".edit" %></th>
       <th class="text-center"><%= t ".delete" %></th>
     </tr>
@@ -29,12 +28,6 @@
         <td class="text-center">
           <%= link_to test, class: "button" do %>
             <i class="fa fa-eye"></i>
-          <% end %>
-        </td>
-
-        <td class="text-center">
-          <%= link_to new_question_path(test), class: "button" do %>
-            <i class="fa fa-th-list"></i>
           <% end %>
         </td>
 

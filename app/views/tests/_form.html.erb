@@ -24,7 +24,9 @@
     <% end %>
 
     <div class="link">
-      <%= link_to_add_association t(".add_question"), f, :questions, class: "btn btn-success", html_options: {count: 0} %>
+      <%= link_to_add_association f, :questions, class: "btn btn-success" do %>
+        <i class="fa fa-plus"></i> <%= t(".add_question") %>
+      <% end %>
     </div>
   </div>
 

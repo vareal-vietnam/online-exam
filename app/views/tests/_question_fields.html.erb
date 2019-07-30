@@ -16,7 +16,9 @@
     <% end %>
 
     <div class="link text-right">
-      <%= link_to_add_association t(".add_answer"), f, :answers, class: "btn btn-success" %>
+      <%= link_to_add_association f, :answers, class: "btn btn-success" do %>
+        <i class="fa fa-plus"></i> <%= t(".add_answer") %>
+      <% end %>
     </div>
   </div>
 
