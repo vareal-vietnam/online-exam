@@ -9,13 +9,9 @@ $(document).ready(function() {
     }
   });
 
-  var x=0;
   $(".questions")
     .on("cocoon:before-insert", function(e,question_to_be_added) {
       question_to_be_added.fadeIn('slow');
-      x++;
-      if(x %2 == 0)
-        e.preventDefault();
     })
     .on("cocoon:after-insert", function(e, added_question) {
     })
