@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :users
   resources :tests
   resources :questions, only: [:destroy]
+  resources :account_activations, only: [:edit]
 end

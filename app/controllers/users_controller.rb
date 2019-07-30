@@ -1,13 +1,13 @@
 class UsersController < ApplicationController
-  before_action :check_is_logged_in, :check_is_admin_permission
+  #before_action :check_is_logged_in, :check_is_admin_permission
   before_action :get_user, only: [:edit, :update, :destroy, :show]
 
   def index
-    @users = User.paginate page: params[:page]
+    @users = User.paginate(page: params[:page])
   end
 
   def show
-    @results = @user.results.includes(:test)
+    @user = User.find(params[:id])
   end
 
   def new
@@ -17,8 +17,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new user_params
     if @user.save
-      flash[:success] = t ".success_create"
-      redirect_to @user
+      @user.validate
+      UserMailer.account_activation(@user).deliver_now
+      flash[:info] = "Please check your email to activate your account."
+      redirect_to login_path
     else
       render "new"
     end
