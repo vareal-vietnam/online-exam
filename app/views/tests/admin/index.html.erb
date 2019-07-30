@@ -6,6 +6,7 @@
     <i class="fa fa-plus"></i> <%= t ".create" %>
   <% end %>
 </div>
+
 <div class="table-responsive">
   <table class="table table-striped">
     <thead class="thead-dark">
@@ -28,11 +29,10 @@
           <td><%= test.time %></td>
           <td><%= test.questions.count %></td>
           <td class="text-center">
-            <%= link_to "#", class: "button" do %>
+            <%= link_to test, class: "button" do %>
               <i class="fa fa-eye"></i>
             <% end %>
           </td>
-
           <td class="text-center">
             <%= link_to "#", class: "button" do %>
               <i class="fa fa-th-list"></i>
@@ -50,8 +50,8 @@
               <i class="fa fa-user-times"></i>
             <% end %>
           </td>
-        </tr>
+          </tr>
+
       <% end %>
     </tbody>
-  </table>
-</div>
+</table>

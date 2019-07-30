@@ -41,8 +41,8 @@
 
           <td class="text-center">
             <% unless current_user == user %>
-              <%= link_to user, class: "button", method: :delete, data: { confirm: t(".confirm_delete") } do %>
-                <i class="fa fa-user-times"></i>
+              <%= link_to user, class: "button text-danger", method: :delete, data: { confirm: t(".confirm_delete") } do %>
+                <i class="fa fa-trash"></i>
               <% end %>
             <% end %>
           </td>
