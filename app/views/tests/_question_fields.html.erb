@@ -6,7 +6,9 @@
     </div>
 
     <div class="col-xs-1 col-md-1 text-left">
-      <%= link_to_remove_association raw('<i class="fa fa-trash"></i>'), f, class: "btn btn-danger" %>
+      <%= link_to_remove_association f, class: "btn btn-danger" do %>
+        <i class="fa fa-trash"></i>
+      <% end %>
     </div>
   </div>
 
@@ -16,7 +18,9 @@
     <% end %>
 
     <div class="link text-right">
-      <%= link_to_add_association raw('<i class="fa fa-plus"></i>'), f, :answers, class: "btn btn-success" %>
+      <%= link_to_add_association f, :answers, class: "btn btn-success" do %>
+        <i class="fa fa-plus"></i>
+      <% end %>
     </div>
   </div>
 </div>

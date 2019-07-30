@@ -9,6 +9,8 @@
     </div>
 
     <div class="col-xs-1 col-md-1 text-left">
-      <%= link_to_remove_association raw('<i class="fa fa-minus"></i>'), f, class: "btn btn-default" %>
+      <%= link_to_remove_association f, class: "btn btn-default" do %>
+        <i class="fa fa-minus"></i>
+      <% end %>
   </div>
 </div>
