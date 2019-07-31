@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :check_is_logged_in, :check_is_admin_permission, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  before_action :check_is_logged_in, :check_is_admin_permission,
+    only: [:index, :show, :new, :create, :edit, :update, :destroy]
   before_action :check_is_logged_in, only: [:edit_profile]
   before_action :get_user, only: [ :show, :edit, :update, :destroy]
 
@@ -45,6 +46,7 @@ class UsersController < ApplicationController
 
   def edit_profile
     @user = current_user
+    render "new"
   end
 
   private
