@@ -56,6 +56,6 @@ class TestsController < ApplicationController
   end
 
   def test_params
-    params.require(:test).permit :name, :kind, :time
+    params.require(:test).permit(:name, :kind, :time)
   end
 end
