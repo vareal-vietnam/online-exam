@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  before_action :check_is_logged_in, :check_is_admin_permission
-  before_action :get_user, only: [:edit, :update, :destroy, :show]
+  before_action :check_is_logged_in, :check_is_admin_permission, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  before_action :check_is_logged_in, only: [:edit_profile]
+  before_action :get_user, only: [ :show, :edit, :update, :destroy]
 
   def index
     @users = User.paginate page: params[:page]
@@ -40,6 +41,10 @@ class UsersController < ApplicationController
     @user.destroy
     flash[:success] = t ".success_delete"
     redirect_to users_path
+  end
+
+  def edit_profile
+    @user = current_user
   end
 
   private

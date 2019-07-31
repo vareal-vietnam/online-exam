@@ -8,8 +8,7 @@ en:
       log_out: "Log out"
       home: "Home"
       users: "Users"
-      profile: "Profile"
-      edit: "Edit"
+      profile: "Edit profile"
       admin: "Admin"
       exam: "Exam"
       users: "Users"
@@ -88,13 +87,13 @@ en:
       reset_password: "Reset password"
   users:
     new:
-      title: "Create a user"
+      title: "Create user"
     create:
-      success_create: "Create a user successfully"
+      success_create: "Create user successfully"
     edit:
-      title: "Update a user"
+      title: "Update user"
     update:
-      success_update: "Update a user successfully"
+      success_update: "Update user successfully"
     index:
       all_users: "All Users"
       create: "Create user"
@@ -118,4 +117,4 @@ en:
       name: "Name"
       email: "Email"
       password: "Password"
-      password_confirmation: "Password condfirmation"
+      password_confirmation: "Password confirmation"
