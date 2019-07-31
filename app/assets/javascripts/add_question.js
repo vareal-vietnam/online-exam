@@ -12,7 +12,7 @@ $(document).ready(function() {
 
   $(".questions")
     .on("cocoon:before-insert", function(e,question_to_be_added) {
-      question_to_be_added.fadeIn('slow');
+      question_to_be_added.fadeIn("slow");
     })
     .on("cocoon:after-insert", function(e, added_question) {
     })

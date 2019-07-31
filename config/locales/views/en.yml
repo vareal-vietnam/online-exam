@@ -81,8 +81,7 @@ en:
       git: "Git"
       rails: "Rails"
       add_question: "Question"
-    destroy:
-      success_delete: "Delete a exam successfully"
+      question: "Question"
   user_mailer:
     password_reset:
       title: "Password reset"

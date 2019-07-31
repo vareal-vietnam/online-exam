@@ -21,7 +21,7 @@ class TestsController < ApplicationController
   def create
     @test = Test.new test_params
     if @test.save
-      flash[:success] = t "success_create", for_object: "Test"
+      flash[:success] = t "success_create", for_object: "Exam"
       redirect_to root_path
     else
       render "new"
@@ -33,7 +33,7 @@ class TestsController < ApplicationController
 
   def update
     if @test.update test_params
-      flash[:success] = t "success_update", for_object: "Test"
+      flash[:success] = t "success_update", for_object: "Exam"
       redirect_to root_path
     else
       render "edit"
@@ -42,7 +42,7 @@ class TestsController < ApplicationController
 
   def destroy
     @test.destroy
-    flash[:success] = t ".success_delete"
+    flash[:success] = t "success_delete", for_object: "Exam"
     redirect_to root_path
   end
 
