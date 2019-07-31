@@ -28,7 +28,16 @@ en:
     update:
       success: "Reset password successfully, please login again"
   questions:
-    question_deleted: "Question Deleted"
+    form:
+      question_content: "Questions Content"
+      update_questions: "Update Question"
+      answer: "Answer"
+      back_to_test: "Back to test"
+    update:
+      sucess_update: "Update the question content successfully!"
+      updates_failed: "Updates failed"
+    destroy:
+      question_deleted: "Question Deleted"
   sessions:
     create:
       success_login: "Logged in successfully"
