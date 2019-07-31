@@ -1,8 +1,8 @@
-<h1>Online Exam</h1>
-<p>Hi <%= @user.name %>,</p>
-<p>
-Welcome to the Online Exam! Click on the link below to activate your account:
-</p>
-byebug
-<%= link_to "Activate", edit_account_activation_url(@user.activation_token,
+<h1 class="text-center"><%= t ".title" %></h1>
+<p><%= t ".hi" %> <%= @user.name %>,</p>
+<p><%= t ".content_activation_email" %>
+  <%= link_to t(".activate"), edit_account_activation_url(@user.activation_token,
                                                     email: @user.email) %>
+
+
+</p>

@@ -93,6 +93,12 @@ en:
     destroy:
       success_delete: "Delete a exam successfully"
   user_mailer:
+    account_activation:
+      title: "Online Exam"
+      content_activation_email: "Welcome to the Online Exam!
+      Click on the link below to activate your account:"
+      activate: "Activate"
+      hi: "Hi"
     password_reset:
       title: "Password reset"
       content_email: "Let click on link for reset your password"
