@@ -5,7 +5,7 @@ class TestsController < ApplicationController
 
   def index
     @tests = Test.all
-    # render 'tests/admin/index' if current_user.is_admin?
+    render 'tests/admin/index' if current_user.is_admin?
   end
 
   def new
