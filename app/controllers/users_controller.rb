@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :check_is_logged_in, :check_is_admin_permission
+  before_action :check_is_logged_in
+  before_action :check_is_admin_permission, exept: %i[edit_profile]
   before_action :get_user, only: %i[edit update destroy show]
 
   def index
@@ -42,11 +43,16 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 
+  def edit_profile
+    @user = current_user
+    render 'edit'
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:name, :email,
-                                 :password, :password_confirmation)
+    user_attributes = %i[name email password password_confirmation]
+    params.require(:user).permit user_attributes
   end
 
   def get_user

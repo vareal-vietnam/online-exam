@@ -54,10 +54,11 @@ class TestsController < ApplicationController
   end
 
   def test_params
-    params.require(:test).permit(:name, :kind, :time, \
-                                 questions_attributes:
-                                   [:id, :content, :_destroy, \
-                                    answers_attributes:
-                                    %i[id is_correct content _destroy]].freeze)
+    test_attributes = [:name, :kind, :time,
+                       questions_attributes:
+                         [:id, :content, :_destroy, \
+                          answers_attributes:
+                            %i[id is_correct content _destroy]]]
+    params.require(:test).permit(test_attributes)
   end
 end
