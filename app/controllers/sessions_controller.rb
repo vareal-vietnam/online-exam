@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  befor_action :get_user, only: %i[create]
+  before_action :get_user, only: %i[create]
 
   def new
   end

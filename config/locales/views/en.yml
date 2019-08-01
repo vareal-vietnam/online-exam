@@ -48,6 +48,10 @@ en:
       title: "Home"
       greeting: "Hello %{name}"
   tests:
+    question_fields:
+      add_answer: "Answer"
+    answer_fields:
+      answer_content: "Answer content"
     admin:
       index:
         view_list_exam: "View List Exam"
@@ -55,7 +59,6 @@ en:
         test_name: "Test Name"
         time_(s): "Time (s)"
         view: "View"
-        add: "Add"
         edit: "Edit"
         delete: "Delete"
         total_questions: "Total Questions"
@@ -70,8 +73,6 @@ en:
       delete: "Delete"
     new:
       title: "Create an exam"
-    create:
-      success_create: "Create exam successfully"
     form:
       name: "Name"
       kind: "Kind"
@@ -79,8 +80,8 @@ en:
       choise: "--Select something--"
       git: "Git"
       rails: "Rails"
-    destroy:
-      success_delete: "Delete a exam successfully"
+      add_question: "Question"
+      question: "Question"
   user_mailer:
     password_reset:
       title: "Password reset"
@@ -89,12 +90,8 @@ en:
   users:
     new:
       title: "Create a user"
-    create:
-      success_create: "Create a user successfully"
     edit:
       title: "Update a user"
-    update:
-      success_update: "Update a user successfully"
     index:
       all_users: "All Users"
       create: "Create user"
@@ -104,7 +101,6 @@ en:
       action: "Action"
     destroy:
       user_deleted: "User Deleted"
-      success_delete: "Delete a user successfully"
     show:
       id: "ID"
       name: "Name"
@@ -119,3 +115,14 @@ en:
       email: "Email"
       password: "Password"
       password_confirmation: "Password condfirmation"
+  questions:
+    new:
+      title: "Create questions for %{test_name}"
+    form:
+      content: "Question"
+      add_answer: "Add answer"
+      answer: "Answer %{time}"
+      question: "Question"
+    create:
+      error_create: "Have error, let try late"
+  question_content: "Question content"
