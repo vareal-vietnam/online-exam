@@ -1,5 +1,5 @@
 class Test < ApplicationRecord
-  CATEGORY_TYPE = [:git, :rails]
+  CATEGORY_TYPE = %i[git rails].freeze
 
   acts_as_paranoid
 
@@ -8,8 +8,9 @@ class Test < ApplicationRecord
   has_many :results
   has_many :questions
 
-  accepts_nested_attributes_for :questions, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :questions,
+                                reject_if: :all_blank, allow_destroy: true
 
   validates :name, :kind, presence: true
-  validates :time, presence: true, numericality: {only_integer: true}
+  validates :time, presence: true, numericality: { only_integer: true }
 end

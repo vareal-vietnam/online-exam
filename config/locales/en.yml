@@ -13,4 +13,3 @@ en:
   success_update: "Update a %{for_object} successfully"
   success_delete: "Delete a %{for_object} successfully"
   confirm_delete: "Are you sure delete?"
-  success_update: "Success Update"
