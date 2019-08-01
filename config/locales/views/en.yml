@@ -8,8 +8,7 @@ en:
       log_out: "Log out"
       home: "Home"
       users: "Users"
-      profile: "Profile"
-      edit: "Edit"
+      profile: "Edit profile"
       admin: "Admin"
       exam: "Exam"
       users: "Users"
@@ -33,8 +32,6 @@ en:
       error_expiration: "Password reset has expired."
     update:
       success: "Reset password successfully, please login again"
-  questions:
-    question_deleted: "Question Deleted"
   sessions:
     create:
       success_login: "Logged in successfully"
@@ -73,6 +70,12 @@ en:
         delete: "Delete"
         total_questions: "Total Questions"
         create: "Create exam"
+    index:
+      title: "Exam list"
+      kind: "Subject"
+      time: "Time"
+      test: "Test"
+      questions: "Questions"
     edit:
       update_exam: "Update Exam"
     show:
@@ -106,14 +109,12 @@ en:
       reset_password: "Reset password"
   users:
     new:
-      title: "Create a user"
+      title: "Create user"
     edit:
       title: "Update a user"
     create:
       check_email: "Please check your email to activate your account."
       success_create: "Sucess create"
-    edit:
-      title: "Update a user"
     index:
       all_users: "All Users"
       create: "Create user"
@@ -140,7 +141,8 @@ en:
       name: "Name"
       email: "Email"
       password: "Password"
-      password_confirmation: "Password condfirmation"
+      password_confirmation: "Password confirmation"
+      is_admin: "Is admin?"
   questions:
     new:
       title: "Create questions for %{test_name}"
@@ -151,4 +153,5 @@ en:
       question: "Question"
     create:
       error_create: "Have error, let try late"
+    question_deleted: "Question Deleted"
   question_content: "Question content"

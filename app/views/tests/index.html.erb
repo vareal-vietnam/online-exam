@@ -1,0 +1,32 @@
+<% provide :title, t(".title") %>
+<h2 class="text-center"><%= t(".title") %></h2>
+<div class="exam-list">
+  <div class="row">
+    <% @tests.each do |test| %>
+      <div class="col-md-3">
+        <div class="body">
+          <h3><%= test.name %></h3>
+          <div class="content">
+            <div class="test-type">
+              <%= t".kind" %>: <span><%= test.kind %></span>
+            </div>
+
+            <div class="test-time">
+              <%= t".time" %>: <span><%= test.time %></span>
+            </div>
+
+            <div class="count-questions">
+              <%= t".questions" %>: <span><%= test.questions.count %></span>
+            </div>
+
+            <div class="text-center button">
+              <%= link_to "#", class: "btn btn-info" do %>
+                <i class="fa fa-hand-o-right"></i> <%= t".test" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
