@@ -70,3 +70,30 @@ span {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 120%;
 }
+
+/* nested attribute */
+
+.col-md-1.text-right {
+  padding-right: 0px
+}
+
+.a-question.nested-fields {
+  padding-bottom: 10px
+}
+
+.col-xs-1.col-md-1.text-left {
+  padding-left: 0;
+  margin-left: -3px
+}
+
+.a-question.nested-fields {
+    padding: 15px 0;
+}
+
+.col-md-1.field.text-right {
+    padding-top: 7px;
+}
+
+.form-group.row.nested-fields {
+    margin-bottom: 5px;
+}

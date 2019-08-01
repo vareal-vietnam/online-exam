@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new user_params
     if @user.save
-      flash[:success] = t '.success_create'
+      flash[:success] = t 'success_create', for_object: 'User'
       redirect_to @user
     else
       render 'new'
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes user_params
-      flash[:success] = t '.success_update'
+      flash[:success] = t 'success_update', for_object: 'User'
       redirect_to root_path
     else
       render 'edit'
@@ -39,7 +39,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    flash[:success] = t '.success_delete'
+    flash[:success] = t 'success_delete', for_object: 'User'
     redirect_to users_path
   end
 

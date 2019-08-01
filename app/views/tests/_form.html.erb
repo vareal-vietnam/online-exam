@@ -18,6 +18,19 @@
     </div>
   </div>
 
+  <label><%= t(".question") %></label>
+  <div class="questions">
+    <%= f.fields_for :questions do |question| %>
+      <%= render "question_fields", f: question %>
+    <% end %>
+
+    <div class="link">
+      <%= link_to_add_association f, :questions, class: "btn btn-success" do %>
+        <i class="fa fa-plus"></i> <%= t(".add_question") %>
+      <% end %>
+    </div>
+  </div>
+
   <div class="form-group text-center">
     <%= f.submit t("submit"), class: "btn btn-primary" %>
   </div>
