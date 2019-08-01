@@ -1,0 +1,26 @@
+<div class="a-question nested-fields">
+  <%= f.hidden_field :id %>
+  <div class="form-group field row">
+    <div class="col-xs-11 col-md-11">
+      <%= f.text_field :content, class: "form-control", placeholder: t(".question_content") %>
+    </div>
+
+    <div class="col-xs-1 col-md-1 text-left">
+      <%= link_to_remove_association f, class: "btn btn-danger" do %>
+        <i class="fa fa-trash"></i>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="answers">
+    <%= f.fields_for :answers do |answer| %>
+      <%= render "answer_fields", f: answer %>
+    <% end %>
+
+    <div class="link text-right">
+      <%= link_to_add_association f, :answers, class: "btn btn-success" do %>
+        <i class="fa fa-plus"></i>
+      <% end %>
+    </div>
+  </div>
+</div>

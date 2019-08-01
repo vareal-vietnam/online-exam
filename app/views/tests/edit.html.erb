@@ -1,7 +1,11 @@
 <% provide :title, t(".update_exam") %>
 <h2 class="text-center"><%= t ".update_exam" %></h2>
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-md-8 col-md-offset-2">
     <%= render "form", test: @test %>
   </div>
 </div>
+
+<% content_for :javascript_includes do %>
+  <%= javascript_include_tag "add_question.js" %>
+<% end %>
