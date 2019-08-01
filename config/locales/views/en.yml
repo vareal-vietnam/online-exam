@@ -60,6 +60,12 @@ en:
         delete: "Delete"
         total_questions: "Total Questions"
         create: "Create exam"
+    index:
+      title: "Exam list"
+      kind: "Subject"
+      time: "Time"
+      test: "Test"
+      questions: "Questions"
     edit:
       update_exam: "Update Exam"
     show:

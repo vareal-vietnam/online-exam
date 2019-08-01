@@ -68,5 +68,29 @@ header ul a {
 
 span {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 120%;
+  font-size: 110%;
+}
+
+/* view list exam for user */
+
+.exam-list .col-md-3 {
+  padding: 10px;
+  position: relative;
+  .body {
+    padding: 10px;
+    border: 1px solid #d4d4d4;
+    background: #dddbdb2b;
+    border-radius: 5px;
+    h3 {
+      margin: 0;
+    }
+    span {
+      font-style: italic;
+    }
+    &:hover {
+      background: #d4d4d4;
+      -webkit-transition: width 2s;
+      transition: width 2s;
+    }
+  }
 }
