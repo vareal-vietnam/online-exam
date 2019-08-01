@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   before_action :check_is_logged_in, :check_is_admin_permission,
                 only: %i[index show edit update destroy]
   before_action :get_user, only: %i[edit update destroy show]
-  before_action :user_save, only: %i[create]
 
   def index
     @users = User.paginate page: params[:page]
@@ -19,7 +18,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new user_params
     if @user.save
-      user_save
+      user_save(@user)
     else
       render 'new'
     end
@@ -58,14 +57,14 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
-  def user_save
-    if current_user.nil?
-      UserMailer.account_activation(@user).deliver_now
-      flash[:info] = t '.check_email'
-    elsif current_user.is_admin?
-      @user.update_attributes(activated: true)
+  def user_save(user)
+    if current_user&.current_user&.is_admin?
+      user.update_attribute(activated: true)
       flash[:success] = t 'success_create', for_object: 'User'
+      redirect_to users_path
+    else
+      UserMailer.account_activation(user).deliver_now
+      flash[:info] = t '.check_email'
+      redirect_to login_path
     end
-    redirect_to login_path
-  end
 end

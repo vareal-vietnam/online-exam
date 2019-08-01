@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:session][:email].downcase)
     if user&.authenticate(params[:session][:password])
-      user_active
+      check_account_active(user)
     else
       flash.now[:danger] = t '.invalid'
       render 'new'
@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
     @user = User.find_by email: params[:session][:email]
   end
 
-  def user_active
+  def check_account_active(user)
     if user.activated?
       log_in user
       redirect_to root_path
