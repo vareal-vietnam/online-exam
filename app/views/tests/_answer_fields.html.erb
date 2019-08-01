@@ -1,0 +1,16 @@
+<div class="form-group row nested-fields">
+  <%= f.hidden_field :id %>
+    <div class="col-xs-1 col-md-1 field text-right">
+      <%= f.check_box :is_correct %>
+    </div>
+
+    <div class="col-xs-10 col-md-10 field">
+      <%= f.text_field :content, class: "form-control", placeholder: t(".answer_content") %>
+    </div>
+
+    <div class="col-xs-1 col-md-1 text-left">
+      <%= link_to_remove_association f, class: "btn btn-default" do %>
+        <i class="fa fa-minus"></i>
+      <% end %>
+  </div>
+</div>

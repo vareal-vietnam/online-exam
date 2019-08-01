@@ -9,5 +9,7 @@ en:
   error_404: "Request cannot be found"
   error_403: "This action is forbidden"
   submit: "Save"
+  success_create: "Create a %{for_object} successfully"
+  success_update: "Update a %{for_object} successfully"
+  success_delete: "Delete a %{for_object} successfully"
   confirm_delete: "Are you sure delete?"
-  success_update: "Success Update"
