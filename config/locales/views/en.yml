@@ -58,6 +58,10 @@ en:
       title: "Home"
       greeting: "Hello %{name}"
   tests:
+    question_fields:
+      add_answer: "Answer"
+    answer_fields:
+      answer_content: "Answer content"
     admin:
       index:
         view_list_exam: "View List Exam"
@@ -65,7 +69,6 @@ en:
         test_name: "Test Name"
         time_(s): "Time (s)"
         view: "View"
-        add: "Add"
         edit: "Edit"
         delete: "Delete"
         total_questions: "Total Questions"
@@ -81,8 +84,6 @@ en:
       back: "Back"
     new:
       title: "Create an exam"
-    create:
-      success_create: "Create exam successfully"
     form:
       name: "Name"
       kind: "Kind"
@@ -90,8 +91,8 @@ en:
       choise: "--Select something--"
       git: "Git"
       rails: "Rails"
-    destroy:
-      success_delete: "Delete a exam successfully"
+      add_question: "Question"
+      question: "Question"
   user_mailer:
     account_activation:
       title: "Online Exam"
@@ -106,14 +107,13 @@ en:
   users:
     new:
       title: "Create a user"
-      success_create: "Create a user successfully"
     edit:
       title: "Update a user"
     create:
       check_email: "Please check your email to activate your account."
       success_create: "Sucess create"
-    update:
-      success_update: "Update a user successfully"
+    edit:
+      title: "Update a user"
     index:
       all_users: "All Users"
       create: "Create user"
@@ -126,7 +126,6 @@ en:
       action: "Action"
     destroy:
       user_deleted: "User Deleted"
-      success_delete: "Delete a user successfully"
     show:
       id: "ID"
       name: "Name"
@@ -142,3 +141,14 @@ en:
       email: "Email"
       password: "Password"
       password_confirmation: "Password condfirmation"
+  questions:
+    new:
+      title: "Create questions for %{test_name}"
+    form:
+      content: "Question"
+      add_answer: "Add answer"
+      answer: "Answer %{time}"
+      question: "Question"
+    create:
+      error_create: "Have error, let try late"
+  question_content: "Question content"

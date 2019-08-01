@@ -19,8 +19,8 @@ class PasswordResetsController < ApplicationController
   end
 
   def edit
-    if @user && @user.authenticated?(:reset, params[:id])
-      render "edit"
+    if @user&.authenticated?(:reset, params[:id])
+      render 'edit'
     else
       flash.now[:danger] = t '.out_of_date'
       render 'new'
