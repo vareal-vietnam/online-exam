@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :check_is_logged_in, :check_is_admin_permission
+  before_action :check_is_logged_in
+  before_action :check_is_admin_permission, exept: %i[edit_profile]
   before_action :get_user, only: %i[edit update destroy show]
 
   def index
@@ -40,6 +41,11 @@ class UsersController < ApplicationController
     @user.destroy
     flash[:success] = t 'success_delete', for_object: 'User'
     redirect_to users_path
+  end
+
+  def edit_profile
+    @user = current_user
+    render 'edit'
   end
 
   private
