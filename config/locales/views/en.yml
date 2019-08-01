@@ -111,6 +111,7 @@ en:
       title: "Update a user"
     create:
       check_email: "Please check your email to activate your account."
+      success_create: "Sucess create"
     update:
       success_update: "Update a user successfully"
     index:

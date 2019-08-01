@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_action :get_user, only: %i[create]
+
   def new
   end
 
@@ -23,5 +25,11 @@ class SessionsController < ApplicationController
   def destroy
     log_out
     redirect_to root_url
+  end
+
+  private
+
+  def get_user
+    @user = User.find_by email: params[:session][:email]
   end
 end
