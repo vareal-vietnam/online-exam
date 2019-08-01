@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :check_is_admin_permission, expect: %i[edit_profile]
-  before_action :check_is_logged_in, only: %i[edit_profile]
+  before_action :check_is_logged_in
+  before_action :check_is_admin_permission, exept: %i[edit_profile]
   before_action :get_user, only: %i[edit update destroy show]
 
   def index
