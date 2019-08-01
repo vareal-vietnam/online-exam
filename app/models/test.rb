@@ -1,5 +1,5 @@
 class Test < ApplicationRecord
-  CATEGORY_TYPE = [:git, :rails]
+  CATEGORY_TYPE = %i[git rails].freeze
 
   acts_as_paranoid
 
@@ -9,5 +9,5 @@ class Test < ApplicationRecord
   has_many :questions
 
   validates :name, :kind, presence: true
-  validates :time, presence: true, numericality: {only_integer: true}
+  validates :time, presence: true, numericality: { only_integer: true }
 end
