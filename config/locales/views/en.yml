@@ -147,10 +147,17 @@ en:
     new:
       title: "Create questions for %{test_name}"
     form:
+      question_content: "Question content"
       content: "Question"
       add_answer: "Add answer"
-      answer: "Answer %{time}"
+      answer: "Answer"
       question: "Question"
+      back_to_test: "Back to test"
+    update:
+      sucess_update: "Update the question content successfully!"
+      updates_failed: "Updates failed"
+    destroy:
+      question_deleted: "Question Deleted"
     create:
       error_create: "Have error, let try late"
     question_deleted: "Question Deleted"
