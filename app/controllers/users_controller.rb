@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = current_user unless current_user.is_admin?
     @results = @user.results.includes(:test)
   end
 
