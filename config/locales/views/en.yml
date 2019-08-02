@@ -57,6 +57,7 @@ en:
   tests:
     question_fields:
       add_answer: "Answer"
+      question_content: "Question content"
     answer_fields:
       answer_content: "Answer content"
     admin:
@@ -125,6 +126,7 @@ en:
       update: "Update"
       delete: "Delete"
       action: "Action"
+      confirm_delete: "Confirm Delete"
     destroy:
       user_deleted: "User Deleted"
     show:
@@ -144,15 +146,16 @@ en:
       password_confirmation: "Password confirmation"
       is_admin: "Is admin?"
   questions:
-    new:
-      title: "Create questions for %{test_name}"
     form:
+      update_questions: "Update Question"
       question_content: "Question content"
       content: "Question"
       add_answer: "Add answer"
       answer: "Answer"
       question: "Question"
       back_to_test: "Back to test"
+    new:
+      title: "Create questions for %{test_name}"
     update:
       sucess_update: "Update the question content successfully!"
       updates_failed: "Updates failed"
@@ -161,4 +164,4 @@ en:
     create:
       error_create: "Have error, let try late"
     question_deleted: "Question Deleted"
-  question_content: "Question content"
+
