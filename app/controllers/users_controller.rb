@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :check_is_logged_in
+  before_action :check_is_logged_in, exept: %i[new create]
   before_action :check_is_admin_permission, exept: %i[edit_profile]
   before_action :get_user, only: %i[edit update destroy show]
 
@@ -18,8 +18,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new user_params
     if @user.save
-      flash[:success] = t 'success_create', for_object: 'User'
-      redirect_to @user
+      user_save(@user)
     else
       render 'new'
     end
@@ -31,7 +30,7 @@ class UsersController < ApplicationController
   def update
     if @user.update_attributes user_params
       flash[:success] = t 'success_update', for_object: 'User'
-      redirect_to root_path
+      redirect_to users_path
     else
       render 'edit'
     end
@@ -61,5 +60,17 @@ class UsersController < ApplicationController
 
     flash[:danger] = t 'error_404'
     redirect_to root_path
+  end
+
+  def user_save(user)
+    if current_user&.current_user&.is_admin?
+      user.update_attribute(activated: true)
+      flash[:success] = t 'success_create', for_object: 'User'
+      redirect_to users_path
+    else
+      UserMailer.account_activation(user).deliver_now
+      flash[:info] = t '.check_email'
+      redirect_to login_path
+    end
   end
 end
