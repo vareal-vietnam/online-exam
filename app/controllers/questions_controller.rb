@@ -27,7 +27,7 @@ class QuestionsController < ApplicationController
   end
 
   def question_params
-    params.require(:question).permit :content,
-                                     answers_attributes: %i[id content]
+    params.require(:question).permit(:content,
+                                     answers_attributes: %i[id content])
   end
 end
