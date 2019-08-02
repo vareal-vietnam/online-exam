@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_25_032607) do
+ActiveRecord::Schema.define(version: 2019_07_29_153334) do
 
   create_table "answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
@@ -64,6 +64,9 @@ ActiveRecord::Schema.define(version: 2019_07_25_032607) do
     t.string "reset_digest"
     t.datetime "reset_send_at"
     t.datetime "deleted_at"
+    t.string "activation_digest"
+    t.boolean "activated", default: false
+    t.datetime "activated_at"
     t.index ["deleted_at"], name: "index_users_on_deleted_at"
   end
 

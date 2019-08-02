@@ -3,26 +3,21 @@
 
 /* universal */
 body {
-  padding-top: 50px;
+  padding-top: 70px;
 }
 
 section {
   overflow: auto;
 }
 
-#logo {
-  float: left;
-  margin-right: 10px;
+.navbar-brand {
   font-size: 1.7em;
   color: white;
-  letter-spacing: -1px;
-  padding-top: 9px;
   font-weight: bold;
   &:hover {
-  text-decoration: none;
- }
+    text-decoration: none;
+  }
 }
-
 
 /* footer */
 
@@ -38,24 +33,33 @@ footer {
 
 /* header  */
 
-header.navbar.navbar-fixed-top.navbar-inverse {
+.navbar.navbar-defaults.navbar-fixed-top {
   background: #13547a;
 }
 
-header>ul li {
-  float: right;
-  display: inline-block;
+.navbar.navbar-defaults.navbar-fixed-top .navbar-header .navbar-toggle {
+  background-color: #fff;
+  & .icon-bar {
+    background: #000;
+  }
 }
 
-header ul a {
-  color: white;
+nav ul a {
+  color: #fff;
   padding-top: 30px;
   font-weight: bold;
   padding :10px;
   &:hover {
-    color: black;
+    color: #000;
     text-decoration: none;
- }
+    background-color: unset;
+  }
+}
+
+ul.nav.navbar-right li a:hover, ul.nav.navbar-right li.open a:hover,
+  ul.nav.navbar-right li a:focus, a.navbar-brand:hover {
+  background-color: unset;
+  color: #000;
 }
 
 .header.text-right {
@@ -95,6 +99,31 @@ span {
   }
 }
 
+/* forms */
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+input {
+  height: auto !important;
+}
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
+
 /* nested attribute */
 
 .col-md-1.text-right {
@@ -120,4 +149,5 @@ span {
 
 .form-group.row.nested-fields {
     margin-bottom: 5px;
+}
 }

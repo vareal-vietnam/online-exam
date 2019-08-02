@@ -6,44 +6,45 @@
     <i class="fa fa-plus"></i> <%= t ".create" %>
   <% end %>
 </div>
-<table class="table table-striped">
-  <thead class="thead-dark">
-    <tr>
-      <th><%= t ".test_id" %></th>
-      <th><%= t ".test_name" %></th>
-      <th><%= t ".time_(s)" %></th>
-      <th><%= t ".total_questions"%></th>
-      <th class="text-center"><%= t ".view" %></th>
-      <th class="text-center"><%= t ".edit" %></th>
-      <th class="text-center"><%= t ".delete" %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @tests.each do |test| %>
+
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead class="thead-dark">
       <tr>
-        <td><%= test.id %></td>
-        <td><%= test.name %></td>
-        <td><%= test.time %></td>
-        <td><%= test.questions.count %></td>
-        <td class="text-center">
-          <%= link_to test, class: "button" do %>
-            <i class="fa fa-eye"></i>
-          <% end %>
-        </td>
-
-        <td class="text-center">
-          <%= link_to edit_test_path(test), class: "button" do %>
-            <i class="fa fa-edit"></i>
-          <% end %>
-        </td>
-
-        <td class="text-center">
-          <%= link_to test, method: "delete", data: {confirm: t("confirm_delete")},
-          class: "button text-danger" do %>
-            <i class="fa fa-trash"></i>
-          <% end %>
-        </td>
+        <th><%= t ".test_id" %></th>
+        <th><%= t ".test_name" %></th>
+        <th><%= t ".time_(s)" %></th>
+        <th><%= t ".total_questions"%></th>
+        <th class="text-center"><%= t ".view" %></th>
+        <th class="text-center"><%= t ".edit" %></th>
+        <th class="text-center"><%= t ".delete" %></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @tests.each do |test| %>
+        <tr>
+          <td><%= test.id %></td>
+          <td><%= test.name %></td>
+          <td><%= test.time %></td>
+          <td><%= test.questions.count %></td>
+          <td class="text-center">
+            <%= link_to test, class: "button" do %>
+              <i class="fa fa-eye"></i>
+            <% end %>
+          </td>
+          <td class="text-center">
+            <%= link_to edit_test_path(test), class: "button" do %>
+              <i class="fa fa-edit"></i>
+            <% end %>
+          </td>
+
+          <td class="text-center">
+            <%= link_to test, method: "delete", data: {confirm: t("confirm_delete")},
+            class: "button text-danger" do %>
+              <i class="fa fa-trash"></i>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>

@@ -2,13 +2,18 @@ User.create! name: "Admin",
   email: "admin@vareal.vn",
   is_admin: "true",
   password: "123456",
-  password_confirmation: "123456"
+  password_confirmation: "123456",
+  activated: true,
+  activated_at: Time.zone.now
+
 
 10.times do |n|
   User.create! name: Faker::Name.name,
     email: "user#{n+1}@vareal.vn",
     password: "123456",
-    password_confirmation: "123456"
+    password_confirmation: "123456",
+    activated: true,
+    activated_at: Time.zone.now
 end
 
 Test.create! kind: :git, time: 600, name: "Git advance"
