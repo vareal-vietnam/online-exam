@@ -14,7 +14,7 @@ class TestsController < ApplicationController
   def show
     @questions = @test.questions.includes :answers
     @questions = @questions.paginate(page: params[:page],
-                        per_page: Settings.per_page_questions)
+                                     per_page: Settings.per_page_questions)
     render 'tests/admin/show' if current_user.is_admin?
   end
 
