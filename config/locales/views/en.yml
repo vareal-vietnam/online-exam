@@ -71,6 +71,7 @@ en:
         delete: "Delete"
         total_questions: "Total Questions"
         create: "Create exam"
+        result: "Result"
     index:
       title: "Exam list"
       kind: "Subject"
