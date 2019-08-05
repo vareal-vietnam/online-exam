@@ -20,4 +20,15 @@ $(document).ready(function() {
       $(this).data("remove-timeout", 1000);
       question.fadeOut("slow");
     });
+
+  var date = new Date();
+  date.setSeconds( date.getSeconds() + parseInt($("#time").data("value"),10) );
+
+  $("#time").countdown({
+    until: date,
+    layout: '{hn} : {mn} : {sn}',
+    onExpiry: function(){
+      $(".test-content form").submit();
+    }
+  });
 });
