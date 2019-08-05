@@ -19,6 +19,10 @@ section {
   }
 }
 
+.clear-fix {
+  margin-top: 50px;
+}
+
 /* footer */
 
 footer {
@@ -124,4 +128,18 @@ span {
 
 .form-group.row.nested-fields {
     margin-bottom: 5px;
+}
+
+/* get a exam*/
+
+.answers {
+  margin-left: 20px;
+  .answer label {
+    font-weight: normal;
+  }
+}
+
+.question .question-content {
+  font-size: 120%;
+  font-weight: 600;
 }
