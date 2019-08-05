@@ -82,6 +82,7 @@ en:
         question: "Question"
         edit: "Edit"
         delete: "Delete"
+        back: "Back"
     index:
       title: "Exam list"
       kind: "Subject"
@@ -94,9 +95,6 @@ en:
       title: "Test %{name}"
       question: "Question"
       submit: "Submit"
-      edit: "Edit"
-      delete: "Delete"
-      back: "Back"
       time: "Time"
     new:
       title: "Create an exam"
