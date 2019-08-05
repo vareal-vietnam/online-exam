@@ -29,8 +29,8 @@
           <td><%= test.time %></td>
           <td><%= test.questions.count %></td>
           <td class="text-center">
-            <%= link_to "#", class: "button" do %>
-              <i class="fa fa-eye"></i>
+            <%= link_to results_path(test_id:test.id), class: "button" do %>
+              <i class="fa fa-list"></i>
             <% end %>
           </td>
           <td class="text-center">
