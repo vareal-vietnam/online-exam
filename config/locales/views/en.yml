@@ -71,6 +71,11 @@ en:
         delete: "Delete"
         total_questions: "Total Questions"
         create: "Create exam"
+    result_user:
+      title: "Result Test"
+      correct_answer: "Correct answer"
+      correct: "Correct"
+      score: "Score"
     index:
       title: "Exam list"
       kind: "Subject"
