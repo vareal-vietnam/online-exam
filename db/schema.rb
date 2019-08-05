@@ -73,6 +73,9 @@ ActiveRecord::Schema.define(version: 2019_08_02_084645) do
     t.datetime "deleted_at"
     t.string "google_token"
     t.string "google_refresh_token"
+    t.string "activation_digest"
+    t.boolean "activated", default: false
+    t.datetime "activated_at"
     t.index ["deleted_at"], name: "index_users_on_deleted_at"
   end
 

@@ -1,6 +1,7 @@
 <% provide :title, t(".title", name: @test.name) %>
 <h2 class="text-center"><%= t(".title", name: @test.name) %></h2>
 <div class="test-info">
+  <p class="text-center"><%= t(".time")%>: <span><%= @test.time %></span></p>
 </div>
 <div class="test-content">
   <%= form_for @test, url: {action: "mark"} do |f| %>

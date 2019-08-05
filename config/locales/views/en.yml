@@ -12,6 +12,10 @@ en:
       admin: "Admin"
       exam: "Exam"
       users: "Users"
+  account_activations:
+    edit:
+      account_activated: "Account activated!"
+      invalid_activation_link: "Invalid activation link"
   password_resets:
     new:
       title: "Password reset"
@@ -21,6 +25,8 @@ en:
       success: "Please checkout your email for password reset instructions"
     edit:
       title: "Reset password"
+      password: "Password"
+      password_confirm: "Password confirm"
       out_of_date: "Your action is out of date. Let try it!"
       error_confirm: "Password confirm is not match"
       error_expiration: "Password reset has expired."
@@ -30,12 +36,16 @@ en:
     create:
       success_login: "Logged in successfully"
       error_login: "Wrong email or password"
+      account_not_activated: "Account not activated"
+      check_your_email: "Check your email for the activation link"
+      invalid: "Invalid email/password combination"
     new:
       hello: "Hello world"
       title: "Log in"
       email: "Email"
       password: "Password"
       forget_password: "Forget password?"
+      sign_up_now: "Sign up now!"
   shared:
     error_messages:
       error-exaplanation: "Have %{number_errors}"
@@ -52,6 +62,7 @@ en:
       result: "Your score is %{score}"
     question_fields:
       add_answer: "Answer"
+      question_content: "Question content"
     answer_fields:
       answer_content: "Answer content"
     admin:
@@ -83,6 +94,10 @@ en:
       title: "Test %{name}"
       question: "Question"
       submit: "Submit"
+      edit: "Edit"
+      delete: "Delete"
+      back: "Back"
+      time: "Time"
     new:
       title: "Create an exam"
     form:
@@ -95,6 +110,12 @@ en:
       add_question: "Question"
       question: "Question"
   user_mailer:
+    account_activation:
+      title: "Online Exam"
+      content_activation_email: "Welcome to the Online Exam!
+      Click on the link below to activate your account:"
+      activate: "Activate"
+      hi: "Hi"
     password_reset:
       title: "Password reset"
       content_email: "Let click on link for reset your password"
@@ -103,14 +124,21 @@ en:
     new:
       title: "Create user"
     edit:
-      title: "Update user"
+      title: "Update a user"
+    create:
+      check_email: "Please check your email to activate your account."
+      success_create: "Sucess create"
     index:
       all_users: "All Users"
       create: "Create user"
+      id: "ID"
+      user_name: "User name"
+      user_email: "User email"
       view: "View"
       update: "Update"
       delete: "Delete"
       action: "Action"
+      confirm_delete: "Confirm Delete"
     destroy:
       user_deleted: "User Deleted"
     show:
@@ -122,6 +150,7 @@ en:
       test_name: "Test Name"
       test_date_time: "Test date time"
       score: "Score"
+      back: "Back"
     form:
       name: "Name"
       email: "Email"
@@ -129,14 +158,22 @@ en:
       password_confirmation: "Password confirmation"
       is_admin: "Is admin?"
   questions:
-    new:
-      title: "Create questions for %{test_name}"
     form:
+      update_questions: "Update Question"
+      question_content: "Question content"
       content: "Question"
       add_answer: "Add answer"
-      answer: "Answer %{time}"
+      answer: "Answer"
       question: "Question"
+      back_to_test: "Back to test"
+    new:
+      title: "Create questions for %{test_name}"
+    update:
+      sucess_update: "Update the question content successfully!"
+      updates_failed: "Updates failed"
+    destroy:
+      question_deleted: "Question Deleted"
     create:
       error_create: "Have error, let try late"
     question_deleted: "Question Deleted"
-  question_content: "Question content"
+
