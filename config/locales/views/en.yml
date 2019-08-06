@@ -54,12 +54,13 @@ en:
     home:
       title: "Home"
       greeting: "Hello %{name}"
+  results:
+    mark:
+      result: "Your score is %{score}"
   tests:
     result_user:
       title: "Test %{name}"
       score: "Test score"
-    mark:
-      result: "Your score is %{score}"
     question_fields:
       add_answer: "Answer"
       question_content: "Question content"
