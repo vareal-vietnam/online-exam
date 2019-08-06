@@ -1,9 +1,11 @@
 class ResultsController < ApplicationController
+  before_action :check_is_logged_in
+  before_action :check_is_admin_permission
   before_action :get_test
 
   def index
     @results = @test.results.includes :user
-    @results = @results.paginate(page: params[:page], per_page: 1)
+    @results = @results.paginate(page: params[:page])
   end
 
   private
