@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
-  before_action :check_user, only: %i[new create]
+  before_action :check_not_loggin, only: %i[new create], unless: :logged_in?
   before_action :check_is_logged_in, except: %i[new create]
-  before_action :check_is_admin_permission, only: %i[index edit destroy]
+  before_action :check_is_admin_permission,
+                except: %i[show update edit_profile], if: :logged_in?
   before_action :get_user, only: %i[edit update destroy show]
 
   def index
@@ -78,5 +79,9 @@ class UsersController < ApplicationController
       flash[:info] = t '.check_email'
       redirect_to login_path
     end
+  end
+
+  def current_user_is_nil?
+    !current_user.nil?
   end
 end

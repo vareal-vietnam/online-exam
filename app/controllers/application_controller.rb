@@ -15,8 +15,8 @@ class ApplicationController < ActionController::Base
     redirect_to login_path
   end
 
-  def check_user
-    return if !logged_in? || current_user&.is_admin?
+  def check_not_loggin
+    return unless logged_in?
 
     flash[:danger] = t 'error_403'
     redirect_to root_path
