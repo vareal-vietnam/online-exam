@@ -2,6 +2,7 @@ class TestsController < ApplicationController
   before_action :check_is_logged_in, only: %i[index new create edit]
   before_action :check_is_admin_permission, only: %i[new create destroy edit]
   before_action :get_test, only: %i[show destroy edit update]
+
   def index
     @tests = Test.all
     render 'tests/admin/index' if current_user.is_admin?
@@ -47,7 +48,7 @@ class TestsController < ApplicationController
 
   def get_test
     @test = Test.find_by id: params[:id]
-    return @test if @test
+    return if @test
 
     flash[:danger] = t 'error_404'
     redirect_to root_path

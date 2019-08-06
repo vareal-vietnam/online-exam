@@ -18,7 +18,7 @@
         <tr>
           <td><%= index + 1 %></td>
           <td><%= link_to result.user.name, result.user %></td>
-          <td><%= result.created_at.strftime("%T %d/%m%Y") %></td>
+          <td><%= l(result.created_at, format: :short) %></td>
           <td><%= result.score %></td>
           <td>
             <%= link_to "#", class: "button" do %>

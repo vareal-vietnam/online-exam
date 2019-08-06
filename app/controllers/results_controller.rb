@@ -12,7 +12,7 @@ class ResultsController < ApplicationController
 
   def get_test
     @test = Test.find_by id: params[:test_id]
-    return @test if @test
+    return if @test
 
     flash[:danger] = t 'error_404'
     redirect_to root_path
