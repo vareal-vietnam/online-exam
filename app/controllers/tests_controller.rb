@@ -1,8 +1,7 @@
 class TestsController < ApplicationController
-  before_action :check_is_logged_in, only: %i[index new create edit]
+  before_action :check_is_logged_in, only: %i[index new create edit show]
   before_action :check_is_admin_permission, only: %i[new create destroy edit]
   before_action :get_test, only: %i[show destroy edit update]
-  before_action :get_result, only: %i[result_user]
   def index
     @tests = Test.all
     render 'tests/admin/index' if current_user.is_admin?
@@ -44,11 +43,6 @@ class TestsController < ApplicationController
     redirect_to root_path
   end
 
-  def result_user
-    @test = @result.test
-    @questions = @test.questions.includes :answers
-  end
-
   private
 
   def get_test
@@ -66,13 +60,5 @@ class TestsController < ApplicationController
                           answers_attributes:
                             %i[id is_correct content _destroy]]]
     params.require(:test).permit(test_attributes)
-  end
-
-  def get_result
-    @result = Result.find_by id: params[:id]
-    return @result if @result
-
-    flash[:danger] = t 'error_404'
-    redirect_to root_path
   end
 end
