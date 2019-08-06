@@ -26,7 +26,7 @@ $(document).ready(function() {
 
   $("#time").countdown({
     until: date,
-    layout: '{hn} : {mn} : {sn}',
+    layout: "{hn} : {mn} : {sn}",
     onExpiry: function(){
       $(".test-content form").submit();
     }

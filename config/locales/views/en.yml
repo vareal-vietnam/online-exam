@@ -55,7 +55,7 @@ en:
       title: "Home"
       greeting: "Hello %{name}"
   results:
-    mark:
+    create:
       result: "Your score is %{score}"
   tests:
     result_user:
@@ -77,6 +77,7 @@ en:
         delete: "Delete"
         total_questions: "Total Questions"
         create: "Create exam"
+        number: "No."
       show:
         times: "Times "
         question_id: "Question ID"

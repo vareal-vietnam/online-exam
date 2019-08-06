@@ -6,7 +6,8 @@ class TestsController < ApplicationController
   before_action :get_test, only: %i[show edit update destroy]
 
   def index
-    @tests = Test.all
+    @tests = Test.all.paginate(page: params[:page],
+                               per_page: Settings.per_page_tests)
     render 'tests/admin/index' if current_user&.is_admin?
   end
 

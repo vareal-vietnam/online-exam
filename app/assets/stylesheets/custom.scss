@@ -107,7 +107,6 @@ span {
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
-  width: 100%;
   margin-bottom: 15px;
 }
 
@@ -159,9 +158,6 @@ input {
 
 .answers {
   margin-left: 20px;
-  .answer input {
-    width: unset;
-  }
   .answer label {
     font-weight: normal;
   }
@@ -170,7 +166,4 @@ input {
 .question .question-content {
   font-size: 120%;
   font-weight: 600;
-}
-.test-content form input.btn-success {
-  width: unset;
 }

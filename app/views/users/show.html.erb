@@ -26,8 +26,8 @@
       </tr>
       <% @results.each do |result| %>
       <tr>
-        <td><%= result.test.name %></td>
-        <td><%= result.created_at %></td>
+        <td><%= link_to (result.test.name if result.test), result.test %></td>
+        <td><%= result.created_at.strftime("%T %d/%m/%Y") %></td>
         <td><%= result.score %></td>
       </tr>
       <% end %>

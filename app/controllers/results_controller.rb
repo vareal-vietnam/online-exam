@@ -1,8 +1,7 @@
 class ResultsController < ApplicationController
-  before_action :get_test, only: %i[mark]
-  before_action :save_result, only: %i[mark]
+  before_action :get_test, :save_result, only: %i[create]
 
-  def mark
+  def create
     params[:questions].each do |answer|
       save_result_answer answer, @result
     end
@@ -14,7 +13,7 @@ class ResultsController < ApplicationController
   private
 
   def get_test
-    @test = Test.find_by id: params[:id]
+    @test = Test.find_by id: params[:test_id]
     return @test if @test
 
     flash[:danger] = t 'error_404'

@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   patch "/results/:id/mark", to: "results#mark", as: "/mark"
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :users
-  resources :tests
+  resources :tests do
+    resources :results, only: [:new, :create]
+  end
   resources :questions, only: [:destroy, :edit, :update]
   resources :account_activations, only: [:edit]
 end
