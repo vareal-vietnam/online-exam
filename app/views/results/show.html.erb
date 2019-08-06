@@ -3,24 +3,25 @@
 <%= t(".score") + ": " + "#{@result.score}" + "/" + "#{@test.questions.count}" %>
     <% @questions.each.with_index do |question, index| %>
       <div>
-        <p><%= "#{index+1}" + ". " + question.content %></span>
-        <div>
+        <p style="font-weight: bold;font-size:14px;"><%= "#{index+1}" + ". " + question.content %></p>
+          <ol type="A">
           <% question.answers.each do |answer| %>
             <% if answer.is_correct?
                 if ResultAnswer.find_by(answer: answer, result: @result)
-                  text = '<i class="fa fa-check-circle" style="color:green"></i>'
+                  text = 'text-success'
+                  icon = '<i class="fa fa-check-circle" style="color:green"></i>'
                 else
-                  text = '<i class="fa fa-check" style="color: green"></i>'
+                  text = 'text-success'
                 end
               else
-                text = '<i class="fa fa-times-circle" style="color:red"></i>' if ResultAnswer.find_by(answer: answer, result: @result)
+                text = 'text-danger' if ResultAnswer.find_by(answer: answer, result: @result)
               end
              %>
-            <div>
-              <%= answer.content %> <b><%= raw(text) %></b>
-            </div>
+            <li class="<%= text %>">
+              <%= answer.content %> <%= raw(icon) %>
+            </li>
           <% end %>
-        </div>
+          <ol>
       </div>
     <% end %>
 </div>
