@@ -21,7 +21,7 @@ Test.create! kind: :git, time: 500, name: "Git basic"
 Test.create! kind: :rails, time: 400, name: "Rails basic"
 Test.create! kind: :rails, time: 700, name: "Rails advance"
 
-re =   Result.create! score: rand(1..10),
+result =   Result.create! score: rand(1..10),
     user: User.all.sample,
     test: Test.first
 
@@ -33,11 +33,11 @@ end
 
 10.times do |n|
   question = Question.create! content: Faker::Lorem.question, test: Test.first
-  a = Answer.create! content: Faker::Lorem.sentence, question: question, is_correct: true
+  answer = Answer.create! content: Faker::Lorem.sentence, question: question, is_correct: true
 
   3.times do |m|
     Answer.create! content: Faker::Lorem.sentence, question: question, is_correct: false
   end
 
-  ResultAnswer.create! answer: a, result: re
+  ResultAnswer.create! answer: answer, result: result
 end

@@ -11,7 +11,7 @@ class ResultsController < ApplicationController
 
   def get_result
     @result = Result.find_by id: params[:id]
-    return @result if @result
+    return if @result
 
     flash[:danger] = t 'error_404'
     redirect_to root_path

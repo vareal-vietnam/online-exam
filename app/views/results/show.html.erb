@@ -1,16 +1,16 @@
 <% provide :title, t(".title") %>
 <h2 class="text-info"><%= @test.name %></h2>
-<%= t(".score") + ": " + @result.score.to_s + "/" + @test.questions.count.to_s %>
+<%= t(".score") + ": " + "#{@result.score}" + "/" + "#{@test.questions.count}" %>
     <% @questions.each.with_index do |question, index| %>
       <div>
-        <p><%= (index+1).to_s + ". " + question.content %></span>
+        <p><%= "#{index+1}" + ". " + question.content %></span>
         <div>
           <% question.answers.each do |answer| %>
             <% if answer.is_correct?
                 if ResultAnswer.find_by(answer: answer, result: @result)
                   text = '<i class="fa fa-check-circle" style="color:green"></i>'
                 else
-                  text = '<i class="fa fa-check-circle" style="color:green"></i>'
+                  text = '<i class="fa fa-check" style="color: green"></i>'
                 end
               else
                 text = '<i class="fa fa-times-circle" style="color:red"></i>' if ResultAnswer.find_by(answer: answer, result: @result)
