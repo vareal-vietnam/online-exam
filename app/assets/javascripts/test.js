@@ -22,11 +22,11 @@ $(document).ready(function() {
     });
 
   var date = new Date();
-  date.setSeconds( date.getSeconds() + parseInt($("#time").data("value"),10) );
+  date.setSeconds( date.getSeconds() + parseInt($("#time").data("value")) );
 
   $("#time").countdown({
     until: date,
-    layout: "{hn} : {mn} : {sn}",
+    layout: "{mn} : {sn}",
     onExpiry: function(){
       $(".test-content form").submit();
     }
