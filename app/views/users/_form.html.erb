@@ -10,7 +10,7 @@
     <%= f.email_field :email, class: "form-control", value: user.email %>
   </div>
 
-  <% if current_user.is_admin? %>
+  <% if current_user&.is_admin? %>
     <div class="form-group">
       <%= f.label :is_admin, t(".is_admin") %>
       <%= f.check_box :is_admin %>

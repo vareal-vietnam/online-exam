@@ -14,4 +14,11 @@ class ApplicationController < ActionController::Base
     flash[:danger] = t 'not_loggin'
     redirect_to login_path
   end
+
+  def check_user
+    return unless logged_in? || current_user&.is_admin?
+
+    flash[:danger] = t 'error_403'
+    redirect_to root_path
+  end
 end

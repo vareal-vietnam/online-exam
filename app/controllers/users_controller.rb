@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
+  before_action :check_user, only: %i[new create]
   before_action :check_is_logged_in, except: %i[new create]
-  before_action :check_is_admin_permission, except: %i[edit_profile update show]
+  before_action :check_is_admin_permission, only: %i[index edit destroy]
   before_action :get_user, only: %i[edit update destroy show]
 
   def index
