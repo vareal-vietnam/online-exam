@@ -42,5 +42,4 @@ class ResultsController < ApplicationController
     end
     result.update_attribute :score, count
   end
-
 end
