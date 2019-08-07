@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   get "/edit_profile", to: "users#edit_profile"
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :users
-  resources :tests
   resources :questions, only: [:destroy, :edit, :update]
   resources :account_activations, only: [:edit]
-  resources :results, only: [:index]
+  resources :tests do
+    resources :results, only: [:index]
+  end
 end
