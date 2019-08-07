@@ -11,7 +11,6 @@
   <table class="table table-striped">
     <thead class="thead-dark">
       <tr>
-        <th><%= t ".number" %></th>
         <th><%= t ".test_id" %></th>
         <th><%= t ".test_name" %></th>
         <th><%= t ".time_(s)" %></th>
@@ -22,9 +21,8 @@
       </tr>
     </thead>
     <tbody>
-      <% @tests.each.with_index do |test, index| %>
+      <% @tests.each do |test| %>
         <tr>
-          <td><%= create_index params[:page],index, Settings.per_page_tests %></td>
           <td><%= test.id %></td>
           <td><%= test.name %></td>
           <td><%= test.time %></td>

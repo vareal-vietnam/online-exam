@@ -10,15 +10,13 @@
     <% @questions.each.with_index do |question, index| %>
       <div class="question">
         <p class="question-content">
-          <span>
-            <%= create_index params[:page], index, Settings.per_page_questions %>. <%= question.content %>
-          </span>
+          <span><%= "#{ index + 1 }. #{question.content}" %></span>
         </p>
 
         <div class="answers">
           <% question.answers.each do |answer| %>
             <div class="answer">
-              <%= check_box_tag "questions[]", answer.id, false, {id: "answer_#{answer.id}"} %>
+              <%= check_box_tag "answers[]", answer.id, false, {id: "answer_#{answer.id}"} %>
               <%= label_tag "answer_#{answer.id}", answer.content %>
             </div>
           <% end %>
