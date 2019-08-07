@@ -15,7 +15,7 @@
     <tr>
       <td><%= index + 1 %></td>
       <td><%= question.content %>
-        <ol type="A">
+      <ol type="A">
         <% question.answers.each do |answer| %>
           <% if answer.is_correct? %>
             <li class="text-primary"><%= answer.content %></li>

@@ -7,14 +7,15 @@
           <ol type="A">
           <% question.answers.each do |answer| %>
             <% if answer.is_correct?
-                if ResultAnswer.find_by(answer: answer, result: @result)
+                if ResultAnswer.search(answer).search_re(@result)
                   text = 'text-success'
                   icon = '<i class="fa fa-check-circle" style="color:green"></i>'
                 else
                   text = 'text-success'
                 end
               else
-                text = 'text-danger' if ResultAnswer.find_by(answer: answer, result: @result)
+                text = 'text-danger' if ResultAnswer.search(answer).search_re(@result)
+                # text = 'text-danger' if ResultAnswer.search_answer(answer).search_result(@result)
               end
              %>
             <li class="<%= text %>">
