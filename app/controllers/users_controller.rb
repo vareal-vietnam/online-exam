@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new user_params
     if @user.save
-      user_save(@user)
+      user_save @user
     else
       render 'new'
     end
@@ -79,9 +79,5 @@ class UsersController < ApplicationController
       flash[:info] = t '.check_email'
       redirect_to login_path
     end
-  end
-
-  def current_user_is_nil?
-    !current_user.nil?
   end
 end
