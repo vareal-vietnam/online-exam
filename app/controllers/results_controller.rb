@@ -29,7 +29,8 @@ class ResultsController < ApplicationController
   end
 
   def update_result(result)
-    count = result.result_answers.inject(0) do |count, result_answer|
+    count = 0
+    result.result_answers.each do |result_answer|
       count += 1 if result_answer.answer.is_correct?
     end
     result.update_attribute :score, count
