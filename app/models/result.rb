@@ -6,6 +6,6 @@ class Result < ApplicationRecord
 
   has_many :result_answers
 
-  validates :user, presence: true
-  validates :test, presence: true
+  validate :user
+  validate :test
 end

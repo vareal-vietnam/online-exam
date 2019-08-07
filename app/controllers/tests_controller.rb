@@ -1,8 +1,6 @@
 class TestsController < ApplicationController
-  array_method = %i[new create edit update destroy]
-
   before_action :check_is_logged_in, except: %i[index]
-  before_action :check_is_admin_permission, only: array_method
+  before_action :check_is_admin_permission, except: %i[index show]
   before_action :get_test, only: %i[show edit update destroy]
 
   def index
@@ -54,7 +52,7 @@ class TestsController < ApplicationController
 
   def get_test
     @test = Test.find_by id: params[:id]
-    return @test if @test
+    return if @test
 
     flash[:danger] = t 'error_404'
     redirect_to root_path

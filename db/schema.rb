@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 2019_08_02_084645) do
     t.integer "result_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["answer_id", "result_id"], name: "index_result_answers_on_answer_id_and_result_id"
   end
 
   create_table "results", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -71,8 +72,6 @@ ActiveRecord::Schema.define(version: 2019_08_02_084645) do
     t.string "reset_digest"
     t.datetime "reset_send_at"
     t.datetime "deleted_at"
-    t.string "google_token"
-    t.string "google_refresh_token"
     t.string "activation_digest"
     t.boolean "activated", default: false
     t.datetime "activated_at"
