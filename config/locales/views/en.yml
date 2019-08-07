@@ -54,9 +54,6 @@ en:
     home:
       title: "Home"
       greeting: "Hello %{name}"
-  results:
-    create:
-      result: "Your score is %{score}"
   tests:
     result_user:
       title: "Test %{name}"
@@ -186,3 +183,5 @@ en:
       score: "Score"
       view: "View"
       index: "No."
+    create:
+      result: "Your score is %{score}"

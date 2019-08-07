@@ -1,13 +1,12 @@
 class ResultsController < ApplicationController
   before_action :get_test, :save_result, only: %i[create]
-  before_action :check_is_logged_in, :check_is_admin_permission
+  before_action :check_is_logged_in, :check_is_admin_permission, only: %i[index]
   before_action :get_test, only: %i[index]
 
   def create
-    params.permit(:answers).each do |answer|
+    params.require(:answers).each do |answer|
       save_result_answer answer, @result
     end
-    byebug
     update_result @result
     flash[:success] = t '.result', score: @result.score
     redirect_to root_path
