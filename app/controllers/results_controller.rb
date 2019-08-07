@@ -5,6 +5,7 @@ class ResultsController < ApplicationController
     params.permit(:answers).each do |answer|
       save_result_answer answer, @result
     end
+    byebug
     update_result @result
     flash[:success] = t '.result', score: @result.score
     redirect_to root_path
@@ -29,10 +30,9 @@ class ResultsController < ApplicationController
   end
 
   def update_result(result)
-    count = 0
-    result.result_answers.each do |result_answer|
-      count += 1 if result_answer.answer.is_correct?
+    score = result.result_answers.inject(0) do |count, result_answer|
+      count + 1 if result_answer.answer.is_correct?
     end
-    result.update_attribute :score, count
+    result.update_attribute :score, score
   end
 end
