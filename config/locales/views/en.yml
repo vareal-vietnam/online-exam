@@ -55,6 +55,11 @@ en:
       title: "Home"
       greeting: "Hello %{name}"
   tests:
+    destroy:
+      success_delete: "Test deleted"
+    result_user:
+      title: "Test %{name}"
+      score: "Test score"
     question_fields:
       add_answer: "Answer"
       question_content: "Question content"
@@ -71,6 +76,15 @@ en:
         delete: "Delete"
         total_questions: "Total Questions"
         create: "Create exam"
+        number: "No."
+        result: "Result"
+      show:
+        times: "Times "
+        question_id: "ID"
+        question: "Question"
+        edit: "Edit"
+        delete: "Delete"
+        back: "Back"
         result: "Result"
     index:
       title: "Exam list"
@@ -81,12 +95,10 @@ en:
     edit:
       update_exam: "Update Exam"
     show:
-      times: "Times "
-      question_id: "Question ID"
+      title: "Test %{name}"
       question: "Question"
-      edit: "Edit"
-      delete: "Delete"
-      back: "Back"
+      submit: "Submit"
+      time: "Time"
     new:
       title: "Create an exam"
     form:
@@ -173,3 +185,5 @@ en:
       score: "Score"
       view: "View"
       index: "No."
+    create:
+      result: "Your score is %{score}"

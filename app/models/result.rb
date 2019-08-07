@@ -4,7 +4,8 @@ class Result < ApplicationRecord
   belongs_to :user
   belongs_to :test
 
-  validates :score, presence: true
+  has_many :result_answers
+
   validates :user, presence: true
   validates :test, presence: true
 end

@@ -6,7 +6,7 @@ $(document).ready(function() {
       box.prop("checked", true);
     } else {
       box.prop("checked", false);
-      box.closest(".answers").find("input:checkbox").first().prop("checked",true);
+      box.closest(".nested-fields .answers").find("input:checkbox").first().prop("checked",true);
     }
   });
 
@@ -20,4 +20,15 @@ $(document).ready(function() {
       $(this).data("remove-timeout", 1000);
       question.fadeOut("slow");
     });
+
+  var date = new Date();
+  date.setSeconds( date.getSeconds() + parseInt($("#time").data("value")) );
+
+  $("#time").countdown({
+    until: date,
+    layout: "{mn} : {sn}",
+    onExpiry: function(){
+      $(".test-content form").submit();
+    }
+  });
 });

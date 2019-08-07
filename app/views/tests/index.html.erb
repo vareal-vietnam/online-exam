@@ -20,7 +20,7 @@
             </div>
 
             <div class="text-center button">
-              <%= link_to "#", class: "btn btn-info" do %>
+              <%= link_to test, class: "btn btn-info" do %>
                 <i class="fa fa-hand-o-right"></i> <%= t".test" %>
               <% end %>
             </div>
@@ -30,3 +30,5 @@
     <% end %>
   </div>
 </div>
+
+<%= will_paginate @tests%>

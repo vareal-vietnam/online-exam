@@ -19,6 +19,10 @@ section {
   }
 }
 
+.margin-buttom-body {
+  margin-top: 50px;
+}
+
 /* footer */
 
 footer {
@@ -103,7 +107,6 @@ span {
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
-  width: 100%;
   margin-bottom: 15px;
 }
 
@@ -123,6 +126,7 @@ input {
   .form-control {
     color: $state-danger-text;
   }
+}
 
 /* nested attribute */
 
@@ -151,4 +155,16 @@ input {
 .form-group.row.nested-fields {
     margin-bottom: 5px;
 }
+/* get a exam*/
+
+.answers {
+  margin-left: 20px;
+  .answer label {
+    font-weight: normal;
+  }
+}
+
+.question .question-content {
+  font-size: 120%;
+  font-weight: 600;
 }

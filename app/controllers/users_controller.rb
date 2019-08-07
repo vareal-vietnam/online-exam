@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user unless current_user.is_admin?
-    @results = @user.results.includes(:test)
+    @results = @user.results.includes :test
   end
 
   def new
@@ -89,7 +89,7 @@ class UsersController < ApplicationController
 
   def save_with_user_sign_in
     if @user.save
-      UserMailer.account_activation(user).deliver_now
+      UserMailer.account_activation(@user).deliver_now
       flash[:info] = t '.check_email'
     else
       flash[:error] = t '.check_email'

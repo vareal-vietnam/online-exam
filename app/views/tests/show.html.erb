@@ -1,41 +1,34 @@
-<h2 class="text-center"><%= @test.name %></h2>
-<h4 class="text-right"><%= t ".times" %><%= @test.time %></h4>
-<h4 class="text-right"><%= link_to t(".back"), root_path %></h4>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%= t ".question_id" %></th>
-      <th class="text_center"><%= t ".question" %></th>
-      <th class="text-center"><%= t ".edit" %></th>
-      <th class="text-center"><%= t ".delete" %></th>
-    </tr>
-  </thead>
-  <tbody>
+<% provide :title, t(".title", name: @test.name) %>
+<h2 class="text-center"><%= t(".title", name: @test.name) %></h2>
+<div class="test-info">
+  <p class="text-center">
+    <%= t(".time")%>: <span id="time" data-value="<%= @test.time %>"></span>
+  </p>
+</div>
+<div class="test-content">
+  <%= form_for @test, url: test_results_path(test_id: @test.id), method: "post" do |f| %>
     <% @questions.each.with_index do |question, index| %>
-    <tr>
-      <td><%= index + 1 %></td>
-      <td><%= question.content %>
-        <ol type="A">
-        <% question.answers.each do |answer| %>
-          <% if answer.is_correct? %>
-            <li class="text-primary"><%= answer.content %></li>
-          <% else %>
-            <li><%= answer.content %></li>
+      <div class="question">
+        <p class="question-content">
+          <span><%= "#{ index + 1 }. #{question.content}" %></span>
+        </p>
+
+        <div class="answers">
+          <% question.answers.each do |answer| %>
+            <div class="answer">
+              <%= check_box_tag "answers[]", answer.id, false, {id: "answer_#{answer.id}"} %>
+              <%= label_tag "answer_#{answer.id}", answer.content %>
+            </div>
           <% end %>
-      <% end %>
-      </ol>
-      </td>
-      <td class="text-center">
-        <%= link_to edit_question_path(question), class: "button" do %>
-          <i class="fa fa-edit"></i>
-        <% end %>
-      </td>
-      <td class="text-center">
-        <%= link_to question, method: "delete", data: {confirm: t("confirm_delete")},
-        class: "button text-danger" do %>
-          <i class="fa fa-trash"></i>
-        <% end %>
-    </tr>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
+    <%= f.submit t(".submit"), class: "btn btn-success" %>
+  <% end %>
+</div>
+
+<%= will_paginate @questions %>
+
+<% content_for :javascript_includes do %>
+  <%= javascript_include_tag "test.js" %>
+<% end %>

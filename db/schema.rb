@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_29_153334) do
+ActiveRecord::Schema.define(version: 2019_08_02_084645) do
 
   create_table "answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
@@ -31,6 +31,14 @@ ActiveRecord::Schema.define(version: 2019_07_29_153334) do
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_questions_on_deleted_at"
     t.index ["test_id"], name: "index_questions_on_test_id"
+  end
+
+  create_table "result_answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "answer_id"
+    t.integer "result_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["answer_id", "result_id"], name: "index_result_answers_on_answer_id_and_result_id"
   end
 
   create_table "results", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
