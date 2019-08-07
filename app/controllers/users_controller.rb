@@ -20,8 +20,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new user_params
-    if @user.save
-      user_save @user
+    if @user.validate
+      user_save
     else
       render 'new'
     end
@@ -69,15 +69,31 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
-  def user_save(user)
-    if current_user&.current_user&.is_admin?
-      user.update_attribute(activated: true)
-      flash[:success] = t 'success_create', for_object: 'User'
-      redirect_to users_path
+  def user_save
+    if current_user&.is_admin?
+      save_with_admin_create_user
     else
+      save_with_user_sign_in
+    end
+  end
+
+  def save_with_admin_create_user
+    @user.activated = true
+    if @user.save
+      flash[:success] = t 'success_create', for_object: 'User'
+    else
+      flash[:error] = t 'error_create', for_object: 'User'
+    end
+    redirect_to users_path
+  end
+
+  def save_with_user_sign_in
+    if @user.save
       UserMailer.account_activation(user).deliver_now
       flash[:info] = t '.check_email'
-      redirect_to login_path
+    else
+      flash[:error] = t '.check_email'
     end
+    redirect_to login_path
   end
 end
