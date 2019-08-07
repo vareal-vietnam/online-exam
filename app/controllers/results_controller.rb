@@ -4,7 +4,7 @@ class ResultsController < ApplicationController
   before_action :get_test, only: %i[index]
 
   def create
-    params.require(:answers).each do |answer|
+    params.permit(:answers).each do |answer|
       save_result_answer answer, @result
     end
     update_result @result

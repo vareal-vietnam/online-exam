@@ -55,6 +55,8 @@ en:
       title: "Home"
       greeting: "Hello %{name}"
   tests:
+    destroy:
+      success_delete: "Test deleted"
     result_user:
       title: "Test %{name}"
       score: "Test score"
