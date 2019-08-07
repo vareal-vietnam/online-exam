@@ -14,7 +14,7 @@ class ResultsController < ApplicationController
 
   def get_test
     @test = Test.find_by id: params[:test_id]
-    return @test if @test
+    return if @test
 
     flash[:danger] = t 'error_404'
     redirect_to root_path
@@ -30,7 +30,7 @@ class ResultsController < ApplicationController
 
   def update_result(result)
     count = 0
-    result.result_answers.inject() do |result_answer|
+    result.result_answers.each do |result_answer|
       count += 1 if result_answer.answer.is_correct?
     end
     result.update_attribute :score, count
