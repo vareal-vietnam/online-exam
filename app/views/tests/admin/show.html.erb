@@ -12,29 +12,30 @@
   </thead>
   <tbody>
     <% @questions.each.with_index do |question, index| %>
-    <tr>
-      <td><%= index + 1 %></td>
-      <td><%= question.content %>
-        <ol type="A">
-        <% question.answers.each do |answer| %>
-          <% if answer.is_correct? %>
-            <li class="text-primary"><%= answer.content %></li>
-          <% else %>
-            <li><%= answer.content %></li>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= question.content %>
+          <ol type="A">
+          <% question.answers.each do |answer| %>
+            <% if answer.is_correct? %>
+              <li class="text-primary"><%= answer.content %></li>
+            <% else %>
+              <li><%= answer.content %></li>
+            <% end %>
+        <% end %>
+        </ol>
+        </td>
+        <td class="text-center">
+          <%= link_to "#", class: "button" do %>
+            <i class="fa fa-edit"></i>
           <% end %>
-      <% end %>
-      </ol>
-      </td>
-      <td class="text-center">
-        <%= link_to "#", class: "button" do %>
-          <i class="fa fa-edit"></i>
-        <% end %>
-      </td>
-      <td class="text-center">
-        <%= link_to question, method: "delete", data: {confirm: t("confirm_delete")},
-        class: "button text-danger" do %>
-          <i class="fa fa-trash"></i>
-        <% end %>
-    </tr>
+        </td>
+        <td class="text-center">
+          <%= link_to question, method: "delete", data: {confirm: t("confirm_delete")},
+          class: "button text-danger" do %>
+            <i class="fa fa-trash"></i>
+          <% end %>
+      </tr>
+    <% end %>
   </tbody>
 </table>

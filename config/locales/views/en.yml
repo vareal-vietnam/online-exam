@@ -78,13 +78,15 @@ en:
         total_questions: "Total Questions"
         create: "Create exam"
         number: "No."
+        result: "Result"
       show:
         times: "Times "
-        question_id: "Question ID"
+        question_id: "ID"
         question: "Question"
         edit: "Edit"
         delete: "Delete"
         back: "Back"
+        result: "Result"
     index:
       title: "Exam list"
       kind: "Subject"
@@ -176,4 +178,11 @@ en:
     create:
       error_create: "Have error, let try late"
     question_deleted: "Question Deleted"
-
+  results:
+    index:
+      title: "Result %{test_name}"
+      user: "User"
+      time: "Time submit"
+      score: "Score"
+      view: "View"
+      index: "No."
