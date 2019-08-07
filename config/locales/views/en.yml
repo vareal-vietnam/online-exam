@@ -71,6 +71,7 @@ en:
         delete: "Delete"
         total_questions: "Total Questions"
         create: "Create exam"
+        result: "Result"
     index:
       title: "Exam list"
       kind: "Subject"
@@ -164,4 +165,11 @@ en:
     create:
       error_create: "Have error, let try late"
     question_deleted: "Question Deleted"
-
+  results:
+    index:
+      title: "Result %{test_name}"
+      user: "User"
+      time: "Time submit"
+      score: "Score"
+      view: "View"
+      index: "No."

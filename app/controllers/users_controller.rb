@@ -63,7 +63,7 @@ class UsersController < ApplicationController
 
   def get_user
     @user = User.find_by id: params[:id]
-    return @user if @user
+    return if @user
 
     flash[:danger] = t 'error_404'
     redirect_to root_path
