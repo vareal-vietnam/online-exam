@@ -7,14 +7,14 @@
           <ol type="A">
           <% question.answers.each do |answer| %>
             <% if answer.is_correct?
-                if answer.result_answers.by_result(@result).count > 0
+                if answer.result_answers.by_result(@result).any?
                   text = 'text-success'
                   icon = '<i class="fa fa-check-circle" style="color:green"></i>'
                 else
                   text = 'text-success'
                 end
               else
-                text = 'text-danger' if answer.result_answers.by_result(@result).count > 0
+                text = 'text-danger' if answer.result_answers.by_result(@result).any?
               end
 
              %>
