@@ -1,6 +1,6 @@
 <% provide :title, t(".title") %>
 <h2 class="text-info"><%= @test.name %></h2>
-<%= t(".score") + ": " + "#{@result.score}" + "/" + "#{@test.questions.count}" %>
+<%= t ".score" %> <%= " #{@result.score} / #{@test.questions.count}" %>
     <% @questions.each.with_index do |question, index| %>
       <div>
         <p style="font-weight: bold;font-size:14px;"><%= "#{index+1}" + ". " + question.content %></p>
