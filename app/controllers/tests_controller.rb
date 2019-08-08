@@ -1,5 +1,4 @@
 class TestsController < ApplicationController
-
   before_action :check_is_logged_in, only: %i[index new create edit show]
   before_action :get_test, only: %i[show destroy edit update]
   before_action :check_is_admin_permission, except: %i[index show]
@@ -12,8 +11,6 @@ class TestsController < ApplicationController
 
   def show
     @questions = @test.questions.includes :answers
-    @questions = @questions.paginate(page: params[:page],
-                                     per_page: Settings.per_page_questions)
     render 'tests/admin/show' if current_user.is_admin?
   end
 
