@@ -7,16 +7,17 @@
           <ol type="A">
           <% question.answers.each do |answer| %>
             <% if answer.is_correct?
-                if ResultAnswer.search(answer).search_re(@result)
+                if answer.result_answers.by_result(@result).count > 0
+                  byebug
                   text = 'text-success'
                   icon = '<i class="fa fa-check-circle" style="color:green"></i>'
                 else
                   text = 'text-success'
                 end
               else
-                text = 'text-danger' if ResultAnswer.search(answer).search_re(@result)
-                # text = 'text-danger' if ResultAnswer.search_answer(answer).search_result(@result)
+                text = 'text-danger' if answer.result_answers.by_result(@result).count > 0
               end
+
              %>
             <li class="<%= text %>">
               <%= answer.content %> <%= raw(icon) %>
