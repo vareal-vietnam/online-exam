@@ -1,7 +1,13 @@
 class ResultsController < ApplicationController
+  before_action :get_result, only: %i[show]
   before_action :get_test, only: %i[create index]
   before_action :save_result, :params_answers, only: %i[create]
   before_action :check_is_logged_in, :check_is_admin_permission, only: %i[index]
+
+  def show
+    @test = @result.test
+    @questions = @test.questions.includes :answers
+  end
 
   def create
     @params_answers[:answers].each do |answer|
@@ -9,7 +15,7 @@ class ResultsController < ApplicationController
     end
     update_result @result
     flash[:success] = t '.result', score: @result.score
-    redirect_to root_path
+    redirect_to test_result_path(@test, @result)
   end
 
   def index
@@ -18,6 +24,11 @@ class ResultsController < ApplicationController
   end
 
   private
+
+  def get_result
+    @result = Result.find_by id: params[:id]
+    return if @result
+  end
 
   def get_test
     @test = Test.find_by id: params[:test_id]

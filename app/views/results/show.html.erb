@@ -1,0 +1,28 @@
+<% provide :title, t(".title") %>
+<h2 class="text-info"><%= @test.name %></h2>
+<%= "#{t ".score"} #{@result.score} / #{@test.questions.count}" %>
+    <% @questions.each.with_index do |question, index| %>
+      <div>
+        <p style="font-weight: bold;font-size:14px;"><%= "#{index+1}. #{question.content}" %></p>
+          <ol type="A">
+          <% question.answers.each do |answer| %>
+            <% if answer.is_correct?
+                if answer.result_answers.by_result(@result).any?
+                  text = 'text-success'
+                  icon = '<i class="fa fa-check-circle" style="color:green"></i>'
+                else
+                  text = 'text-success'
+                end
+              else
+                text = 'text-danger' if answer.result_answers.by_result(@result).any?
+              end
+
+             %>
+            <li class="<%= text %>">
+              <%= answer.content %> <%= raw(icon) %>
+            </li>
+          <% end %>
+          <ol>
+      </div>
+    <% end %>
+</div>
