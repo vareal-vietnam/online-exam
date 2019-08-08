@@ -24,6 +24,7 @@ gem "config"
 gem "paranoia"
 gem "cocoon"
 gem "rubocop", "~> 0.72.0", require: false
+gem "jquery-countdown-rails"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

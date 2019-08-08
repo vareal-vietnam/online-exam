@@ -5,7 +5,8 @@ class Result < ApplicationRecord
   belongs_to :test
   has_many :result_answers
 
-  validates :score, presence: true
+  has_many :result_answers
+
   validates :user, presence: true
   validates :test, presence: true
 end

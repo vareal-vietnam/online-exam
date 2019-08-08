@@ -3,6 +3,8 @@ class Test < ApplicationRecord
 
   acts_as_paranoid
 
+  attr_accessor :answer_choise
+
   enum kind: CATEGORY_TYPE
 
   has_many :results

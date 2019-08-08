@@ -1,14 +1,20 @@
 class TestsController < ApplicationController
+
   before_action :check_is_logged_in, only: %i[index new create edit show]
-  before_action :check_is_admin_permission, only: %i[new create destroy edit]
   before_action :get_test, only: %i[show destroy edit update]
+  before_action :check_is_admin_permission, except: %i[index show]
+
   def index
-    @tests = Test.all
-    render 'tests/admin/index' if current_user.is_admin?
+    @tests = Test.all.paginate(page: params[:page],
+                               per_page: Settings.per_page_tests)
+    render 'tests/admin/index' if current_user&.is_admin?
   end
 
   def show
     @questions = @test.questions.includes :answers
+    @questions = @questions.paginate(page: params[:page],
+                                     per_page: Settings.per_page_questions)
+    render 'tests/admin/show' if current_user.is_admin?
   end
 
   def new
@@ -47,7 +53,7 @@ class TestsController < ApplicationController
 
   def get_test
     @test = Test.find_by id: params[:id]
-    return @test if @test
+    return if @test
 
     flash[:danger] = t 'error_404'
     redirect_to root_path
