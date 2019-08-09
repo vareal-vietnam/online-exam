@@ -1,31 +1,36 @@
 <% provide :title, t(".title", name: @test.name) %>
 <h2 class="text-center"><%= t(".title", name: @test.name) %></h2>
+<% if @questions.count == 0 %>
+  <%= t(".not_allow_test") %>
+  <%= link_to t(".back"), root_path %>
+<% else%>
 <div class="test-info">
   <p class="text-center">
     <%= t(".time")%>: <span id="time" data-value="<%= @test.time %>"></span>
   </p>
 </div>
 <div class="test-content">
-  <%= form_for @test, url: test_results_path(test_id: @test.id), method: "post" do |f| %>
-    <% @questions.each.with_index do |question, index| %>
-      <div class="question">
-        <p class="question-content">
-          <span><%= "#{ index + 1 }. #{question.content}" %></span>
-        </p>
+    <%= form_for @test, url: test_results_path(test_id: @test.id), method: "post" do |f| %>
+      <% @questions.each.with_index do |question, index| %>
+        <div class="question">
+          <p class="question-content">
+            <span><%= "#{ index + 1 }. #{question.content}" %></span>
+          </p>
 
-        <div class="answers">
-          <% question.answers.each do |answer| %>
-            <div class="answer">
-              <%= check_box_tag "answers[]", answer.id, false, {id: "answer_#{answer.id}"} %>
-              <%= label_tag "answer_#{answer.id}", answer.content %>
-            </div>
-          <% end %>
+          <div class="answers">
+            <% question.answers.each do |answer| %>
+              <div class="answer">
+                <%= check_box_tag "answers[]", answer.id, false, {id: "answer_#{answer.id}"} %>
+                <%= label_tag "answer_#{answer.id}", answer.content %>
+              </div>
+            <% end %>
+          </div>
         </div>
-      </div>
+      <% end %>
+      <%= f.submit t(".submit"), class: "btn btn-success" %>
     <% end %>
-    <%= f.submit t(".submit"), class: "btn btn-success" %>
-  <% end %>
-</div>
+  </div>
+<% end %>
 
 <% content_for :javascript_includes do %>
   <%= javascript_include_tag "test.js" %>
