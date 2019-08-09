@@ -1,7 +1,7 @@
 db_host: sample
 db_username: sample
 db_password: sample
-email_host: sample
+host_url: sample
 email_name_address: sample
 email_address: sample
 email_password: sample

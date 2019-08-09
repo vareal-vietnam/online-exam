@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  Rails.application.routes.default_url_options[:host] = ENV["email_host"]
-
   root "tests#index"
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
