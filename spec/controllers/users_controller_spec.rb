@@ -46,8 +46,8 @@ RSpec.describe UsersController, type: :controller do
             password_confirmation: 'password'
           }
         }
-        is_expected.to permit(:name, :email, :password, :password_confirmation).
-          for(:create, params: user_params).on(:user)
+        is_expected.to permit(:name, :email, :password, :password_confirmation)
+          .for(:create, params: user_params).on(:user)
         is_expected.to render_template(:account_activation)
         is_expected.to set_flash
         is_expected.to redirect_to('/login')
