@@ -1,5 +1,9 @@
 <% provide :title, t(".title", name: @test.name) %>
 <h2 class="text-center"><%= t(".title", name: @test.name) %></h2>
+<% if @questions.count == 0 %>
+  <%= t(".not_allow_test") %>
+  <%= link_to t(".back"), root_path %>
+<% else%>
 <div class="test-info">
   <p class="text-center">
     <%= t(".time")%>: <span id="time" data-value="<%= @test.time %>"></span>
@@ -25,7 +29,8 @@
     <% end %>
     <%= f.submit t(".submit"), class: "btn btn-success" %>
   <% end %>
-</div>
+  </div>
+<% end %>
 
 <% content_for :javascript_includes do %>
   <%= javascript_include_tag "test.js" %>
