@@ -8,8 +8,5 @@ FactoryBot.define do
     trait :admin do
       is_admin { true }
     end
-    trait :not_admin do
-      is_admin { false }
-    end
   end
 end
