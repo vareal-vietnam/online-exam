@@ -10,9 +10,7 @@ class ResultsController < ApplicationController
   end
 
   def create
-    if @params_answers[:answers].nil?
-      @result.update_attribute :score, 0
-    else
+    unless @params_answers[:answers].nil?
       @params_answers[:answers].each do |answer|
         save_result_answer answer, @result
       end
