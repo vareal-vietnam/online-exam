@@ -32,9 +32,7 @@ RSpec.describe User, type: :model do
 
   describe 'Check callback' do
     let(:user) do
-      User.new name: 'yourname',
-               email: 'abc@gmail.com',
-               password: 'password'
+      build :user, :not_admin
     end
 
     it 'Check callback before save' do

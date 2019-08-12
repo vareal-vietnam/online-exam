@@ -31,11 +31,6 @@ class User < ApplicationRecord
     BCrypt::Password.new(digest).is_password?(token)
   end
 
-  def remember
-    self.remember_token = User.new_token
-    update_attribute(:remember_digest, User.digest(remember_token))
-  end
-
   def password_reset_expired?
     reset_send_at < PASSWORD_EXPIRED_TIME.hours.ago
   end

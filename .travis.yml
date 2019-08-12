@@ -13,7 +13,7 @@ script:
   - bundle exec rspec
   - bundle exec rubocop
 env:
-  - host_url=sample
+  - host_url=sample.com
   - email_name_address=sample@gmail.com
   - email_address=sample
   - email_password=sample
