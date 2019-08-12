@@ -12,6 +12,6 @@ class Test < ApplicationRecord
   accepts_nested_attributes_for :questions,
                                 reject_if: :all_blank, allow_destroy: true
 
-  validates :name, :kind, presence: true
+  validates :name, :kind, presence: true, length: { maximum: 255 }
   validates :time, presence: true, numericality: { only_integer: true }
 end
