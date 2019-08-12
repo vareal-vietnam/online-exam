@@ -1,7 +1,9 @@
 class Question < ApplicationRecord
+  include ModuleTrimSpace
+
   acts_as_paranoid
 
-  before_save :trim_space
+  before_save :trim_space_content
 
   belongs_to :test
   has_many :answers, dependent: :destroy
@@ -10,10 +12,4 @@ class Question < ApplicationRecord
                                 reject_if: :all_blank, allow_destroy: true
   validates :content, presence: true, length: { maximum: 255 }
   validates :test, presence: true
-
-  private
-
-  def trim_space
-    self.content = content.squish
-  end
 end

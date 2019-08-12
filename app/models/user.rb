@@ -1,8 +1,10 @@
 class User < ApplicationRecord
+  include ModuleTrimSpace
+
   acts_as_paranoid
 
   attr_accessor :remember_token, :activation_token
-  before_save   :downcase_email, :trim_space
+  before_save   :downcase_email, :trim_space_name
   before_create :create_activation_digest
 
   PASSWORD_EXPIRED_TIME = 1
@@ -65,9 +67,5 @@ class User < ApplicationRecord
   def create_activation_digest
     self.activation_token  = User.new_token
     self.activation_digest = User.digest(activation_token)
-  end
-
-  def trim_space
-    self.name = name.squish
   end
 end

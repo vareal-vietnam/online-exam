@@ -21,13 +21,6 @@ $(document).ready(function() {
       question.fadeOut("slow");
     });
 
-  $(document).on("keypress", "#test_time", function(e){
-    if (e.which != 8 && e.which != 0 && e.which < 48 || e.which > 57)
-    {
-        e.preventDefault();
-    }
-  });
-
   var date = new Date();
   date.setSeconds( date.getSeconds() + parseInt($("#time").data("value")) );
   $("#time").countdown({

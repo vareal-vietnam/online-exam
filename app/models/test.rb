@@ -1,10 +1,12 @@
 class Test < ApplicationRecord
+  include ModuleTrimSpace
+
   CATEGORY_TYPE = %i[git rails].freeze
   acts_as_paranoid
 
   attr_accessor :answer_choise
 
-  before_save :trim_space
+  before_save :trim_space_name
 
   enum kind: CATEGORY_TYPE
 
@@ -16,10 +18,4 @@ class Test < ApplicationRecord
 
   validates :name, :kind, presence: true, length: { maximum: 255 }
   validates :time, presence: true, numericality: { only_integer: true }
-
-  private
-
-  def trim_space
-    self.name = name.squish
-  end
 end
