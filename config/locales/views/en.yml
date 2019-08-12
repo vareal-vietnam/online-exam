@@ -134,6 +134,8 @@ en:
       question: "Question"
       submit: "Submit"
       time: "Time"
+      not_allow_test: "The test is not opened"
+      back: "Back"
     new:
       title: "Create an exam"
     form:
