@@ -1,5 +1,5 @@
 class Test < ApplicationRecord
-  before_save   :trim_space
+  before_save :trim_space
   CATEGORY_TYPE = %i[git rails].freeze
   acts_as_paranoid
 

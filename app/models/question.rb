@@ -1,5 +1,5 @@
 class Question < ApplicationRecord
-  before_save   :trim_space
+  before_save :trim_space
 
   acts_as_paranoid
 
