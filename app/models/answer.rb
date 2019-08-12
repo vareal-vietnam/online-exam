@@ -1,6 +1,7 @@
 class Answer < ApplicationRecord
-  before_save :trim_space
   acts_as_paranoid
+
+  before_save :trim_space
 
   belongs_to :question
   has_many :result_answers, dependent: :destroy

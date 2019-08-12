@@ -1,9 +1,10 @@
 class Test < ApplicationRecord
-  before_save :trim_space
   CATEGORY_TYPE = %i[git rails].freeze
   acts_as_paranoid
 
   attr_accessor :answer_choise
+
+  before_save :trim_space
 
   enum kind: CATEGORY_TYPE
 
