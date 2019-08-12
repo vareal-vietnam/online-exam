@@ -42,6 +42,11 @@
                   <i class="fa fa-vcard-o"></i> <%= t(".profile") %>
                 <% end %>
               </li>
+              <li>
+                <%= link_to user_path(current_user) do %>
+                  <i class="fa fa-vcard-o"></i> <%= t(".show_profile") %>
+                <% end %>
+              </li>
               <li class="divider"></li>
               <li>
                 <%= link_to logout_path do %>

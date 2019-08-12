@@ -1,4 +1,5 @@
 class Test < ApplicationRecord
+  before_save   :trim_space
   CATEGORY_TYPE = %i[git rails].freeze
   acts_as_paranoid
 
@@ -14,4 +15,10 @@ class Test < ApplicationRecord
 
   validates :name, :kind, presence: true, length: { maximum: 255 }
   validates :time, presence: true, numericality: { only_integer: true }
+
+  private
+
+  def trim_space
+    self.name = name.squish
+  end
 end

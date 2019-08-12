@@ -1,4 +1,6 @@
 class Question < ApplicationRecord
+  before_save   :trim_space
+
   acts_as_paranoid
 
   belongs_to :test
@@ -8,4 +10,10 @@ class Question < ApplicationRecord
                                 reject_if: :all_blank, allow_destroy: true
   validates :content, presence: true, length: { maximum: 255 }
   validates :test, presence: true
+
+  private
+
+  def trim_space
+    self.content = content.squish
+  end
 end
