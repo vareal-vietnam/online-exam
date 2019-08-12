@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  acts_as_paranoid
+
   attr_accessor :remember_token, :activation_token
   before_save   :downcase_email
   before_create :create_activation_digest
@@ -9,8 +11,7 @@ class User < ApplicationRecord
 
   has_secure_password
 
-  has_many :results
-  has_many :result_exams
+  has_many :results, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 50, minimum: 3 }
   validates :email, presence: true, length: { maximum: 255 },

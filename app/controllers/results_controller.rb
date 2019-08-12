@@ -10,10 +10,12 @@ class ResultsController < ApplicationController
   end
 
   def create
-    @params_answers[:answers].each do |answer|
-      save_result_answer answer, @result
+    unless @params_answers[:answers].nil?
+      @params_answers[:answers].each do |answer|
+        save_result_answer answer, @result
+      end
+      update_result @result
     end
-    update_result @result
     flash[:success] = t '.result', score: @result.score
     redirect_to test_result_path(@test, @result)
   end

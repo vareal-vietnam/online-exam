@@ -57,7 +57,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    user_attributes = %i[name email password password_confirmation]
+    user_attributes = %i[name email password password_confirmation is_admin]
     params.require(:user).permit user_attributes
   end
 
