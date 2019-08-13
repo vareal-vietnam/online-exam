@@ -1,15 +1,16 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :model  do
-  it {is_expected.to validate_presence_of(:name)}
-  it {is_expected.to validate_presence_of(:email)}
-  it {is_expected.to validate_presence_of(:password)}
+RSpec.describe User, type: :model do
+  it { is_expected.to validate_presence_of(:name) }
+  it { is_expected.to validate_presence_of(:email) }
+  it { is_expected.to validate_presence_of(:password) }
   describe 'password' do
     describe 'when password is too short' do
       it 'is not valid' do
         user = build(:user, password: '123')
         user.valid?
-        expect(user.errors[:password]).to include('is too short (minimum is 6 characters)')
+        expect(user.errors[:password]).to include('is too short /
+          (minimum is 6 characters)')
       end
     end
 
@@ -34,7 +35,7 @@ RSpec.describe User, type: :model  do
       it 'is not valid' do
         user = build(:user, email: 'tranhaigmail.com')
         user.valid?
-        expect(user.errors[:email]).to include("is invalid")
+        expect(user.errors[:email]).to include('is invalid')
       end
     end
 
@@ -48,10 +49,11 @@ RSpec.describe User, type: :model  do
 
     describe 'when email is too long' do
       it 'is not valid' do
-        fake_email = "a"*256
+        fake_email = 'a' * 256
         user = build(:user, email: fake_email)
         user.valid?
-        expect(user.errors[:email]).to include('is too long (maximum is 255 characters)')
+        expect(user.errors[:email]).to include('is too long /
+          (maximum is 255 characters)')
       end
     end
   end
@@ -61,23 +63,24 @@ RSpec.describe User, type: :model  do
       it 'is not valid' do
         user = build(:user, name: 'Hai')
         user.valid?
-        expect(user.errors[:name]).to include()
+        expect(user.errors[:name]).to include
       end
     end
 
     describe 'when name is too long' do
       it 'is not valid' do
-        fake_name = "a"*51
+        fake_name = 'a' * 51
         user = build(:user, name: fake_name)
         user.valid?
-        expect(user.errors[:name]).to include("is too long (maximum is 50 characters)")
+        expect(user.errors[:name]).to include('is too long /
+          (maximum is 50 characters)')
       end
     end
   end
 
   describe 'Check associate between user table and results table ' do
-    it 'user has many results'do
-     is_expected.to have_many(:results)
+    it 'user has many results' do
+      is_expected.to have_many(:results)
     end
   end
 
