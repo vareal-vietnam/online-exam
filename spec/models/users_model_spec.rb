@@ -4,8 +4,8 @@ RSpec.describe User, type: :model do
   let(:user_create) { build :user }
   let(:user) { create :user }
 
-  describe 'Check valid' do
-    context 'Check valid name' do
+  describe 'Check validate' do
+    context '#validate name' do
       it { is_expected.to validate_presence_of(:name) }
       it do
         is_expected.to validate_length_of(:name)
@@ -13,13 +13,13 @@ RSpec.describe User, type: :model do
       end
     end
 
-    context 'Check valid email' do
+    context '#validate email' do
       it { is_expected.to validate_presence_of(:email) }
       it { is_expected.to validate_length_of(:email).is_at_most(255) }
       it { is_expected.to allow_value('abc@gmail.com').for(:email) }
     end
 
-    context 'Check valid password' do
+    context '#validate password' do
       it { is_expected.to validate_presence_of(:password).allow_nil }
       it { is_expected.to validate_length_of(:password).is_at_least(6) }
     end
@@ -34,13 +34,13 @@ RSpec.describe User, type: :model do
   end
 
   describe 'Check callback' do
-    it 'Check callback before save' do
+    it '#callback before save' do
       user_create.email = 'ABC@gmail.com'
       user_create.run_callbacks :save
       expect(user_create.email).to eq('abc@gmail.com')
     end
 
-    it 'Check callback before create' do
+    it '#callback before create' do
       user_create.run_callbacks :create
       expect(user_create.activation_token).not_to be_nil
       expect(user_create.activation_digest).not_to be_nil
@@ -72,9 +72,13 @@ RSpec.describe User, type: :model do
   end
 
   describe 'Check class method' do
-    context 'Check digest' do
+    context '#digest' do
       subject { User.digest('abc') }
       it { expect(subject).to be_a_kind_of(String) }
+    end
+
+    context '#new_token' do
+      it { expect(User.new_token).to be_a_kind_of(String) }
     end
   end
 end

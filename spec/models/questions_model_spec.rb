@@ -4,7 +4,7 @@ RSpec.describe Question, type: :model do
   let(:question) { build :question }
 
   describe 'Check callback' do
-    it 'Before save' do
+    it '#Before save' do
       question.content = 'Question     1'
       question.run_callbacks :save
       expect(question.content).to eq('Question 1')
@@ -29,12 +29,12 @@ RSpec.describe Question, type: :model do
   end
 
   describe 'Check validate' do
-    context 'Validate content' do
+    context '#Validate content' do
       it { is_expected.to validate_presence_of(:content) }
       it { is_expected.to validate_length_of(:content).is_at_most(255) }
     end
 
-    context 'Validate test' do
+    context '#Validate test' do
       it { is_expected.to validate_presence_of(:test) }
     end
   end

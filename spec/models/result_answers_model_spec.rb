@@ -22,11 +22,11 @@ RSpec.describe ResultAnswer, type: :model do
   end
 
   describe 'Check validate' do
-    context 'Validate answer' do
+    context '#Validate answer' do
       it { is_expected.to validate_presence_of(:answer) }
     end
 
-    context 'Validate result' do
+    context '#Validate result' do
       it { is_expected.to validate_presence_of(:result) }
     end
   end

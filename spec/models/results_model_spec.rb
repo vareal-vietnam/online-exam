@@ -19,11 +19,11 @@ RSpec.describe Result, type: :model do
   end
 
   describe 'Check validate' do
-    context 'Validate user' do
+    context '#Validate user' do
       it { is_expected.to validate_presence_of(:user) }
     end
 
-    context 'Validate test' do
+    context '#Validate test' do
       it { is_expected.to validate_presence_of(:test) }
     end
   end

@@ -4,7 +4,7 @@ RSpec.describe Answer, type: :model do
   let(:answer) { build :answer }
 
   describe 'Check callback' do
-    it '#befor save' do
+    it '#before save' do
       answer.content = 'Answer    content'
       answer.run_callbacks :save
       expect(answer.content).to eq('Answer content')
