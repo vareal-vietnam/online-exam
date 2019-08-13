@@ -38,7 +38,6 @@ ActiveRecord::Schema.define(version: 2019_08_12_034407) do
     t.integer "result_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "delete_at"
     t.datetime "deleted_at"
     t.index ["answer_id", "result_id"], name: "index_result_answers_on_answer_id_and_result_id"
     t.index ["deleted_at"], name: "index_result_answers_on_deleted_at"
