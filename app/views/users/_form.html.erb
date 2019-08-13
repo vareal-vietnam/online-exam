@@ -27,13 +27,11 @@
     <%= f.password_field :password_confirmation, class: "form-control", required: true %>
   </div>
 
-  <% if current_user&.is_admin? %>
-    <div class="form-group">
+  <div class="form-group">
+    <% if current_user&.is_admin? %>
       <%= f.submit t("submit"), class: "btn btn-primary btn-block" %>
-    </div>
     <% else %>
-    <div class="form-group">
       <%= f.submit t("sign_up"), class: "btn btn-primary btn-block" %>
-    </div>
-  <% end%>
+    <% end%>
+  </div>
 <% end %>
