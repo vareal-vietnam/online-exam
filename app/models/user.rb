@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  include ModuleTrimSpaceName
+
   acts_as_paranoid
 
   attr_accessor :remember_token, :activation_token

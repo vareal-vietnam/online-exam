@@ -13,6 +13,7 @@ en:
       home: "Home"
       users: "Users"
       profile: "Edit profile"
+      show_profile: "Show profile"
       admin: "Admin"
       exam: "Exam"
       users: "Users"

@@ -1,4 +1,6 @@
 class Question < ApplicationRecord
+  include ModuleTrimSpaceContent
+
   acts_as_paranoid
 
   belongs_to :test

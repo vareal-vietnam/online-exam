@@ -1,4 +1,6 @@
 class Test < ApplicationRecord
+  include ModuleTrimSpaceName
+
   CATEGORY_TYPE = %i[git rails].freeze
   acts_as_paranoid
 

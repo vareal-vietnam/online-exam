@@ -4,3 +4,4 @@
 //= require cocoon
 //= require jquery.countdown
 //= require jquery.countdown-es
+//= require custom

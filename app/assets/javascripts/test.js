@@ -23,10 +23,9 @@ $(document).ready(function() {
 
   var date = new Date();
   date.setSeconds( date.getSeconds() + parseInt($("#time").data("value")) );
-
   $("#time").countdown({
     until: date,
-    layout: "{mn} : {sn}",
+    layout: "{hn} : {mn} : {sn}",
     onExpiry: function(){
       $(".test-content form").submit();
     }
