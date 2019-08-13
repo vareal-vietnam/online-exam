@@ -16,10 +16,12 @@ RSpec.describe Question, type: :model do
   end
 
   describe '#before save' do
-    let(:question) { build :question, content: 'Question     1' }
-    before { question.save }
-    it do
-      expect(question.content).to eq('Question 1')
+    context '#trim_space_content' do
+      let(:question) { build :question, content: 'Question     1' }
+      before { question.save }
+      it do
+        expect(question.content).to eq('Question 1')
+      end
     end
   end
 end

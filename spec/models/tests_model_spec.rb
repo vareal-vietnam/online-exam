@@ -27,12 +27,14 @@ RSpec.describe Test, type: :model do
   it { is_expected.to validate_numericality_of(:time).only_integer }
 
   describe '#before_save' do
-    let(:test) { build :test, name: 'Test   name' }
+    context '#trim_space_content' do
+      let(:test) { build :test, name: 'Test   name' }
 
-    before { test.save }
+      before { test.save }
 
-    it do
-      expect(test.name).to eq('Test name')
+      it do
+        expect(test.name).to eq('Test name')
+      end
     end
   end
 end

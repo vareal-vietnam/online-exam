@@ -4,7 +4,7 @@ FactoryBot.define do
     is_correct { false }
     question
 
-    trait :is_true do
+    trait :correct_answer do
       is_correct { true }
     end
   end

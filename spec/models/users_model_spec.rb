@@ -35,7 +35,7 @@ RSpec.describe User, type: :model do
   describe '#before create' do
     before { user_create.save }
 
-    it do
+    it '#create_activation_digest' do
       expect(user_create.activation_token).not_to be_nil
       expect(user_create.activation_digest).not_to be_nil
     end
