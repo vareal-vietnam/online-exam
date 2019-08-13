@@ -1,9 +1,7 @@
 class Answer < ApplicationRecord
-  include ModuleTrimSpace
+  include ModuleTrimSpaceContent
 
   acts_as_paranoid
-
-  before_save :trim_space_content
 
   belongs_to :question
   has_many :result_answers, dependent: :destroy

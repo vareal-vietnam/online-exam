@@ -1,12 +1,10 @@
 class Test < ApplicationRecord
-  include ModuleTrimSpace
+  include ModuleTrimSpaceName
 
   CATEGORY_TYPE = %i[git rails].freeze
   acts_as_paranoid
 
   attr_accessor :answer_choise
-
-  before_save :trim_space_name
 
   enum kind: CATEGORY_TYPE
 
