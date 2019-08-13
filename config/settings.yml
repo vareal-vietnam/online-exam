@@ -1,4 +1,3 @@
 time_min_test: 2
 per_page_tests: 8
-max_character: 13
-max_character_long: 60
+max_character: 60

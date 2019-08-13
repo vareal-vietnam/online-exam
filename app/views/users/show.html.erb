@@ -17,7 +17,7 @@
 </div>
 <h2 class="text-center"><%= t".result" %></h2>
 <div class="row">
-  <div class="col-md-8 col-md-offset-2">
+  <div class="col-md-8 col-md-offset-2 table-responsive">
     <table class="table table-striped">
       <tr>
         <th><%= t".test_name" %></th>
@@ -26,7 +26,7 @@
       </tr>
       <% @results.each do |result| %>
       <tr>
-        <td><%= link_to (raw format_name_test(result.test.name, Settings.max_character_long) if result.test), result.test %></td>
+        <td><%= link_to (raw format_name_test(result.test.name, Settings.max_character) if result.test), result.test %></td>
         <td><%= l(result.created_at, format: :short) %></td>
         <td><%= result.score %></td>
       </tr>
