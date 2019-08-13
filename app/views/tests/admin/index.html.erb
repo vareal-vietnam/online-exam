@@ -25,7 +25,7 @@
       <% @tests.each do |test| %>
         <tr>
           <td><%= test.id %></td>
-          <td><%= test.name %></td>
+          <td><%= raw format_name_test(test.name, Settings.max_character_long) %></td>
           <td><%= test.time %></td>
           <td><%= test.questions.count %></td>
           <td class="text-center">

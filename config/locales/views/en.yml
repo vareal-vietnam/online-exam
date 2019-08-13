@@ -56,7 +56,7 @@ en:
     index:
       title: "Result %{test_name}"
       user: "User"
-      time: "Time submit"
+      time: "Time test"
       score: "Score"
       view: "View"
       index: "No."
@@ -115,7 +115,7 @@ en:
         number: "No."
         result: "Result"
       show:
-        times: "Times "
+        time: "Time"
         question_id: "ID"
         question: "Question"
         edit: "Edit"
@@ -187,7 +187,7 @@ en:
       score: "Score"
       result: "Result"
       test_name: "Test Name"
-      test_date_time: "Test date time"
+      test_date_time: "Test time"
       score: "Score"
       back: "Back"
     form:

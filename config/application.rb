@@ -17,5 +17,8 @@ module OnlineExam
     # the framework and any gems in your application.
 
     config.i18n.load_path += Dir[Rails.root.join("config", "locales", "**", "*.yml")]
+
+    config.time_zone = 'Asia/Ho_Chi_Minh'
+    config.active_record.default_timezone = :local
   end
 end

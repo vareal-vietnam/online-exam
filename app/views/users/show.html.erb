@@ -26,7 +26,7 @@
       </tr>
       <% @results.each do |result| %>
       <tr>
-        <td><%= link_to (result.test.name if result.test), result.test %></td>
+        <td><%= link_to (raw format_name_test(result.test.name, Settings.max_character_long) if result.test), result.test %></td>
         <td><%= result.created_at.strftime("%T %d/%m/%Y") %></td>
         <td><%= result.score %></td>
       </tr>

@@ -5,7 +5,9 @@
     <% @tests.each do |test| %>
       <div class="col-md-3">
         <div class="body">
-          <h3 class="word-break"><%= test.name %></h3>
+          <h3>
+            <%= raw format_name_test(test.name, Settings.max_character) %>
+          </h3>
           <div class="content">
             <div class="test-type">
               <%= t".kind" %>: <span><%= test.kind %></span>

@@ -1,5 +1,5 @@
 <% provide :title, t(".title", name: @test.name) %>
-<h2 class="text-center"><%= t(".title", name: @test.name) %></h2>
+<h2 class="text-center word-break"><%= t(".title", name: @test.name) %></h2>
 <% if @questions.count == 0 %>
   <%= t(".not_allow_test") %>
   <%= link_to t(".back"), root_path %>
