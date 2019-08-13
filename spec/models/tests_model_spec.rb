@@ -26,9 +26,13 @@ RSpec.describe Test, type: :model do
   it { is_expected.to validate_presence_of(:time) }
   it { is_expected.to validate_numericality_of(:time).only_integer }
 
-  it '#before save' do
-    test.name = 'test   name'
-    test.run_callbacks :save
-    expect(test.name).to eq('test name')
+  describe '#before_save' do
+    let(:test) { build :test, name: 'Test   name' }
+
+    before { test.save }
+
+    it do
+      expect(test.name).to eq('Test name')
+    end
   end
 end

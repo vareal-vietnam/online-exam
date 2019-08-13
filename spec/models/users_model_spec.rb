@@ -19,16 +19,26 @@ RSpec.describe User, type: :model do
 
   it { is_expected.to have_secure_password }
 
-  it '#callback before save' do
-    user_create.email = 'ABC@gmail.com'
-    user_create.run_callbacks :save
-    expect(user_create.email).to eq('abc@gmail.com')
+  describe '#before_save' do
+    let(:user) { build :user, email: 'ABC@gmail.com', name: 'Your   name' }
+
+    before { user.save }
+
+    it '#downcase_email' do
+      expect(user.email).to eq('abc@gmail.com')
+    end
+    it '#trim double space' do
+      expect(user.name).to eq('Your name')
+    end
   end
 
-  it '#callback before create' do
-    user_create.run_callbacks :create
-    expect(user_create.activation_token).not_to be_nil
-    expect(user_create.activation_digest).not_to be_nil
+  describe '#before create' do
+    before { user_create.save }
+
+    it do
+      expect(user_create.activation_token).not_to be_nil
+      expect(user_create.activation_digest).not_to be_nil
+    end
   end
 
   describe '#create_reset_digest' do
