@@ -4,47 +4,31 @@ RSpec.describe User, type: :model do
   let(:user_create) { build :user }
   let(:user) { create :user }
 
-  describe 'Check validate' do
-    context '#validate name' do
-      it { is_expected.to validate_presence_of(:name) }
-      it do
-        is_expected.to validate_length_of(:name)
-          .is_at_least(3).is_at_most(50)
-      end
-    end
+  it { is_expected.to validate_presence_of(:name) }
+  it do
+    is_expected.to validate_length_of(:name)
+      .is_at_least(3).is_at_most(50)
+  end
+  it { is_expected.to validate_presence_of(:email) }
+  it { is_expected.to validate_length_of(:email).is_at_most(255) }
+  it { is_expected.to allow_value('abc@gmail.com').for(:email) }
+  it { is_expected.to validate_presence_of(:password).allow_nil }
+  it { is_expected.to validate_length_of(:password).is_at_least(6) }
 
-    context '#validate email' do
-      it { is_expected.to validate_presence_of(:email) }
-      it { is_expected.to validate_length_of(:email).is_at_most(255) }
-      it { is_expected.to allow_value('abc@gmail.com').for(:email) }
-    end
+  it { is_expected.to have_many(:results) }
 
-    context '#validate password' do
-      it { is_expected.to validate_presence_of(:password).allow_nil }
-      it { is_expected.to validate_length_of(:password).is_at_least(6) }
-    end
+  it { is_expected.to have_secure_password }
+
+  it '#callback before save' do
+    user_create.email = 'ABC@gmail.com'
+    user_create.run_callbacks :save
+    expect(user_create.email).to eq('abc@gmail.com')
   end
 
-  describe 'Check has many' do
-    it { is_expected.to have_many(:results) }
-  end
-
-  describe 'Check secure password' do
-    it { is_expected.to have_secure_password }
-  end
-
-  describe 'Check callback' do
-    it '#callback before save' do
-      user_create.email = 'ABC@gmail.com'
-      user_create.run_callbacks :save
-      expect(user_create.email).to eq('abc@gmail.com')
-    end
-
-    it '#callback before create' do
-      user_create.run_callbacks :create
-      expect(user_create.activation_token).not_to be_nil
-      expect(user_create.activation_digest).not_to be_nil
-    end
+  it '#callback before create' do
+    user_create.run_callbacks :create
+    expect(user_create.activation_token).not_to be_nil
+    expect(user_create.activation_digest).not_to be_nil
   end
 
   describe '#create_reset_digest' do

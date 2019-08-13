@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :question do
     content { Faker::Lorem.question }
-    association :test, :kind_git
+    test
   end
 end
