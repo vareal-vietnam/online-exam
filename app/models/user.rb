@@ -3,7 +3,7 @@ class User < ApplicationRecord
 
   acts_as_paranoid
 
-  attr_accessor :remember_token, :activation_token
+  attr_accessor :activation_token
   before_save   :downcase_email
   before_create :create_activation_digest
 
@@ -19,7 +19,8 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
-  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true,
+            confirmation: true
 
   def create_reset_digest
     self.reset_token = User.new_token

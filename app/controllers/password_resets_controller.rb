@@ -28,13 +28,13 @@ class PasswordResetsController < ApplicationController
   end
 
   def update
-    if @user.update_attributes(reset_password_params)
+    if @user&.update_attributes(reset_password_params)
       @user.update_attribute :reset_digest, nil
       flash[:success] = t '.success'
       redirect_to login_path
     else
       flash.now[:danger] = t '.error_confirm'
-      render 'new'
+      render 'edit'
     end
   end
 

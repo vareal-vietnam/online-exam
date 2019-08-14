@@ -35,6 +35,6 @@ config.action_mailer.smtp_settings = {
   authentication: :plain,
   enable_starttls_auto: true
 }
-config.action_mailer.default_url_options = { :host => ENV["email_host"]}
+config.action_mailer.default_url_options = { :host => ENV["host_url"]}
 end
 
