@@ -5,7 +5,9 @@
     <% @tests.each do |test| %>
       <div class="col-md-3">
         <div class="body">
-          <h3 class="word-break"><%= test.name %></h3>
+          <h3 class="text-overflow" title="<%= test.name %>">
+            <%= test.name %>
+          </h3>
           <div class="content">
             <div class="test-type">
               <%= t".kind" %>: <span><%= test.kind %></span>
