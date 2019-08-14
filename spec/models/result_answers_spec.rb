@@ -11,7 +11,7 @@ RSpec.describe ResultAnswer, type: :model do
   it { is_expected.to validate_presence_of(:result) }
 
   describe '#by_result' do
-    it do
+    it 'Can find result' do
       expect(ResultAnswer.by_result(result_answer.result).count)
         .not_to be_zero
     end

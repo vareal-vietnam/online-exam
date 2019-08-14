@@ -9,7 +9,7 @@ RSpec.describe Question, type: :model do
   it { is_expected.to validate_length_of(:content).is_at_most(255) }
 
   describe '#nested_attributes' do
-    it do
+    it 'Can accept nested answer attributes' do
       is_expected.to accept_nested_attributes_for(:answers)
         .allow_destroy(true)
     end
