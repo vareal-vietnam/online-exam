@@ -12,7 +12,7 @@
     <thead class="thead-dark">
       <tr>
         <th><%= t ".test_id" %></th>
-        <th><%= t ".test_name" %></th>
+        <th class="th-overflow"><%= t ".test_name" %></th>
         <th><%= t ".time_(s)" %></th>
         <th><%= t ".total_questions"%></th>
         <th class="text-center"><%= t ".result" %></th>
@@ -25,7 +25,7 @@
       <% @tests.each do |test| %>
         <tr>
           <td><%= test.id %></td>
-          <td><%= raw format_name_test(test.name, Settings.max_character) %></td>
+          <td class="td-overflow"><%= test.name %></td>
           <td><%= test.time %></td>
           <td><%= test.questions.count %></td>
           <td class="text-center">

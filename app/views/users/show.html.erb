@@ -26,7 +26,7 @@
       </tr>
       <% @results.each do |result| %>
       <tr>
-        <td><%= link_to (raw format_name_test(result.test.name, Settings.max_character) if result.test), result.test %></td>
+        <td class="td-overflow"><%= link_to result.test.name, result.test %></td>
         <td><%= l(result.created_at, format: :short) %></td>
         <td><%= result.score %></td>
       </tr>

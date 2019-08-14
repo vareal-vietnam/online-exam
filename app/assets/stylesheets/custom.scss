@@ -168,6 +168,17 @@ input {
   font-size: 120%;
   font-weight: 600;
 }
-.word-break{
+.word-break {
   word-break: break-all;
+}
+
+.text-overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.td-overflow {
+  max-width: 500px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
