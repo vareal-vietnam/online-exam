@@ -15,6 +15,8 @@ RSpec.describe PasswordResetsController, type: :controller do
     context 'Can find email' do
       before { get :create, params: { password_reset: { email: user.email } } }
 
+      it{ expect(assigns(:user).reset_digest).not_to be_nil }
+      it{ expect(assigns(:user).reset_send_at).not_to be_nil }
       it { is_expected.to set_flash }
       it { is_expected.to redirect_to login_path }
     end
@@ -29,10 +31,15 @@ RSpec.describe PasswordResetsController, type: :controller do
 
   describe '#edit' do
     context 'Can change password' do
-      let(:user) { create :user, reset_send_at: 0.5.hours.ago }
-      before { get :edit, params: { id: user.id, email: user.email } }
+      let(:token) { User.new_token }
+      let(:user) do
+        create :user,
+               reset_send_at: 0.5.hours.ago,
+               reset_digest: User.digest(token)
+      end
+      before { get :edit, params: { id: token, email: user.email } }
 
-      it { is_expected.to render_template 'new' }
+      it { is_expected.to render_template 'edit' }
     end
 
     context 'Can not authenticated' do
