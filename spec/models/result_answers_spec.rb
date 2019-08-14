@@ -10,8 +10,10 @@ RSpec.describe ResultAnswer, type: :model do
   it { is_expected.to validate_presence_of(:answer) }
   it { is_expected.to validate_presence_of(:result) }
 
-  it 'Check scope' do
-    expect(ResultAnswer.by_result(result_answer.result).count)
-      .not_to be_zero
+  describe '#by_result' do
+    it do
+      expect(ResultAnswer.by_result(result_answer.result).count)
+        .not_to be_zero
+    end
   end
 end

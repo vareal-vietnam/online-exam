@@ -1,9 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:user_create) { build :user }
-  let(:user) { create :user }
-
   it { is_expected.to validate_presence_of(:name) }
   it do
     is_expected.to validate_length_of(:name)
@@ -19,32 +16,35 @@ RSpec.describe User, type: :model do
 
   it { is_expected.to have_secure_password }
 
-  describe '#before_save' do
-    let(:user) { build :user, email: 'ABC@gmail.com', name: 'Your   name' }
-
+  describe '#downcase_email' do
+    let(:user) { build :user, email: 'ABC@gmail.com' }
     before { user.save }
 
-    it '#downcase_email' do
-      expect(user.email).to eq('abc@gmail.com')
-    end
-    it '#trim double space' do
-      expect(user.name).to eq('Your name')
-    end
+    it { expect(user.email).to eq('abc@gmail.com') }
   end
 
-  describe '#before create' do
-    before { user_create.save }
+  describe '#trim double space' do
+    let(:user) { build :user, name: 'Your     name' }
+    before { user.save }
 
-    it '#create_activation_digest' do
-      expect(user_create.activation_token).not_to be_nil
-      expect(user_create.activation_digest).not_to be_nil
+    it { expect(user.name).to eq('Your name') }
+  end
+
+  describe '#create_activation_digest' do
+    let(:user) { build :user }
+    before { user.save }
+
+    it 'Can create activation digest' do
+      expect(user.activation_token).not_to be_nil
+      expect(user.activation_digest).not_to be_nil
     end
   end
 
   describe '#create_reset_digest' do
+    let(:user) { create :user }
     before { user.create_reset_digest }
 
-    it 'can create reset_digest correctly' do
+    it 'Can create reset_digest correctly' do
       expect(user.reset_token).not_to be_nil
       expect(user.reset_digest).not_to be_nil
       expect(user.reset_send_at).not_to be_nil
@@ -65,14 +65,11 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe 'Check class method' do
-    context '#digest' do
-      subject { User.digest('abc') }
-      it { expect(subject).to be_a_kind_of(String) }
-    end
+  describe '#digest' do
+    it { expect(User.digest('abc')).to be_a_kind_of(String) }
+  end
 
-    context '#new_token' do
-      it { expect(User.new_token).to be_a_kind_of(String) }
-    end
+  describe '#new_token' do
+    it { expect(User.new_token).to be_a_kind_of(String) }
   end
 end
