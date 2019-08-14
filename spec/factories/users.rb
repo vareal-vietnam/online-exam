@@ -6,6 +6,9 @@ FactoryBot.define do
     password_confirmation { '123456' }
     activated { true }
 
+    trait :not_active do
+      activated { false }
+    end
     trait :admin do
       is_admin { true }
     end
