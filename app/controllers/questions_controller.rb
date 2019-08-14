@@ -25,6 +25,10 @@ class QuestionsController < ApplicationController
 
   def get_question
     @question = Question.find_by id: params[:id]
+    return if @question
+
+    flash[:danger] = t 'error_404'
+    redirect_to root_path
   end
 
   def question_params
