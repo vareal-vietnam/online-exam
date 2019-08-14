@@ -1,8 +1,9 @@
 class ResultsController < ApplicationController
-  before_action :get_result, only: %i[show]
+  before_action :check_is_logged_in, only: %i[show create index]
   before_action :get_test, only: %i[create index]
+  before_action :get_result, only: %i[show]
   before_action :save_result, :params_answers, only: %i[create]
-  before_action :check_is_logged_in, :check_is_admin_permission, only: %i[index]
+  before_action :check_is_admin_permission, only: %i[index]
 
   def show
     @test = @result.test
@@ -30,6 +31,9 @@ class ResultsController < ApplicationController
   def get_result
     @result = Result.find_by id: params[:id]
     return if @result
+
+    flash[:danger] = t 'error_404'
+    redirect_to root_path
   end
 
   def get_test
