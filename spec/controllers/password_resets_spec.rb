@@ -15,8 +15,8 @@ RSpec.describe PasswordResetsController, type: :controller do
     context 'Can find email' do
       before { get :create, params: { password_reset: { email: user.email } } }
 
-      it{ expect(assigns(:user).reset_digest).not_to be_nil }
-      it{ expect(assigns(:user).reset_send_at).not_to be_nil }
+      it { expect(assigns(:user).reset_digest).not_to be_nil }
+      it { expect(assigns(:user).reset_send_at).not_to be_nil }
       it { is_expected.to set_flash }
       it { is_expected.to redirect_to login_path }
     end
@@ -58,10 +58,10 @@ RSpec.describe PasswordResetsController, type: :controller do
       let(:user) { create :user, reset_send_at: 0.5.hours.ago }
       before do
         put :update,
-             params: { id: user.id,
-                       email: user.email,
-                       password_reset: { password: '123456',
-                                         password_confirmation: '123456'} }
+            params: { id: user.id,
+                      email: user.email,
+                      password_reset: { password: '123456',
+                                        password_confirmation: '123456' } }
       end
 
       it { expect(user.reset_digest).to be_nil }
@@ -73,10 +73,10 @@ RSpec.describe PasswordResetsController, type: :controller do
       let(:user) { create :user, reset_send_at: 0.5.hours.ago }
       before do
         put :update,
-             params: { id: user.id,
-                       email: user.email,
-                       password_reset: { password: '123456',
-                                         password_confirmation: '1234567'} }
+            params: { id: user.id,
+                      email: user.email,
+                      password_reset: { password: '123456',
+                                        password_confirmation: '1234567' } }
       end
 
       it { is_expected.to set_flash }
@@ -87,10 +87,10 @@ RSpec.describe PasswordResetsController, type: :controller do
       let(:user) { create :user, reset_send_at: 2.hours.ago }
       before do
         put :update,
-             params: { id: user.id,
-                       email: user.email,
-                       password_reset: { password: '123456',
-                                         password_confirmation: '123456'} }
+            params: { id: user.id,
+                      email: user.email,
+                      password_reset: { password: '123456',
+                                        password_confirmation: '123456' } }
       end
 
       it { is_expected.to set_flash }
