@@ -8,14 +8,12 @@ class ApplicationController < ActionController::Base
     redirect_to root_path
   end
 
-  def check_is_admin
-    check_is_admin_permission
-  end
-
   def check_is_logged_in
     return if logged_in?
 
     flash[:danger] = t 'not_loggin'
     redirect_to login_path
   end
+
+  alias check_is_admin check_is_admin_permission
 end
