@@ -12,8 +12,9 @@ RSpec.describe SessionsHelper, type: :helper do
   describe '#current_user' do
     context 'Exist session' do
       before { session[:user_id] = user.id }
+      subject { helper.current_user }
 
-      it { expect(helper.current_user).to eq(user) }
+      it { is_expected.to eq(user) }
     end
   end
 
@@ -22,19 +23,23 @@ RSpec.describe SessionsHelper, type: :helper do
       session[:user_id] = user.id
       helper.log_out
     end
+    subject { session[:user_id] }
 
-    it { expect(session[:user_id]).to be_nil }
+    it { is_expected.to be_nil }
   end
 
   describe '#logged_in' do
     context 'User logged in' do
       before { session[:user_id] = user.id }
+      subject { helper.logged_in? }
 
-      it { expect(helper.logged_in?).to eq(true) }
+      it { is_expected.to eq(true) }
     end
 
     context 'User not login' do
-      it { expect(helper.logged_in?).to eq(false) }
+      subject { helper.logged_in? }
+
+      it { is_expected.to eq(false) }
     end
   end
 end
