@@ -1,6 +1,8 @@
 class Test < ApplicationRecord
   include ModuleTrimSpaceName
 
+  default_scope { order(id: :desc) }
+
   CATEGORY_TYPE = %i[git rails].freeze
   acts_as_paranoid
 

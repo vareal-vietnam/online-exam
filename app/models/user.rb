@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   include ModuleTrimSpaceName
 
+  default_scope { order(id: :desc) }
+
   acts_as_paranoid
 
   attr_accessor :activation_token
