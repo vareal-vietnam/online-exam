@@ -10,11 +10,16 @@ RSpec.describe SessionsHelper, type: :helper do
   end
 
   describe '#current_user' do
-    context 'Exist session' do
+    subject { helper.current_user }
+
+    context 'Session is exist' do
       before { session[:user_id] = user.id }
-      subject { helper.current_user }
 
       it { is_expected.to eq(user) }
+    end
+
+    context 'Session is not exist' do
+      it { is_expected.to be_nil }
     end
   end
 
@@ -29,16 +34,15 @@ RSpec.describe SessionsHelper, type: :helper do
   end
 
   describe '#logged_in' do
+    subject { helper.logged_in? }
+
     context 'User logged in' do
       before { session[:user_id] = user.id }
-      subject { helper.logged_in? }
 
       it { is_expected.to eq(true) }
     end
 
     context 'User not login' do
-      subject { helper.logged_in? }
-
       it { is_expected.to eq(false) }
     end
   end
