@@ -6,23 +6,25 @@ RSpec.describe QuestionsController, type: :controller do
   let(:question) { create :question }
 
   describe '#edit' do
-    context 'Logged in with admin, can find question' do
-      before do
-        session[:user_id] = admin.id
-        get :edit, params: { id: question.id }
+    context 'Logged in with admin' do
+      context 'Can find question' do
+        before do
+          session[:user_id] = admin.id
+          get :edit, params: { id: question.id }
+        end
+
+        it { is_expected.to render_template 'edit' }
       end
 
-      it { is_expected.to render_template 'edit' }
-    end
+      context 'Can not find question' do
+        before do
+          session[:user_id] = admin.id
+          get :edit, params: { id: -1 }
+        end
 
-    context 'Logged in with admin, can not find question' do
-      before do
-        session[:user_id] = admin.id
-        get :edit, params: { id: -1 }
+        it { is_expected.to set_flash }
+        it { is_expected.to redirect_to root_path }
       end
-
-      it { is_expected.to set_flash }
-      it { is_expected.to redirect_to root_path }
     end
 
     context 'Logged with user' do
@@ -46,24 +48,26 @@ RSpec.describe QuestionsController, type: :controller do
   describe '#update' do
     let(:question_params) { attributes_for :question }
 
-    context 'Logged in with admin, can find question' do
-      before do
-        session[:user_id] = admin.id
-        put :update, params: { id: question.id, question: question_params }
+    context 'Logged in with admin' do
+      context 'Can find question' do
+        before do
+          session[:user_id] = admin.id
+          put :update, params: { id: question.id, question: question_params }
+        end
+
+        it { is_expected.to set_flash }
+        it { is_expected.to redirect_to test_path(question.test) }
       end
 
-      it { is_expected.to set_flash }
-      it { is_expected.to redirect_to test_path(question.test) }
-    end
+      context 'Can not find question' do
+        before do
+          session[:user_id] = admin.id
+          put :update, params: { id: -1, question: question_params }
+        end
 
-    context 'Logged in with admin, can not find question' do
-      before do
-        session[:user_id] = admin.id
-        put :update, params: { id: -1, question: question_params }
+        it { is_expected.to set_flash }
+        it { is_expected.to redirect_to root_path }
       end
-
-      it { is_expected.to set_flash }
-      it { is_expected.to redirect_to root_path }
     end
 
     context 'Logged in with user' do
@@ -85,24 +89,26 @@ RSpec.describe QuestionsController, type: :controller do
   end
 
   describe '#destroy' do
-    context 'Logged in with admin, can find question' do
-      before do
-        session[:user_id] = admin.id
-        delete :destroy, params: { id: question.id }
+    context 'Logged in with admin' do
+      context 'Can find question' do
+        before do
+          session[:user_id] = admin.id
+          delete :destroy, params: { id: question.id }
+        end
+
+        it { is_expected.to set_flash }
+        it { is_expected.to redirect_to test_path(question.test) }
       end
 
-      it { is_expected.to set_flash }
-      it { is_expected.to redirect_to test_path(question.test) }
-    end
+      context 'Can not find question' do
+        before do
+          session[:user_id] = admin.id
+          delete :destroy, params: { id: -1 }
+        end
 
-    context 'Logged in with admin, can not find question' do
-      before do
-        session[:user_id] = admin.id
-        delete :destroy, params: { id: -1 }
+        it { is_expected.to set_flash }
+        it { is_expected.to redirect_to root_path }
       end
-
-      it { is_expected.to set_flash }
-      it { is_expected.to redirect_to root_path }
     end
 
     context 'Logged in with user' do

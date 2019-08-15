@@ -69,32 +69,34 @@ RSpec.describe PasswordResetsController, type: :controller do
       it { is_expected.to redirect_to login_path }
     end
 
-    context 'Can not update password, password not match' do
-      let(:user) { create :user, reset_send_at: 0.5.hours.ago }
-      before do
-        put :update,
-            params: { id: user.id,
-                      email: user.email,
-                      password_reset: { password: '123456',
-                                        password_confirmation: '1234567' } }
+    context 'Can not update password' do
+      context 'Password not match' do
+        let(:user) { create :user, reset_send_at: 0.5.hours.ago }
+        before do
+          put :update,
+              params: { id: user.id,
+                        email: user.email,
+                        password_reset: { password: '123456',
+                                          password_confirmation: '1234567' } }
+        end
+
+        it { is_expected.to set_flash }
+        it { is_expected.to render_template 'edit' }
       end
 
-      it { is_expected.to set_flash }
-      it { is_expected.to render_template 'edit' }
-    end
+      context 'Url is expired' do
+        let(:user) { create :user, reset_send_at: 2.hours.ago }
+        before do
+          put :update,
+              params: { id: user.id,
+                        email: user.email,
+                        password_reset: { password: '123456',
+                                          password_confirmation: '123456' } }
+        end
 
-    context 'Can not update password, url is expired' do
-      let(:user) { create :user, reset_send_at: 2.hours.ago }
-      before do
-        put :update,
-            params: { id: user.id,
-                      email: user.email,
-                      password_reset: { password: '123456',
-                                        password_confirmation: '123456' } }
+        it { is_expected.to set_flash }
+        it { is_expected.to redirect_to new_password_reset_path }
       end
-
-      it { is_expected.to set_flash }
-      it { is_expected.to redirect_to new_password_reset_path }
     end
   end
 end

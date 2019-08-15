@@ -31,25 +31,27 @@ RSpec.describe SessionsController, type: :controller do
       it { is_expected.to redirect_to root_path }
     end
 
-    context 'Can not login, email not exist' do
-      before do
-        post :create,
-             params: { session: { email: 'abc@xyz', password: '123456' } }
+    context 'Can not login' do
+      context 'Email not exist' do
+        before do
+          post :create,
+               params: { session: { email: 'abc@xyz', password: '123456' } }
+        end
+
+        it { is_expected.to set_flash }
+        it { is_expected.to render_template 'new' }
       end
 
-      it { is_expected.to set_flash }
-      it { is_expected.to render_template 'new' }
-    end
+      context 'Password error' do
+        let(:user) { create :user }
+        before do
+          post :create,
+               params: { session: { email: user.email, password: '000000' } }
+        end
 
-    context 'Can not login, password error' do
-      let(:user) { create :user }
-      before do
-        post :create,
-             params: { session: { email: user.email, password: '000000' } }
+        it { is_expected.to set_flash }
+        it { is_expected.to render_template 'new' }
       end
-
-      it { is_expected.to set_flash }
-      it { is_expected.to render_template 'new' }
     end
   end
 

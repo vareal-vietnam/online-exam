@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
     redirect_to root_path
   end
 
+  def check_is_admin
+    check_is_admin_permission
+  end
+
   def check_is_logged_in
     return if logged_in?
 
