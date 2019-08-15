@@ -18,12 +18,12 @@ RSpec.describe SessionsHelper, type: :helper do
   end
 
   describe '#log_out' do
-      before do
-        session[:user_id] = user.id
-        helper.log_out
-      end
+    before do
+      session[:user_id] = user.id
+      helper.log_out
+    end
 
-      it { expect(session[:user_id]).to be_nil }
+    it { expect(session[:user_id]).to be_nil }
   end
 
   describe '#logged_in' do
