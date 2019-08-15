@@ -60,14 +60,17 @@ en:
       score: "Score"
       view: "View"
       index: "No."
-    create:
+    update:
       result: "Your score is %{score}"
+      submited: "You did the test"
     show:
       title: "Result Test"
       correct_answer: "Correct answer"
       correct: "Correct"
       incorrect: "Incorrect"
       score: "Score"
+    destroy:
+      success_delete: "Result deleted"
   sessions:
     create:
       success_login: "Logged in successfully"

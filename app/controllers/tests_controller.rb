@@ -12,6 +12,7 @@ class TestsController < ApplicationController
   def show
     @questions = @test.questions.includes :answers
     render 'tests/admin/show' if current_user.is_admin?
+    handle_with_user
   end
 
   def new
@@ -54,6 +55,14 @@ class TestsController < ApplicationController
 
     flash[:danger] = t 'error_404'
     redirect_to root_path
+  end
+
+  def handle_with_user
+    if @test.results.find_by(user_id: current_user.id).nil?
+      @result = Result.create test: @test, user: current_user
+    else
+      redirect_to test_result_path(@test, @test.results.last)
+    end
   end
 
   def test_params
