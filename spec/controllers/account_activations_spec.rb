@@ -4,12 +4,12 @@ RSpec.describe AccountActivationsController, type: :controller do
   describe '#edit' do
     context 'Can active' do
       let(:token) { User.new_token }
-      let(:user) do
-        create :user, :not_active, activation_digest: User.digest(token)
+      let(:user) { create :user, :not_active }
+      before do
+        get :edit, params: { id: user.activation_token, email: user.email }
       end
-      before { get :edit, params: { id: token, email: user.email } }
-
       it { is_expected.to set_flash }
+      it { is_expected.to redirect_to root_path }
     end
 
     context 'Can not active' do
