@@ -256,7 +256,6 @@ RSpec.describe UsersController, type: :controller do
       end
     end
 
-
     context 'Logged with user' do
       before do
         session[:user_id] = user.id

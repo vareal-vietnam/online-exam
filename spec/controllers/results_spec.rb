@@ -47,7 +47,9 @@ RSpec.describe ResultsController, type: :controller do
         end
 
         it { is_expected.to set_flash }
-        it { is_expected.to redirect_to test_result_path(test, assigns(:result)) }
+        it do
+          is_expected.to redirect_to test_result_path(test, assigns(:result))
+        end
       end
 
       context 'Can not find test' do

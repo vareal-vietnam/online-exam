@@ -149,7 +149,8 @@ RSpec.describe TestsController, type: :controller do
 
         it { is_expected.to render_template 'edit' }
         it do
-          is_expected.to render_template(partial: '_form', locals: { test: test })
+          is_expected.to render_template(partial: '_form',
+                                         locals: { test: test })
         end
       end
 
@@ -205,7 +206,8 @@ RSpec.describe TestsController, type: :controller do
 
         it { is_expected.to render_template 'edit' }
         it do
-          is_expected.to render_template(partial: '_form', locals: { test: test })
+          is_expected.to render_template(partial: '_form',
+                                         locals: { test: test })
         end
         it do
           is_expected.to render_template(partial: 'shared/error_messages',
