@@ -45,12 +45,24 @@ RSpec.describe TestsController, type: :controller do
     end
 
     context 'Logged with user' do
-      before do
-        session[:user_id] = user.id
-        get :show, params: { id: test.id }
+      context 'Can find test' do
+        before do
+          session[:user_id] = user.id
+          get :show, params: { id: test.id }
+        end
+
+        it { is_expected.to render_template 'show' }
       end
 
-      it { is_expected.to render_template 'show' }
+      context 'Can not find test' do
+        before do
+          session[:user_id] = user.id
+          get :show, params: { id: -1 }
+        end
+
+        it { is_expected.to set_flash }
+        it { is_expected.to redirect_to root_path }
+      end
     end
 
     context 'Not login' do
@@ -85,57 +97,40 @@ RSpec.describe TestsController, type: :controller do
       before { get :new }
 
       it { is_expected.to set_flash }
-      it { is_expected.to redirect_to '/login' }
+      it { is_expected.to redirect_to login_path }
     end
   end
 
   describe '#create' do
     let(:test_params) { attributes_for :test }
-    context 'Logged in with admin' do
-      context 'Can save' do
-        before do
-          session[:user_id] = admin.id
-          put :create, params: { test: test_params }
-        end
+    subject { put :create, params: { test: test_params } }
 
-        it { is_expected.to set_flash }
+    context 'Logged in with admin' do
+      before { session[:user_id] = admin.id }
+
+      context 'Can save' do
+        it { expect{ subject }.to change{ Test.count }.by(1) }
+        it { expect( subject.request.flash[:success] ).to_not be_nil }
         it { is_expected.to redirect_to root_path }
       end
 
       context 'Can not save' do
         let(:test_params) { attributes_for :test, name: '' }
-        before do
-          session[:user_id] = admin.id
-          put :create, params: { test: test_params }
-        end
 
         it { is_expected.to render_template 'new' }
-        it do
-          is_expected.to render_template(partial: '_form',
-                                         locals: { test: assigns(:test) })
-        end
-        it do
-          is_expected.to render_template(partial: 'shared/error_messages',
-                                         locals: { object: assigns(:test) })
-        end
       end
     end
 
     context 'Logged with user' do
-      before do
-        session[:user_id] = user.id
-        put :create, params: { test: test_params }
-      end
+      before { session[:user_id] = user.id }
 
-      it { is_expected.to set_flash }
+      it { expect( subject.request.flash[:danger] ).to_not be_nil }
       it { is_expected.to redirect_to root_path }
     end
 
     context 'Not login' do
-      before { put :create, params: { test: test_params } }
-
-      it { is_expected.to set_flash }
-      it { is_expected.to redirect_to '/login' }
+      it { expect( subject.request.flash[:danger] ).to_not be_nil }
+      it { is_expected.to redirect_to login_path }
     end
   end
 
@@ -179,40 +174,53 @@ RSpec.describe TestsController, type: :controller do
       before { get :edit, params: { id: test.id } }
 
       it { is_expected.to set_flash }
-      it { is_expected.to redirect_to '/login' }
+      it { is_expected.to redirect_to login_path }
     end
   end
 
   describe '#update' do
-    let(:test_params) { attributes_for :test }
+    let(:test_params) { attributes_for :test, name: 'Test' }
 
     context 'Logged in with admin' do
-      context 'Can save' do
-        before do
-          session[:user_id] = admin.id
-          put :update, params: { id: test.id, test: test_params }
+      before { session[:user_id] = admin.id }
+
+      context 'Can find test' do
+        context 'Can save' do
+          let!(:test_update) do
+            put :update, params: { id: test.id, test: test_params }
+          end
+
+          it do
+            expect{ test.reload }.to change{ test.name }.
+              from(test.name).to('Test')
+          end
+          it { is_expected.to set_flash }
+          it { is_expected.to redirect_to root_path }
         end
+
+        context 'Can not save' do
+          let(:test_params) { attributes_for :test, name: '' }
+          before do
+            put :update, params: { id: test.id, test: test_params }
+          end
+
+          it { is_expected.to render_template 'edit' }
+          it do
+            is_expected.to render_template(partial: '_form',
+                                           locals: { test: test })
+          end
+          it do
+            is_expected.to render_template(partial: 'shared/error_messages',
+                                           locals: { object: test })
+          end
+        end
+      end
+
+      context 'Can not find test' do
+        before { put :update, params: { id: -1, test: test_params } }
 
         it { is_expected.to set_flash }
         it { is_expected.to redirect_to root_path }
-      end
-
-      context 'Can not save' do
-        let(:test_params) { attributes_for :test, name: '' }
-        before do
-          session[:user_id] = admin.id
-          put :update, params: { id: test.id, test: test_params }
-        end
-
-        it { is_expected.to render_template 'edit' }
-        it do
-          is_expected.to render_template(partial: '_form',
-                                         locals: { test: test })
-        end
-        it do
-          is_expected.to render_template(partial: 'shared/error_messages',
-                                         locals: { object: test })
-        end
       end
     end
 
@@ -236,21 +244,16 @@ RSpec.describe TestsController, type: :controller do
 
   describe '#destroy' do
     context 'Logged in with admin' do
+      before { session[:user_id] = admin.id }
       context 'Can find test' do
-        before do
-          session[:user_id] = admin.id
-          delete :destroy, params: { id: test.id }
-        end
+        before { delete :destroy, params: { id: test.id } }
 
         it { is_expected.to set_flash }
         it { is_expected.to redirect_to root_path }
       end
 
       context 'Can not find test' do
-        before do
-          session[:user_id] = admin.id
-          delete :destroy, params: { id: -1 }
-        end
+        before { delete :destroy, params: { id: -1 } }
 
         it { is_expected.to set_flash }
         it { is_expected.to redirect_to root_path }
@@ -271,7 +274,7 @@ RSpec.describe TestsController, type: :controller do
       before { delete :destroy, params: { id: test.id } }
 
       it { is_expected.to set_flash }
-      it { is_expected.to redirect_to '/login' }
+      it { is_expected.to redirect_to login_path }
     end
   end
 end
