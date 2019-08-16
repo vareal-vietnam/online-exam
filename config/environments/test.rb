@@ -41,9 +41,9 @@ Rails.application.configure do
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
   config.action_mailer.smtp_settings = {
-    address: ENV["email_address"],
-    port: ENV["email_port"],
-    user_name: ENV["email_name_address"],
+    address: smtp.gmail.com,
+    port: 587,
+    user_name: online.exam.102@gmail.com,
     password: ENV["email_password"],
     authentication: :plain,
     enable_starttls_auto: true
