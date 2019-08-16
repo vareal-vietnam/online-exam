@@ -4,7 +4,7 @@ class TestsController < ApplicationController
   before_action :check_is_admin_permission, except: %i[index show]
 
   def index
-    @tests = Test.all.paginate(page: params[:page],
+    @tests = Test.reorder('id DESC').paginate(page: params[:page],
                                per_page: Settings.per_page_tests)
     render 'tests/admin/index' if current_user&.is_admin?
   end
