@@ -25,6 +25,12 @@
               <i class="fa fa-eye"></i>
             <% end %>
           </td>
+          <td>
+            <%= link_to test_result_path(@test, result), method: "delete",
+              data: {confirm: t("confirm_delete")}, class: "button text-danger" do %>
+              <i class="fa fa-trash"></i>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>

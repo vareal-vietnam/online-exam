@@ -10,7 +10,7 @@
   </p>
 </div>
 <div class="test-content">
-  <%= form_for @test, url: test_results_path(test_id: @test.id), method: "post" do |f| %>
+  <%= form_for([@test, @result]) do |f| %>
     <% @questions.each.with_index do |question, index| %>
       <div class="question">
         <p class="question-content">
@@ -29,7 +29,7 @@
     <% end %>
     <%= f.submit t(".submit"), class: "btn btn-success" %>
   <% end %>
-  </div>
+</div>
 <% end %>
 
 <% content_for :javascript_includes do %>
