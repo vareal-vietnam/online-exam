@@ -11,8 +11,11 @@ class TestsController < ApplicationController
 
   def show
     @questions = @test.questions.includes :answers
-    render 'tests/admin/show' if current_user.is_admin?
-    handle_with_user
+    if current_user.is_admin?
+      render 'tests/admin/show'
+    else
+      handle_with_user
+    end
   end
 
   def new
