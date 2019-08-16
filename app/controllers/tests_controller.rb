@@ -5,7 +5,7 @@ class TestsController < ApplicationController
 
   def index
     @tests = Test.reorder('id DESC').paginate(page: params[:page],
-                               per_page: Settings.per_page_tests)
+                                              per_page: Settings.per_page_tests)
     render 'tests/admin/index' if current_user&.is_admin?
   end
 
