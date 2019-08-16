@@ -29,6 +29,8 @@ RSpec.describe AccountActivationsController, type: :controller do
             get :edit, params: { id: user.activation_token, email: user.email }
           end
 
+          it { expect(user.reload.activated).to eq(true) }
+          it { expect(user.reload.activated_at).not_to be_nil }
           it { is_expected.to set_flash }
           it { is_expected.to redirect_to root_path }
         end

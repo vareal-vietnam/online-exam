@@ -1,18 +1,9 @@
 class ResultsController < ApplicationController
-<<<<<<< HEAD
-  before_action :check_is_logged_in, only: %i[show create index]
-  before_action :get_test, only: %i[create index]
-  before_action :get_result, only: %i[show]
-  before_action :save_result, :params_answers, only: %i[create]
-  before_action :check_is_admin_permission, only: %i[index]
-=======
   before_action :get_result, only: %i[show update destroy]
   before_action :get_test, only: %i[update index destroy]
-  before_action :check_double_submit, only: %i[update]
-  before_action :params_answers, only: %i[update]
-  before_action :check_is_logged_in, :check_is_admin_permission,
-                only: %i[index destroy]
->>>>>>> master
+  before_action :check_double_submit, :params_answers, only: %i[update]
+  before_action :check_is_logged_in, only: %i[show index destroy update]
+  before_action :check_is_admin_permission, only: %i[index destroy]
 
   def show
     @test = @result.test
@@ -35,21 +26,10 @@ class ResultsController < ApplicationController
     @results = @results.paginate(page: params[:page])
   end
 
-<<<<<<< HEAD
-  private
-
-  def get_result
-    @result = Result.find_by id: params[:id]
-    return if @result
-
-    flash[:danger] = t 'error_404'
-    redirect_to root_path
-=======
   def destroy
     @result.destroy
     flash[:success] = t '.success_delete', for_object: 'Test'
     redirect_to test_results_path @test
->>>>>>> master
   end
 
   private

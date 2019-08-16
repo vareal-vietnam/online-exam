@@ -36,26 +36,39 @@ RSpec.describe ResultsController, type: :controller do
     end
   end
 
-  describe '#create' do
+  describe '#update' do
     let(:params) { attributes_for :result }
 
     context 'Logged in with user' do
-      context 'Can find test' do
-        before do
-          session[:user_id] = user.id
-          put :create, params: { test_id: test.id, result: params }
+      before { session[:user_id] = user.id }
+
+      context 'Can find result' do
+        context 'Can find test' do
+          before do
+            post :update, params: { id: result.id,
+                                    test_id: test.id,
+                                    result: params }
+          end
+
+          it { is_expected.to set_flash }
+          it do
+            is_expected.to redirect_to test_result_path(test, assigns(:result))
+          end
         end
 
-        it { is_expected.to set_flash }
-        it do
-          is_expected.to redirect_to test_result_path(test, assigns(:result))
+        context 'Can not find test' do
+          before do
+            post :update, params: { id: result.id, test_id: -1, result: params }
+          end
+
+          it { is_expected.to set_flash }
+          it { is_expected.to redirect_to root_path }
         end
       end
 
-      context 'Can not find test' do
+      context 'Can not find result' do
         before do
-          session[:user_id] = user.id
-          put :create, params: { test_id: -1, result: params }
+          post :update, params: { id: -1, test_id: test.id, result: params }
         end
 
         it { is_expected.to set_flash }
@@ -64,7 +77,11 @@ RSpec.describe ResultsController, type: :controller do
     end
 
     context 'Not login' do
-      before { put :create, params: { test_id: test.id, result: params } }
+      before do
+        post :update, params: { id: result.id,
+                                test_id: test.id,
+                                result: params }
+      end
 
       it { is_expected.to set_flash }
       it { is_expected.to redirect_to login_path }
@@ -73,20 +90,16 @@ RSpec.describe ResultsController, type: :controller do
 
   describe '#index' do
     context 'Logged in with admin' do
+      before { session[:user_id] = admin.id }
+
       context 'Can find test' do
-        before do
-          session[:user_id] = admin.id
-          get :index, params: { test_id: test.id }
-        end
+        before { get :index, params: { test_id: test.id } }
 
         it { is_expected.to render_template 'index' }
       end
 
       context 'Can not find test' do
-        before do
-          session[:user_id] = admin.id
-          get :index, params: { test_id: -1 }
-        end
+        before { get :index, params: { test_id: -1 } }
 
         it { is_expected.to set_flash }
         it { is_expected.to redirect_to root_path }
@@ -104,9 +117,55 @@ RSpec.describe ResultsController, type: :controller do
     end
 
     context 'Not login' do
-      before do
-        get :index, params: { test_id: test.id }
+      before { get :index, params: { test_id: test.id } }
+
+      it { is_expected.to set_flash }
+      it { is_expected.to redirect_to login_path }
+    end
+  end
+
+  describe '#destroy' do
+    context 'Logged in with admin' do
+      before { session[:user_id] = admin.id }
+
+      context 'Can find result' do
+        context 'Can find test' do
+          before do
+            delete :destroy, params: { id: result.id, test_id: test.id }
+          end
+
+          it { is_expected.to set_flash }
+          it { is_expected.to redirect_to test_results_path test }
+        end
+
+        context 'Can not find test' do
+          before { delete :destroy, params: { id: result.id, test_id: -1 } }
+
+          it { is_expected.to set_flash }
+          it { is_expected.to redirect_to root_path }
+        end
       end
+
+      context 'Can not find result' do
+        before { delete :destroy, params: { id: -1, test_id: -1 } }
+
+        it { is_expected.to set_flash }
+        it { is_expected.to redirect_to root_path }
+      end
+    end
+
+    context 'Logged in with user' do
+      before do
+        session[:user_id] = user.id
+        delete :destroy, params: { id: result, test_id: test.id }
+      end
+
+      it { is_expected.to set_flash }
+      it { is_expected.to redirect_to root_path }
+    end
+
+    context 'Not login' do
+      before { delete :destroy, params: { id: result, test_id: test.id } }
 
       it { is_expected.to set_flash }
       it { is_expected.to redirect_to login_path }

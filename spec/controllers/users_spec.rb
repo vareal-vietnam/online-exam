@@ -35,20 +35,15 @@ RSpec.describe UsersController, type: :controller do
 
   describe '#show' do
     context 'Logged in with admin' do
+      before { session[:user_id] = admin.id }
       context 'Can find user' do
-        before do
-          session[:user_id] = admin.id
-          get :show, params: { id: user_saved.id }
-        end
+        before { get :show, params: { id: user_saved.id } }
 
         it { is_expected.to render_template 'show' }
       end
 
       context 'Can not find user' do
-        before do
-          session[:user_id] = admin.id
-          get :show, params: { id: -1 }
-        end
+        before { get :show, params: { id: -1 } }
 
         it { is_expected.to set_flash }
         it { is_expected.to redirect_to root_path }
@@ -56,15 +51,18 @@ RSpec.describe UsersController, type: :controller do
     end
 
     context 'Logged with user' do
-      before do
-        session[:user_id] = user.id
-        get :show, params: { id: user_saved.id }
+      before { session[:user_id] = user.id }
+
+      context 'View yourself' do
+        before { get :show, params: { id: user.id } }
+
+        it { is_expected.to render_template 'show' }
       end
 
-      it { is_expected.to render_template 'show' }
-      it do
-        is_expected.to render_template(partial: '_form',
-                                       locals: { user: user })
+      context 'View other user' do
+        before { get :show, params: { id: user_saved.id } }
+
+        it { is_expected.to render_template 'show' }
       end
     end
 
@@ -104,15 +102,23 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe '#create' do
+    let(:user_params) { attributes_for :user }
+
     context 'Logged in with admin' do
-      let(:user_params) { attributes_for :user }
-      before do
-        session[:user_id] = admin.id
-        post :create, params: { user: user_params }
+      subject { put :create, params: { user: user_params } }
+      before { session[:user_id] = admin.id }
+
+      context 'Can save' do
+        it { expect{ subject }.to change{ User.count }.by(1) }
+        it { expect( subject.request.flash[:success] ).to_not be_nil }
+        it { is_expected.to redirect_to users_path }
       end
 
-      it { is_expected.to set_flash }
-      it { is_expected.to redirect_to users_path }
+      context 'Can not save' do
+        let(:user_params) { attributes_for :user, name: '' }
+
+        it { is_expected.to render_template 'new' }
+      end
     end
 
     context 'Logged with user' do
@@ -176,16 +182,33 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe '#update' do
+    let(:user_params) { attributes_for :user, name: 'Name' }
+
     context 'Logged in with admin' do
+      before { session[:user_id] = admin.id }
+
       context 'Can find user' do
-        let(:user_params) { attributes_for :user }
-        before do
-          session[:user_id] = admin.id
-          post :update, params: { id: user_saved.id, user: user_params }
+        context 'Can save' do
+          let!(:user_update) do
+            post :update, params: { id: user_saved.id, user: user_params }
+          end
+
+          it do
+            expect{ user_saved.reload }.to change{ user_saved.name }.
+              from(user_saved.name).to('Name')
+          end
+          it { is_expected.to set_flash }
+          it { is_expected.to redirect_to users_path }
         end
 
-        it { is_expected.to set_flash }
-        it { is_expected.to redirect_to users_path }
+        context 'Can not save' do
+          let(:user_params) { attributes_for :user, name: '' }
+          before do
+            post :update, params: { id: user_saved.id, user: user_params }
+          end
+
+          it { is_expected.to render_template 'edit' }
+        end
       end
 
       context 'Can not find user' do
