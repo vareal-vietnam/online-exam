@@ -61,6 +61,7 @@ en:
       score: "Score"
       view: "View"
       index: "No."
+      delete: "Delete"
     update:
       result: "Your score is %{score}"
       submited: "You did the test"

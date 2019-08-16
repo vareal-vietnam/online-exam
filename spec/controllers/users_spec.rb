@@ -109,8 +109,8 @@ RSpec.describe UsersController, type: :controller do
       before { session[:user_id] = admin.id }
 
       context 'Can save' do
-        it { expect{ subject }.to change{ User.count }.by(1) }
-        it { expect( subject.request.flash[:success] ).to_not be_nil }
+        it { expect { subject }.to change { User.count }.by(1) }
+        it { expect(subject.request.flash[:success]).to_not be_nil }
         it { is_expected.to redirect_to users_path }
       end
 
@@ -194,8 +194,8 @@ RSpec.describe UsersController, type: :controller do
           end
 
           it do
-            expect{ user_saved.reload }.to change{ user_saved.name }.
-              from(user_saved.name).to('Name')
+            expect { user_saved.reload }.to change { user_saved.name }
+              .from(user_saved.name).to('Name')
           end
           it { is_expected.to set_flash }
           it { is_expected.to redirect_to users_path }

@@ -109,8 +109,8 @@ RSpec.describe TestsController, type: :controller do
       before { session[:user_id] = admin.id }
 
       context 'Can save' do
-        it { expect{ subject }.to change{ Test.count }.by(1) }
-        it { expect( subject.request.flash[:success] ).to_not be_nil }
+        it { expect { subject }.to change { Test.count }.by(1) }
+        it { expect(subject.request.flash[:success]).to_not be_nil }
         it { is_expected.to redirect_to root_path }
       end
 
@@ -124,12 +124,12 @@ RSpec.describe TestsController, type: :controller do
     context 'Logged with user' do
       before { session[:user_id] = user.id }
 
-      it { expect( subject.request.flash[:danger] ).to_not be_nil }
+      it { expect(subject.request.flash[:danger]).to_not be_nil }
       it { is_expected.to redirect_to root_path }
     end
 
     context 'Not login' do
-      it { expect( subject.request.flash[:danger] ).to_not be_nil }
+      it { expect(subject.request.flash[:danger]).to_not be_nil }
       it { is_expected.to redirect_to login_path }
     end
   end
@@ -191,8 +191,8 @@ RSpec.describe TestsController, type: :controller do
           end
 
           it do
-            expect{ test.reload }.to change{ test.name }.
-              from(test.name).to('Test')
+            expect { test.reload }.to change { test.name }
+              .from(test.name).to('Test')
           end
           it { is_expected.to set_flash }
           it { is_expected.to redirect_to root_path }

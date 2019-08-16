@@ -53,8 +53,8 @@ RSpec.describe QuestionsController, type: :controller do
           end
 
           it do
-            expect{ question.reload }.to change{ question.content }.
-              from(question.content).to('Question 1')
+            expect { question.reload }.to change { question.content }
+              .from(question.content).to('Question 1')
           end
           it { is_expected.to set_flash }
           it { is_expected.to redirect_to test_path(question.test) }
