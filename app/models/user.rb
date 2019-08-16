@@ -3,7 +3,7 @@ class User < ApplicationRecord
 
   acts_as_paranoid
 
-  attr_accessor :remember_token, :activation_token
+  attr_accessor :activation_token
   before_save   :downcase_email
   before_create :create_activation_digest
 

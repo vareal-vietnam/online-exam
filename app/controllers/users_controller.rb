@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   before_action :get_user, only: %i[edit update destroy show]
 
   def index
-    @users = User.paginate page: params[:page]
+    @users = User.reorder('id DESC').paginate page: params[:page]
   end
 
   def show
