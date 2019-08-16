@@ -1,15 +1,17 @@
 class ResultsController < ApplicationController
-  before_action :get_result, only: %i[show]
-  before_action :get_test, only: %i[create index]
-  before_action :save_result, :params_answers, only: %i[create]
-  before_action :check_is_logged_in, :check_is_admin_permission, only: %i[index]
+  before_action :get_result, only: %i[show update destroy]
+  before_action :get_test, only: %i[update index destroy]
+  before_action :check_double_submit, only: %i[update]
+  before_action :params_answers, only: %i[update]
+  before_action :check_is_logged_in, :check_is_admin_permission,
+                only: %i[index destroy]
 
   def show
     @test = @result.test
     @questions = @test.questions.includes :answers
   end
 
-  def create
+  def update
     unless @params_answers[:answers].nil?
       @params_answers[:answers].each do |answer|
         save_result_answer answer, @result
@@ -25,12 +27,13 @@ class ResultsController < ApplicationController
     @results = @results.paginate(page: params[:page])
   end
 
-  private
-
-  def get_result
-    @result = Result.find_by id: params[:id]
-    return if @result
+  def destroy
+    @result.destroy
+    flash[:success] = t '.success_delete', for_object: 'Test'
+    redirect_to test_results_path @test
   end
+
+  private
 
   def get_test
     @test = Test.find_by id: params[:test_id]
@@ -40,8 +43,12 @@ class ResultsController < ApplicationController
     redirect_to root_path
   end
 
-  def save_result
-    @result = Result.create(user: current_user, test: @test)
+  def get_result
+    @result = Result.find_by id: params[:id]
+    return if @result
+
+    flash[:danger] = t 'error_404'
+    redirect_to root_path
   end
 
   def save_result_answer(answer, result)
@@ -58,5 +65,12 @@ class ResultsController < ApplicationController
 
   def params_answers
     @params_answers = params.permit(answers: [])
+  end
+
+  def check_double_submit
+    return unless @result.result_answers.count.positive?
+
+    flash[:info] = t '.submited'
+    redirect_to test_result_path(@test, @result)
   end
 end
