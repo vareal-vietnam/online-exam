@@ -1,6 +1,5 @@
 class PasswordResetsController < ApplicationController
-  before_action :get_user, only: %i[edit update]
-  before_action :check_expiration, only: %i[edit update]
+  before_action :get_user, :check_expiration, only: %i[edit update]
 
   def new
   end
@@ -19,7 +18,7 @@ class PasswordResetsController < ApplicationController
   end
 
   def edit
-    if @user&.authenticated?(:reset, params[:id])
+    if @user.authenticated?(:reset, params[:id])
       render 'edit'
     else
       flash.now[:danger] = t '.out_of_date'
@@ -34,7 +33,7 @@ class PasswordResetsController < ApplicationController
       redirect_to login_path
     else
       flash.now[:danger] = t '.error_confirm'
-      render 'new'
+      render 'edit'
     end
   end
 
@@ -42,6 +41,10 @@ class PasswordResetsController < ApplicationController
 
   def get_user
     @user = User.find_by email: params[:email]
+    return if @user
+
+    flash[:danger] = t 'error_404'
+    redirect_to root_path
   end
 
   def check_expiration

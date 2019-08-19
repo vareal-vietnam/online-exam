@@ -9,7 +9,6 @@ FactoryBot.define do
     trait :not_active do
       activated { false }
     end
-
     trait :admin do
       is_admin { true }
     end

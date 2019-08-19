@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :check_is_logged_in, except: %i[new create]
-  before_action :check_is_admin_permission, only: %i[index edit destroy]
+  before_action :check_is_admin, only: %i[index edit destroy]
   before_action :check_is_admin_permission,
                 only: %i[new create], if: :logged_in?
   before_action :get_user, only: %i[edit update destroy show]
@@ -10,7 +10,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = current_user unless current_user.is_admin?
     @results = @user.results.includes :test
   end
 
@@ -36,7 +35,7 @@ class UsersController < ApplicationController
       if current_user.is_admin?
         redirect_to users_path
       else
-        redirect_to user_path
+        redirect_to user_path(@user)
       end
     else
       render 'edit'
@@ -63,6 +62,7 @@ class UsersController < ApplicationController
 
   def get_user
     @user = User.find_by id: params[:id]
+    @user = current_user unless current_user.is_admin?
     return if @user
 
     flash[:danger] = t 'error_404'

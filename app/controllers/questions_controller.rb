@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
-  before_action :get_question, only: %i[destroy update edit]
+  before_action :check_is_logged_in, :check_is_admin_permission
+  before_action :get_question, only: %i[edit update destroy]
 
   def edit
   end
@@ -24,6 +25,10 @@ class QuestionsController < ApplicationController
 
   def get_question
     @question = Question.find_by id: params[:id]
+    return if @question
+
+    flash[:danger] = t 'error_404'
+    redirect_to root_path
   end
 
   def question_params

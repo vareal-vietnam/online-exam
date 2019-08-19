@@ -14,4 +14,6 @@ class ApplicationController < ActionController::Base
     flash[:danger] = t 'not_loggin'
     redirect_to login_path
   end
+
+  alias check_is_admin check_is_admin_permission
 end

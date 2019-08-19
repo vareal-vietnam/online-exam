@@ -1,7 +1,7 @@
 class TestsController < ApplicationController
-  before_action :check_is_logged_in, only: %i[new create edit show]
-  before_action :get_test, only: %i[show destroy edit update]
+  before_action :check_is_logged_in, except: %i[index]
   before_action :check_is_admin_permission, except: %i[index show]
+  before_action :get_test, only: %i[show destroy edit update]
 
   def index
     @tests = Test.reorder('id DESC').paginate(page: params[:page],
@@ -11,8 +11,11 @@ class TestsController < ApplicationController
 
   def show
     @questions = @test.questions.includes :answers
-    render 'tests/admin/show' if current_user.is_admin?
-    handle_with_user
+    if current_user.is_admin?
+      render 'tests/admin/show'
+    else
+      handle_with_user
+    end
   end
 
   def new

@@ -1,10 +1,9 @@
 class ResultsController < ApplicationController
   before_action :get_result, only: %i[show update destroy]
   before_action :get_test, only: %i[update index destroy]
-  before_action :check_double_submit, only: %i[update]
-  before_action :params_answers, only: %i[update]
-  before_action :check_is_logged_in, :check_is_admin_permission,
-                only: %i[index destroy]
+  before_action :check_double_submit, :params_answers, only: %i[update]
+  before_action :check_is_logged_in, only: %i[show index destroy update]
+  before_action :check_is_admin_permission, only: %i[index destroy]
 
   def show
     @test = @result.test
