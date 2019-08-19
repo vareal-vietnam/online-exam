@@ -12,4 +12,9 @@ script:
   - bundle exec rails db:migrate RAILS_ENV=test
   - bundle exec rspec
   - bundle exec rubocop
-
+env:
+  - host_url=sample.com
+  - email_name_address=sample@gmail.com
+  - email_address=sample
+  - email_password=sample
+  - email_port=sample
