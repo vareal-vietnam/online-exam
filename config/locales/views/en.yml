@@ -160,10 +160,12 @@ en:
       Click on the link below to activate your account:"
       activate: "Activate"
       hi: "Hi"
+      subject: 'Account activation'
     password_reset:
       title: "Password reset"
       content_email: "Let click on link for reset your password"
       reset_password: "Reset password"
+      subject: 'Reset password'
   users:
     new:
       title: "Create user"
